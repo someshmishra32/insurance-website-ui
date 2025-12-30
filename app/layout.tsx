@@ -1,0 +1,57 @@
+import type React from "react"
+import type { Metadata } from "next"
+import { Geist, Geist_Mono } from "next/font/google"
+import { Analytics } from "@vercel/analytics/next"
+import { AnalyticsTracker } from "@/components/analytics-tracker"
+import "./globals.css"
+
+const _geist = Geist({ subsets: ["latin"] })
+const _geistMono = Geist_Mono({ subsets: ["latin"] })
+
+export const metadata: Metadata = {
+  title: "Independent Insurance Advisor for Life & Health Insurance in India | InsureWise",
+  description:
+    "Get honest, independent insurance advice from experts. Compare life insurance, term insurance, health insurance, ULIP, and investment plans across multiple insurers in India.",
+  keywords:
+    "insurance advisor India, independent insurance expert, term insurance comparison, health insurance plans, family floater insurance, insurance consultant, best insurance advisor, ULIP plans, investment insurance",
+  generator: "v0.app",
+  icons: {
+    icon: [
+      {
+        url: "/icon-light-32x32.png",
+        media: "(prefers-color-scheme: light)",
+      },
+      {
+        url: "/icon-dark-32x32.png",
+        media: "(prefers-color-scheme: dark)",
+      },
+      {
+        url: "/icon.svg",
+        type: "image/svg+xml",
+      },
+    ],
+    apple: "/apple-icon.png",
+  },
+}
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode
+}>) {
+  return (
+    <html lang="en">
+      <body className={`font-sans antialiased`}>
+        <AnalyticsTracker />
+        <a 
+          href="#main-content" 
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary text-primary-foreground px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 z-50"
+        >
+          Skip to main content
+        </a>
+        {children}
+        <Analytics />
+      </body>
+    </html>
+  )
+}
