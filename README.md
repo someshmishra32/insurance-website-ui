@@ -33,6 +33,34 @@ InsureWise is a comprehensive insurance guidance platform designed specifically 
 
 ### Core Features
 
+✅ **Compliance & Governance** (NEW - Phase 3)
+- Automated regulatory compliance checking
+- IRDAI guideline enforcement
+- Forbidden word detection with auto-fix
+- Multi-language compliance validation (English, Hindi, Gujarati, Marathi)
+- Intelligent disclaimer injection
+- DPDP Act data privacy validation
+- Real-time compliance scoring (0-100%)
+
+✅ **Admin Dashboard** (NEW - Phase 3)
+- Real-time compliance metrics and analytics
+- Content creation and publication tracking
+- Lead management and conversion analytics
+- Team activity monitoring and trends
+- Compliance rule management (CRUD)
+- Disclaimer template management
+- Forbidden word database management
+- IRDAI guideline versioning
+- CSV/JSON report export
+
+✅ **Multi-Language Support** (NEW - Phase 3)
+- Content available in 4 languages: English, Hindi, Gujarati, Marathi
+- Automatic language detection and content serving
+- Translation status tracking and coverage reporting
+- Language-specific disclaimers
+- Localized compliance rules per language
+- Content fallback chains
+
 ✅ **Policy Comparison Tool**
 - Compare multiple insurance policies side-by-side with 15+ metrics
 - Smart sorting (by premium, rating, claim settlement)
@@ -103,16 +131,23 @@ InsureWise is a comprehensive insurance guidance platform designed specifically 
 - **Radix UI** - Accessible component primitives
 - **React Hook Form** - Form state management
 - **Zod** - TypeScript-first schema validation
+- **Recharts** - Data visualization for dashboard
 
-### Backend
+### Backend & CMS
 - **Next.js API Routes** - Serverless API endpoints
+- **Strapi 5.1** - Headless CMS for compliance & content management (Phase 3)
 - **Supabase** - PostgreSQL database & auth
 - **Vercel AI SDK** - AI integration
+- **PostgreSQL 16** - Production database (via Strapi)
+- **Redis 7** - Caching layer (via Strapi)
 
 ### Services & Integrations
 - **Vercel Analytics** - Usage tracking
 - **Supabase Auth** - User authentication
 - **WhatsApp Integration** - Direct messaging
+- **Strapi Webhooks** - Real-time content sync
+- **AWS S3** - Media storage (via Strapi)
+- **SMTP/Email** - Transactional emails (via Strapi)
 
 ### Development Tools
 - **ESLint** - Code linting
@@ -127,12 +162,16 @@ insurance-website-ui/
 │   ├── layout.tsx               # Root layout with metadata
 │   ├── page.tsx                 # Home page
 │   ├── globals.css              # Global styles
+│   ├── admin/                   # Admin dashboard (Phase 3)
+│   │   └── dashboard/           # Analytics & compliance dashboard
 │   ├── about/                   # Expert advice booking page
 │   ├── ai-assistant/            # AI chatbot page
 │   ├── api/                     # API routes
 │   │   ├── ai-assistant/        # AI endpoint
 │   │   ├── analytics/track/     # Analytics tracking
-│   │   └── leads/               # Lead capture
+│   │   ├── leads/               # Lead capture
+│   │   ├── revalidate/          # ISR cache revalidation
+│   │   └── webhooks/strapi/     # Strapi webhook receiver
 │   ├── blog/                    # Blog articles
 │   │   ├── page.tsx             # Blog index with search
 │   │   ├── gst-relief-insurance-2025/
@@ -177,6 +216,8 @@ insurance-website-ui/
 ├── lib/                         # Utility functions
 │   ├── analytics.ts             # Analytics helpers
 │   ├── utils.ts                 # General utilities
+│   ├── strapi-api.ts            # Strapi CMS integration (Phase 2)
+│   ├── strapi-dashboard-api.ts  # Compliance & dashboard API (Phase 3)
 │   └── supabase/                # Supabase setup
 │       ├── client.ts            # Client-side DB
 │       └── server.ts            # Server-side DB
@@ -424,6 +465,7 @@ npm run lint
 | Transparency | `/transparency` | Trust & company values |
 | FAQ | `/faq` | Comprehensive Q&A |
 | Testimonials | `/testimonials` | Customer reviews |
+| **Admin Dashboard** | **/admin/dashboard** | **Analytics, compliance, content management (Phase 3)** |
 
 ### Key Components
 
@@ -510,6 +552,10 @@ Create a `.env.local` file with these variables:
 NEXT_PUBLIC_SUPABASE_URL=https://xxx.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key_here
 SUPABASE_SERVICE_ROLE_KEY=your_service_role_key_here
+
+# Strapi CMS Configuration (Phase 2+)
+NEXT_PUBLIC_STRAPI_URL=https://cms.insurewise.in
+STRAPI_TOKEN=your_strapi_api_token
 
 # AI/LLM Configuration
 OPENAI_API_KEY=sk-your_api_key_here
@@ -636,10 +682,50 @@ This project is licensed under the MIT License - see LICENSE.md for details.
 - **Accessibility Score**: 95+
 - **Mobile Score**: 98+
 
+## 🔒 Phase 3: Advanced Compliance & Governance
+
+**Released**: January 3, 2026
+
+Phase 3 brings enterprise-grade compliance management and multi-language support:
+
+### Backend Services
+- **Advanced Compliance Service** - Rule-based checking with IRDAI validation
+- **Localization Service** - Multi-language content management (4 languages)
+- **Analytics Service** - Real-time metrics, trends, and reporting
+
+### Models & Database
+- **Compliance Rule** - Configurable rules with regex patterns and auto-fix
+- **Disclaimer Template** - Pre-approved disclaimers with version control
+- **Forbidden Word** - Dynamic database of prohibited terms by category
+- **IRDAI Guideline** - Versioned regulations with checklist tracking
+
+### API Endpoints
+- 12 dashboard endpoints for compliance, analytics, and management
+- Real-time data fetching and report generation
+- Content compliance checking before publication
+- Translation status and coverage tracking
+
+### Documentation
+- **Phase 3 Deployment Guide** (120KB) - Complete setup instructions
+- **Phase 3 Testing Guide** (90KB) - 40+ test cases and procedures
+- **Strapi CMS Repository** - Backend services and models
+
+### Admin Features
+- Compliance rule management (create, edit, delete)
+- Disclaimer template customization
+- Forbidden word database CRUD
+- IRDAI guideline tracking
+- Real-time compliance metrics
+- Lead and content analytics
+- Team performance tracking
+- CSV/JSON report export
+
 ---
 
-**Last Updated**: December 2025
+**Last Updated**: January 3, 2026
 
-**Version**: 1.0.0
+**Version**: 2.0.0 (Phase 3 Complete)
 
 **Status**: Production Ready ✅
+
+**Build Status**: All 21 pages compiled successfully | 0 errors | 15.6s build time
