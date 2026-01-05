@@ -46,95 +46,93 @@ export function Navigation() {
 
       <nav className="border-b bg-background sticky top-0 z-50 backdrop-blur-sm bg-background/95">
         <div className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="text-2xl font-bold text-primary">
-            InsureWise
-          </Link>
+          <div className="flex items-center justify-between">
+            {/* Logo */}
+            <Link href="/" className="text-2xl font-bold text-primary">
+              InsureWise
+            </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-6">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`text-sm font-medium transition-colors ${
-                  isActive(link.href) ? "text-primary" : "hover:text-primary"
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
-
-            <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-medium hover:text-primary transition-colors outline-hidden">
-                Tools
-                <ChevronDown className="w-4 h-4" />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-56">
-                {toolsLinks.map((link) => (
-                  <DropdownMenuItem key={link.href} asChild>
-                    <Link href={link.href} className="cursor-pointer">
-                      {link.label}
-                    </Link>
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
-
-            <WhatsAppButton />
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button 
-            className="lg:hidden p-3 min-h-[44px] min-w-[44px] flex items-center justify-center" 
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 
-            aria-label="Toggle menu"
-          >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
-        </div>
-
-        {/* Mobile Menu */}
-        {mobileMenuOpen && (
-          <div className="lg:hidden pt-4 pb-4 border-t mt-4">
-            <div className="flex flex-col gap-4">
+            {/* Desktop Navigation */}
+            <div className="hidden lg:flex items-center gap-6">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-base font-medium transition-colors py-3 px-4 rounded-md min-h-[44px] flex items-center ${
-                    isActive(link.href) ? "text-primary bg-primary/5" : "hover:text-primary hover:bg-muted"
-                  }`}
-                  onClick={() => setMobileMenuOpen(false)}
+                  className={`text-sm font-medium transition-colors ${isActive(link.href) ? "text-primary" : "hover:text-primary"
+                    }`}
                 >
                   {link.label}
                 </Link>
               ))}
 
-              {/* Mobile Tools Section */}
-              <div className="border-t pt-4">
-                <p className="text-xs font-semibold text-muted-foreground mb-2">TOOLS</p>
-                {toolsLinks.map((link) => (
+              <DropdownMenu>
+                <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-medium hover:text-primary transition-colors outline-hidden">
+                  Tools
+                  <ChevronDown className="w-4 h-4" />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-56">
+                  {toolsLinks.map((link) => (
+                    <DropdownMenuItem key={link.href} asChild>
+                      <Link href={link.href} className="cursor-pointer transition-colors hover:bg-accent">
+                        {link.label}
+                      </Link>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+
+              <WhatsAppButton />
+            </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              className="lg:hidden p-3 min-h-[44px] min-w-[44px] flex items-center justify-center"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
+
+          {/* Mobile Menu */}
+          {mobileMenuOpen && (
+            <div className="lg:hidden pt-4 pb-4 border-t mt-4">
+              <div className="flex flex-col gap-4">
+                {navLinks.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
-                    className="block py-3 px-4 text-base hover:text-primary transition-colors min-h-[44px] flex items-center rounded-md hover:bg-muted"
+                    className={`text-base font-medium transition-colors py-3 px-4 rounded-md min-h-[44px] flex items-center ${isActive(link.href) ? "text-primary bg-primary/5" : "hover:text-primary hover:bg-muted"
+                      }`}
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {link.label}
                   </Link>
                 ))}
-              </div>
 
-              <div className="pt-4 border-t">
-                <WhatsAppButton />
+                {/* Mobile Tools Section */}
+                <div className="border-t pt-4">
+                  <p className="text-xs font-semibold text-muted-foreground mb-2">TOOLS</p>
+                  {toolsLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="block py-3 px-4 text-base hover:text-primary transition-colors min-h-[44px] flex items-center rounded-md hover:bg-muted"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+
+                <div className="pt-4 border-t">
+                  <WhatsAppButton />
+                </div>
               </div>
             </div>
-          </div>
-        )}
-      </div>
-    </nav>
+          )}
+        </div>
+      </nav>
     </>
   )
 }
