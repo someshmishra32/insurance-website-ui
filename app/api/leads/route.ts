@@ -1,4 +1,4 @@
-import { createClient } from "@/lib/supabase/server"
+import { createAdminClient } from "@/lib/supabase/server"
 import { type NextRequest, NextResponse } from "next/server"
 
 // Validation functions
@@ -39,7 +39,7 @@ function validatePhone(phone: string): string | null {
 
 export async function POST(request: NextRequest) {
   try {
-    const supabase = await createClient()
+    const supabase = createAdminClient()
     const body = await request.json()
 
     const { name, email, phone, insuranceType, currentCoverage, specificNeeds, sourcePage, utm } = body
@@ -51,14 +51,14 @@ export async function POST(request: NextRequest) {
 
     if (nameError || emailError || phoneError) {
       return NextResponse.json(
-        { 
-          error: "Validation failed", 
+        {
+          error: "Validation failed",
           fieldErrors: {
             name: nameError,
             email: emailError,
             phone: phoneError
           }
-        }, 
+        },
         { status: 400 }
       )
     }
