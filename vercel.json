@@ -4,57 +4,9 @@
   "buildCommand": "npm run build",
   "outputDirectory": ".next",
   "framework": "nextjs",
-  "env": {
-    "NEXT_PUBLIC_ENVIRONMENT": {
-      "description": "Environment name (development, staging, production)",
-      "required": true
-    },
-    "NODE_ENV": {
-      "description": "Node environment",
-      "default": "production"
-    },
-    "NEXT_PUBLIC_APP_URL": {
-      "description": "Frontend application URL",
-      "required": true
-    },
-    "NEXT_PUBLIC_STRAPI_URL": {
-      "description": "Strapi CMS API endpoint",
-      "required": true
-    },
-    "STRAPI_TOKEN": {
-      "description": "Strapi API token for server-side requests",
-      "required": true
-    },
-    "STRAPI_WEBHOOK_SECRET": {
-      "description": "HMAC secret for webhook signature verification",
-      "required": true
-    },
-    "ISR_REVALIDATE_SECRET": {
-      "description": "Secret for on-demand ISR revalidation",
-      "required": true
-    },
-    "NEXT_PUBLIC_WEBHOOK_ENDPOINT": {
-      "description": "Full webhook endpoint URL",
-      "required": false
-    },
-    "NEXT_PUBLIC_REVALIDATION_ENDPOINT": {
-      "description": "Full ISR revalidation endpoint URL",
-      "required": false
-    },
-    "NEXT_PUBLIC_ANALYTICS_URL": {
-      "description": "Analytics endpoint URL",
-      "required": false
-    },
-    "SUPABASE_URL": {
-      "description": "Supabase project URL",
-      "required": false
-    },
-    "SUPABASE_ANON_KEY": {
-      "description": "Supabase anonymous key",
-      "required": false
-    }
-  },
-  "regions": ["iad1"],
+  "regions": [
+    "iad1"
+  ],
   "functions": {
     "app/api/**": {
       "maxDuration": 60,
