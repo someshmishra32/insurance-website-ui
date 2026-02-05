@@ -6,6 +6,8 @@ import { ScheduleCallButton } from "@/components/schedule-call-button"
 import { ArticleNavigation } from "@/components/article-navigation"
 import { ArrowLeft, Clock, User, Tag, Shield, TrendingUp, AlertTriangle } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
+import { blogPosts } from "@/lib/blog-data"
 
 export const metadata = {
   title: "Term vs Whole Life Insurance: Which is Right for You? | InsureWise",
@@ -13,12 +15,15 @@ export const metadata = {
 }
 
 export default function BlogPost() {
-  const articles = [
-    { title: "GST Relief on Insurance (2025 Update)", slug: "gst-relief-insurance-2025", href: "/blog/gst-relief-insurance-2025" },
-    { title: "Mission 2047 - Insurance for All", slug: "mission-2047-insurance-for-all", href: "/blog/mission-2047-insurance-for-all" },
-    { title: "Term vs Whole Life Insurance", slug: "term-vs-whole-life-insurance", href: "/blog/term-vs-whole-life-insurance" },
-    { title: "Top 5 Things to Check Before Buying Health Insurance", slug: "top-5-things-to-check-before-buying-health-insurance", href: "/blog/top-5-things-to-check-before-buying-health-insurance" },
-  ]
+  const articles = blogPosts.map(post => ({
+    title: post.title,
+    slug: post.slug,
+    href: `/blog/${post.slug}`,
+    image: post.image
+  }))
+
+  const currentPost = blogPosts.find(p => p.slug === "term-vs-whole-life-insurance")
+  const postImage = currentPost?.image || "/placeholder.svg"
 
   return (
     <div className="min-h-screen bg-background">
@@ -43,7 +48,7 @@ export default function BlogPost() {
               <h1 className="text-4xl font-bold mb-4 text-balance">
                 Term Insurance vs. Whole Life: Which is Right for You?
               </h1>
-              
+
               <div className="flex items-center gap-4 text-muted-foreground mb-6">
                 <div className="flex items-center gap-1">
                   <User className="w-4 h-4" />
@@ -62,6 +67,17 @@ export default function BlogPost() {
               <p className="text-lg text-muted-foreground leading-relaxed">
                 Understanding the key differences between term and whole life insurance policies to make the best choice for your family. We break down costs, benefits, and ideal scenarios.
               </p>
+
+              {/* Hero Image */}
+              <div className="relative w-full aspect-video mt-8 mb-8 rounded-xl overflow-hidden shadow-lg border">
+                <Image
+                  src={postImage}
+                  alt="Term Insurance vs. Whole Life: Which is Right for You?"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
             </header>
 
             {/* Article Content */}
@@ -71,7 +87,7 @@ export default function BlogPost() {
                 <p>
                   Term insurance is the simplest form of life insurance. You pay a fixed premium for a specific term (usually 10-30 years), and if you pass away during that term, your beneficiaries receive the death benefit. If you outlive the term, the policy expires and you get nothing back.
                 </p>
-                
+
                 <div className="bg-blue-50 p-6 rounded-lg border border-blue-200 my-6">
                   <h3 className="font-semibold text-blue-900 mb-3 flex items-center gap-2">
                     <Shield className="w-5 h-5" />
@@ -92,7 +108,7 @@ export default function BlogPost() {
                 <p>
                   Whole life insurance provides coverage for your entire lifetime, as long as you pay the premiums. It combines a death benefit with a cash value component that grows over time. You can borrow against this cash value or surrender the policy for its accumulated value.
                 </p>
-                
+
                 <div className="bg-purple-50 p-6 rounded-lg border border-purple-200 my-6">
                   <h3 className="font-semibold text-purple-900 mb-3 flex items-center gap-2">
                     <TrendingUp className="w-5 h-5" />
@@ -188,7 +204,7 @@ export default function BlogPost() {
                 <p>
                   For most people, the best strategy is "Buy Term and Invest the Rest." Here's why:
                 </p>
-                
+
                 <div className="bg-yellow-50 p-6 rounded-lg border border-yellow-200 my-6">
                   <h3 className="font-semibold text-yellow-900 mb-3">Example Calculation:</h3>
                   <div className="space-y-3 text-yellow-800">
@@ -212,7 +228,7 @@ export default function BlogPost() {
                 <p>
                   For 95% of Indian families, <strong>term insurance is the better choice</strong>. It provides the protection you need at a fraction of the cost, leaving you with more money to invest for your other financial goals.
                 </p>
-                
+
                 <p>
                   Only consider whole life insurance if you have specific needs like estate planning or if you absolutely cannot discipline yourself to invest separately.
                 </p>

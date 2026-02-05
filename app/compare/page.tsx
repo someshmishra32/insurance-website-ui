@@ -7,6 +7,7 @@ import { Check, Plus, X, Download, Info, Filter, TrendingUp, ChevronDown, Star, 
 import { ExpertAdviceButton } from "@/components/expert-advice-button"
 import { Navigation } from "@/components/navigation"
 import { WhatsAppButton } from "@/components/whatsapp-button"
+import { ScheduleCallButton } from "@/components/schedule-call-button"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
@@ -191,7 +192,7 @@ export default function CompareInsurancePage() {
   const [premiumFilter, setPremiumFilter] = useState("all")
   const [settlementFilter, setSettlementFilter] = useState("all")
   const [showFilters, setShowFilters] = useState(false)
-  
+
   // Premium Calculator State
   const [showCalculator, setShowCalculator] = useState(false)
   const [calculatorAge, setCalculatorAge] = useState("30")
@@ -202,7 +203,7 @@ export default function CompareInsurancePage() {
   // Filter companies by type
   const filteredCompanies = useMemo(() => {
     let companies = INSURANCE_COMPANIES.filter(c => c.type === activeTab)
-    
+
     // Apply sorting
     if (sortBy === "premium-low") {
       companies.sort((a, b) => {
@@ -274,16 +275,16 @@ export default function CompareInsurancePage() {
       const age = parseInt(calculatorAge, 10)
       const coverage = parseInt(calculatorCoverage, 10)
       const term = parseInt(calculatorTerm, 10)
-      
+
       // Validate inputs
       if (isNaN(age) || isNaN(coverage) || isNaN(term)) {
         return 0
       }
-      
+
       const baseRate = activeTab === "term" ? CALCULATOR_CONSTANTS.TERM_BASE_RATE : CALCULATOR_CONSTANTS.HEALTH_BASE_RATE
       const ageFactor = age < 30 ? 0.8 : age < 40 ? 1 : age < 50 ? 1.3 : 1.8
       const termFactor = term <= 10 ? 0.8 : term <= 20 ? 1 : 1.2
-      
+
       const estimatedPremium = Math.round(coverage * baseRate * ageFactor * termFactor)
       return Math.max(0, estimatedPremium)
     } catch (error) {
@@ -359,7 +360,7 @@ export default function CompareInsurancePage() {
       document.body.appendChild(element)
       element.click()
       document.body.removeChild(element)
-      
+
       // Cleanup blob URL after a brief delay to ensure download completes
       setTimeout(() => {
         URL.revokeObjectURL(url)
@@ -372,28 +373,37 @@ export default function CompareInsurancePage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
       <Navigation />
-      
+
       {/* Hero Section */}
-      <section className="py-12 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
-        <div className="container mx-auto px-4">
-          <h1 className="text-4xl font-bold mb-3">Smart Insurance Comparison</h1>
-          <p className="text-xl opacity-90">Compare plans from India's top insurers in real-time</p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
-            <div className="bg-white/20 backdrop-blur p-4 rounded-lg">
-              <p className="text-3xl font-bold">14+</p>
-              <p className="text-sm opacity-80">Top Insurers</p>
-            </div>
-            <div className="bg-white/20 backdrop-blur p-4 rounded-lg">
-              <p className="text-3xl font-bold">50K+</p>
-              <p className="text-sm opacity-80">Hospitals</p>
-            </div>
-            <div className="bg-white/20 backdrop-blur p-4 rounded-lg">
-              <p className="text-3xl font-bold">95%+</p>
-              <p className="text-sm opacity-80">Settlement Ratio</p>
-            </div>
-            <div className="bg-white/20 backdrop-blur p-4 rounded-lg">
-              <p className="text-3xl font-bold">100%</p>
-              <p className="text-sm opacity-80">Transparent</p>
+      <section className="relative py-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
+          <img
+            src="/images/comparison_hero.png"
+            alt="Insurance Comparison"
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-3xl">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">Smart Insurance Comparison</h1>
+            <p className="text-xl md:text-2xl opacity-90">Compare plans from India's top insurers in real-time with expert guidance</p>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+              <div className="bg-white/20 backdrop-blur p-4 rounded-lg">
+                <p className="text-3xl font-bold">14+</p>
+                <p className="text-sm opacity-80">Top Insurers</p>
+              </div>
+              <div className="bg-white/20 backdrop-blur p-4 rounded-lg">
+                <p className="text-3xl font-bold">50K+</p>
+                <p className="text-sm opacity-80">Hospitals</p>
+              </div>
+              <div className="bg-white/20 backdrop-blur p-4 rounded-lg">
+                <p className="text-3xl font-bold">95%+</p>
+                <p className="text-sm opacity-80">Settlement Ratio</p>
+              </div>
+              <div className="bg-white/20 backdrop-blur p-4 rounded-lg">
+                <p className="text-3xl font-bold">100%</p>
+                <p className="text-sm opacity-80">Transparent</p>
+              </div>
             </div>
           </div>
         </div>
@@ -629,11 +639,10 @@ export default function CompareInsurancePage() {
                   return (
                     <Card
                       key={company.id}
-                      className={`cursor-pointer transition-all border-2 ${
-                        isSelected
-                          ? "border-blue-500 bg-blue-50"
-                          : "border-slate-200 hover:border-blue-300"
-                      }`}
+                      className={`cursor-pointer transition-all border-2 ${isSelected
+                        ? "border-blue-500 bg-blue-50"
+                        : "border-slate-200 hover:border-blue-300"
+                        }`}
                       onClick={() => {
                         if (isSelected) {
                           removeCompany(company.id)
@@ -689,9 +698,8 @@ export default function CompareInsurancePage() {
                               {[...Array(5)].map((_, i) => (
                                 <Star
                                   key={i}
-                                  className={`w-3.5 h-3.5 ${
-                                    i < Math.floor(plan.rating) ? "fill-yellow-400 text-yellow-400" : "text-slate-300"
-                                  }`}
+                                  className={`w-3.5 h-3.5 ${i < Math.floor(plan.rating) ? "fill-yellow-400 text-yellow-400" : "text-slate-300"
+                                    }`}
                                 />
                               ))}
                             </div>
@@ -788,6 +796,7 @@ export default function CompareInsurancePage() {
                     <Download className="w-4 h-4" />
                     Export Report
                   </Button>
+                  <ScheduleCallButton variant="outline" />
                   <Button variant="outline" size="sm" className="gap-2">
                     <TrendingUp className="w-4 h-4" />
                     Print Comparison
@@ -854,11 +863,10 @@ export default function CompareInsurancePage() {
                               {[...Array(5)].map((_, i) => (
                                 <Star
                                   key={i}
-                                  className={`w-3.5 h-3.5 ${
-                                    i < Math.floor(company.plans[0].rating || 0)
-                                      ? "fill-yellow-400 text-yellow-400"
-                                      : "text-slate-300"
-                                  }`}
+                                  className={`w-3.5 h-3.5 ${i < Math.floor(company.plans[0].rating || 0)
+                                    ? "fill-yellow-400 text-yellow-400"
+                                    : "text-slate-300"
+                                    }`}
                                 />
                               ))}
                             </div>
@@ -1011,9 +1019,7 @@ export default function CompareInsurancePage() {
                 <ExpertAdviceButton className="bg-white text-blue-600 hover:bg-slate-100">
                   Get Free Expert Recommendation
                 </ExpertAdviceButton>
-                <WhatsAppButton variant="secondary" className="gap-2">
-                  Chat with Expert
-                </WhatsAppButton>
+                <WhatsAppButton variant="secondary" />
               </div>
             </div>
           </section>

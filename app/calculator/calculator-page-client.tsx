@@ -14,12 +14,21 @@ export function CalculatorPageClient() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="bg-gradient-to-b from-primary/5 to-background py-16">
-        <div className="container mx-auto px-4">
+      <section className="relative bg-gradient-to-b from-primary/5 to-background py-20 overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <img
+            src="/images/life_insurance_calculator.png"
+            alt="Life Insurance Calculator Background"
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="mx-auto max-w-3xl text-center">
-            <Calculator className="mx-auto mb-4 h-12 w-12 text-primary" />
-            <h1 className="mb-4 text-4xl font-bold tracking-tight text-balance">Smart Insurance Needs Calculator</h1>
-            <p className="text-lg text-muted-foreground text-pretty">
+            <div className="inline-flex items-center justify-center p-3 bg-primary/10 rounded-full mb-4">
+              <Calculator className="h-10 w-10 text-primary" />
+            </div>
+            <h1 className="mb-4 text-4xl md:text-5xl font-bold tracking-tight text-balance">Smart Insurance Needs Calculator</h1>
+            <p className="text-xl text-muted-foreground text-pretty">
               Get personalized recommendations for term life insurance and health insurance coverage based on your
               unique situation
             </p>
@@ -36,11 +45,11 @@ export function CalculatorPageClient() {
                 <TabsTrigger value="insurance">Life Insurance</TabsTrigger>
                 <TabsTrigger value="health">Health Insurance</TabsTrigger>
               </TabsList>
-              
+
               <TabsContent value="insurance">
                 <InsuranceCalculator />
               </TabsContent>
-              
+
               <TabsContent value="health">
                 <InsuranceCalculator />
               </TabsContent>

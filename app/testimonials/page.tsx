@@ -42,19 +42,26 @@ export default function TestimonialsPage() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-b from-primary/5 to-background py-16">
-        <div className="container mx-auto px-4">
+      <section className="relative bg-gradient-to-b from-primary/5 to-background py-20 overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <img
+            src="/images/testimonials_grid.png"
+            alt="Customer Testimonials Grid"
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
-            <div className="flex justify-center gap-1 mb-4">
+            <div className="flex justify-center gap-1 mb-6">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400" />
+                <Star key={i} className="w-8 h-8 fill-yellow-400 text-yellow-400" />
               ))}
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-balance">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance">
               Trusted by Thousands of Indians
             </h1>
-            <p className="text-xl text-muted-foreground">
-              See why people choose InsureWise for their insurance decisions
+            <p className="text-xl md:text-2xl text-muted-foreground">
+              See why people choose InsureWise for their most important life and health insurance decisions
             </p>
           </div>
         </div>

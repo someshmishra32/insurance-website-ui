@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { ArrowLeft, ArrowRight } from "lucide-react"
@@ -9,6 +10,7 @@ interface ArticleNavItem {
   title: string
   slug: string
   href: string
+  image?: string
 }
 
 interface ArticleNavigationProps {
@@ -25,7 +27,16 @@ export function ArticleNavigation({ currentSlug, articles }: ArticleNavigationPr
     <div className="my-12">
       <div className="grid md:grid-cols-2 gap-6">
         {prevArticle ? (
-          <Card className="hover:shadow-lg transition-shadow">
+          <Card className="hover:shadow-lg transition-shadow group overflow-hidden">
+            <div className="relative w-full h-32 hidden sm:block">
+              <Image
+                src={prevArticle.image || "/placeholder.svg"}
+                alt={prevArticle.title}
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors" />
+            </div>
             <CardContent className="p-6">
               <div className="flex items-start gap-4">
                 <div className="flex-shrink-0 mt-1">
@@ -56,7 +67,16 @@ export function ArticleNavigation({ currentSlug, articles }: ArticleNavigationPr
         )}
 
         {nextArticle ? (
-          <Card className="hover:shadow-lg transition-shadow">
+          <Card className="hover:shadow-lg transition-shadow group overflow-hidden">
+            <div className="relative w-full h-32 hidden sm:block">
+              <Image
+                src={nextArticle.image || "/placeholder.svg"}
+                alt={nextArticle.title}
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors" />
+            </div>
             <CardContent className="p-6">
               <div className="flex items-start gap-4">
                 <div className="flex-1 text-right">

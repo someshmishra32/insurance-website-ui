@@ -33,8 +33,12 @@ export default function AboutPage() {
               <CardContent className="p-8 md:p-12">
                 <div className="flex flex-col md:flex-row gap-8 items-start">
                   <div className="shrink-0">
-                    <div className="w-48 h-48 bg-gradient-to-br from-primary/20 to-primary/5 rounded-lg flex items-center justify-center">
-                      <Users className="w-24 h-24 text-primary" />
+                    <div className="w-48 h-48 relative overflow-hidden rounded-lg shadow-md">
+                      <img
+                        src="/images/advisor_profile.png"
+                        alt="Independent Insurance Advisor Profile"
+                        className="w-full h-full object-cover"
+                      />
                     </div>
                   </div>
                   <div className="flex-1">
@@ -137,29 +141,43 @@ export default function AboutPage() {
 
       <section className="py-12">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold mb-8 text-center">What You Get with Expert Advisory</h2>
-            <Card className="bg-gradient-to-br from-blue-50 to-green-50">
-              <CardContent className="p-8">
-                <div className="grid md:grid-cols-2 gap-6">
-                  {[
-                    "Personalized policy recommendations based on your needs",
-                    "Side-by-side comparison of 20+ insurers",
-                    "Clear explanation of terms, exclusions, and benefits",
-                    "Help with medical underwriting and documentation",
-                    "Claim filing assistance when you need it most",
-                    "Annual policy review and coverage optimization",
-                    "Honest advice – if you don't need insurance, I'll tell you",
-                    "Lifelong support for all your insurance questions",
-                  ].map((item, index) => (
-                    <div key={index} className="flex items-start gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-success shrink-0 mt-0.5" />
-                      <span className="text-sm leading-relaxed">{item}</span>
+          <div className="max-w-5xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div>
+                <h2 className="text-3xl font-bold mb-6">Our Mission & Commitment</h2>
+                <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+                  We are on a mission to bring transparency and trust back to the insurance industry. Our commitment is to ensure that every family in India has access to the right financial protection through unbiased advice and expert guidance.
+                </p>
+                <Card className="bg-gradient-to-br from-blue-50 to-green-50">
+                  <CardContent className="p-8">
+                    <div className="grid md:grid-cols-2 gap-6">
+                      {[
+                        "Personalized policy recommendations",
+                        "Side-by-side comparison of 20+ insurers",
+                        "Clear explanation of terms",
+                        "Help with documentation",
+                        "Claim filing assistance",
+                        "Annual policy review",
+                        "Honest advice – no sales pressure",
+                        "Lifelong support",
+                      ].map((item, index) => (
+                        <div key={index} className="flex items-start gap-3">
+                          <CheckCircle2 className="w-5 h-5 text-success shrink-0 mt-0.5" />
+                          <span className="text-sm leading-relaxed">{item}</span>
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+                  </CardContent>
+                </Card>
+              </div>
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                <img
+                  src="/images/team_mission.png"
+                  alt="Our Team Mission"
+                  className="w-full h-auto"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>

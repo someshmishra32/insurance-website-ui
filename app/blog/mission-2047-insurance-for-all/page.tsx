@@ -1,9 +1,11 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { WhatsAppButton } from "@/components/whatsapp-button"
 import { ExpertAdviceButton } from "@/components/expert-advice-button"
 import { ArticleNavigation } from "@/components/article-navigation"
+import { blogPosts } from "@/lib/blog-data"
 import { Landmark, Shield, IndianRupee, Users, CheckCircle2, TrendingUp } from "lucide-react"
 
 export const metadata = {
@@ -15,12 +17,12 @@ export const metadata = {
 }
 
 export default function Mission2047BlogPost() {
-  const articles = [
-    { title: "GST Relief on Insurance (2025 Update)", slug: "gst-relief-insurance-2025", href: "/blog/gst-relief-insurance-2025" },
-    { title: "Mission 2047 - Insurance for All", slug: "mission-2047-insurance-for-all", href: "/blog/mission-2047-insurance-for-all" },
-    { title: "Term vs Whole Life Insurance", slug: "term-vs-whole-life-insurance", href: "/blog/term-vs-whole-life-insurance" },
-    { title: "Top 5 Things to Check Before Buying Health Insurance", slug: "top-5-things-to-check-before-buying-health-insurance", href: "/blog/top-5-things-to-check-before-buying-health-insurance" },
-  ]
+  const articles = blogPosts.map(post => ({
+    title: post.title,
+    slug: post.slug,
+    href: `/blog/${post.slug}`,
+    image: post.image
+  }))
 
   return (
     <div className="min-h-screen">
@@ -81,6 +83,17 @@ export default function Mission2047BlogPost() {
                 <span>•</span>
                 <span>15 min read</span>
               </div>
+            </div>
+
+            {/* Hero Image */}
+            <div className="relative w-full aspect-video mb-12 rounded-xl overflow-hidden shadow-lg border">
+              <Image
+                src="/images/mission2047insurance-20forall.png"
+                alt="Mission 2047 - Insurance for All"
+                fill
+                className="object-cover"
+                priority
+              />
             </div>
 
             {/* Table of Contents */}

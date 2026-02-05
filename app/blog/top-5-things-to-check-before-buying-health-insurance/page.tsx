@@ -1,4 +1,6 @@
 import Link from "next/link"
+import Image from "next/image"
+import { blogPosts } from "@/lib/blog-data"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { WhatsAppButton } from "@/components/whatsapp-button"
@@ -15,12 +17,15 @@ export const metadata = {
 }
 
 export default function Top5HealthInsuranceBlogPost() {
-  const articles = [
-    { title: "GST Relief on Insurance (2025 Update)", slug: "gst-relief-insurance-2025", href: "/blog/gst-relief-insurance-2025" },
-    { title: "Mission 2047 - Insurance for All", slug: "mission-2047-insurance-for-all", href: "/blog/mission-2047-insurance-for-all" },
-    { title: "Term vs Whole Life Insurance", slug: "term-vs-whole-life-insurance", href: "/blog/term-vs-whole-life-insurance" },
-    { title: "Top 5 Things to Check Before Buying Health Insurance", slug: "top-5-things-to-check-before-buying-health-insurance", href: "/blog/top-5-things-to-check-before-buying-health-insurance" },
-  ]
+  const articles = blogPosts.map(post => ({
+    title: post.title,
+    slug: post.slug,
+    href: `/blog/${post.slug}`,
+    image: post.image
+  }))
+
+  const currentPost = blogPosts.find(p => p.slug === "top-5-things-to-check-before-buying-health-insurance")
+  const postImage = currentPost?.image || "/placeholder.svg"
 
   return (
     <div className="min-h-screen">
@@ -64,6 +69,17 @@ export default function Top5HealthInsuranceBlogPost() {
             <p className="text-xl text-muted-foreground leading-relaxed mb-6">
               A practical checklist to ensure you're buying the right health insurance policy without costly coverage gaps
             </p>
+
+            {/* Hero Image */}
+            <div className="relative w-full aspect-video mb-8 rounded-xl overflow-hidden shadow-lg border">
+              <Image
+                src={postImage}
+                alt="Top 5 Things to Check Before Buying Health Insurance"
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
 
             <div className="prose prose-lg max-w-none">
               <div className="bg-red-50 border-l-4 border-red-600 p-6 mb-8">

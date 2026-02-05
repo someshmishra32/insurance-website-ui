@@ -17,12 +17,21 @@ export default function ClaimsPage() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-b from-primary/5 to-background py-16">
-        <div className="container mx-auto px-4">
+      <section className="relative bg-gradient-to-b from-primary/5 to-background py-20 overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <img
+            src="/images/claims_support_hero.png"
+            alt="Claims Support Hero"
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="mx-auto max-w-3xl text-center">
-            <FileText className="mx-auto mb-4 h-12 w-12 text-primary" />
-            <h1 className="mb-4 text-4xl font-bold tracking-tight text-balance">Claims Education Center</h1>
-            <p className="text-lg text-muted-foreground text-pretty">
+            <div className="inline-flex items-center justify-center p-3 bg-primary/10 rounded-full mb-4">
+              <FileText className="h-10 w-10 text-primary" />
+            </div>
+            <h1 className="mb-4 text-4xl md:text-5xl font-bold tracking-tight text-balance">Claims Education Center</h1>
+            <p className="text-xl text-muted-foreground text-pretty">
               Comprehensive guides to filing insurance claims successfully. Know your rights and avoid common mistakes.
             </p>
           </div>
@@ -34,77 +43,43 @@ export default function ClaimsPage() {
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-5xl space-y-12">
             {/* Life Insurance Claims */}
-            <div>
-              <h2 className="mb-6 text-3xl font-bold">Life Insurance Claims Process</h2>
-
-              <Card className="mb-6">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Shield className="h-5 w-5" />
-                    Step-by-Step Guide
-                  </CardTitle>
-                  <CardDescription>How to file a term life insurance claim</CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="flex gap-3">
-                    <Badge className="h-6 w-6 flex items-center justify-center shrink-0">1</Badge>
-                    <div>
-                      <h4 className="font-semibold">Intimate the Insurer Immediately</h4>
-                      <p className="text-sm text-muted-foreground">
-                        Contact insurance company within 24-48 hours of the event via helpline, email, or online portal
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex gap-3">
-                    <Badge className="h-6 w-6 flex items-center justify-center shrink-0">2</Badge>
-                    <div>
-                      <h4 className="font-semibold">Collect Required Documents</h4>
-                      <ul className="text-sm text-muted-foreground list-disc list-inside space-y-1">
-                        <li>Death certificate (original)</li>
-                        <li>Policy document</li>
-                        <li>Claim form (duly filled)</li>
-                        <li>ID proof of claimant</li>
-                        <li>Medical records (if applicable)</li>
-                        <li>Police FIR (for accidental death)</li>
-                        <li>Post-mortem report (if required)</li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div className="flex gap-3">
-                    <Badge className="h-6 w-6 flex items-center justify-center shrink-0">3</Badge>
-                    <div>
-                      <h4 className="font-semibold">Submit Claim</h4>
-                      <p className="text-sm text-muted-foreground">
-                        Submit all documents to nearest branch or via registered post/online portal. Keep acknowledgment
-                        receipt
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex gap-3">
-                    <Badge className="h-6 w-6 flex items-center justify-center shrink-0">4</Badge>
-                    <div>
-                      <h4 className="font-semibold">Investigation (if any)</h4>
-                      <p className="text-sm text-muted-foreground">
-                        Insurer may investigate for policies in first 3 years. Cooperate fully and provide additional
-                        documents if requested
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex gap-3">
-                    <Badge className="h-6 w-6 flex items-center justify-center shrink-0">5</Badge>
-                    <div>
-                      <h4 className="font-semibold">Claim Settlement</h4>
-                      <p className="text-sm text-muted-foreground">
-                        Settlement typically takes 30-90 days. Amount is paid via NEFT to nominee's account
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div>
+                <h2 className="mb-6 text-3xl font-bold">Life Insurance Claims Process</h2>
+                <Card className="mb-6">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <Shield className="h-5 w-5" />
+                      Step-by-Step Guide
+                    </CardTitle>
+                    <CardDescription>How to file a term life insurance claim</CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    {[
+                      { step: 1, title: "Intimate the Insurer Immediately", desc: "Contact insurance company within 24-48 hours" },
+                      { step: 2, title: "Collect Required Documents", desc: "Death certificate, Policy document, Claim form, ID proof" },
+                      { step: 3, title: "Submit Claim", desc: "Submit all documents and keep acknowledgment receipt" },
+                      { step: 4, title: "Investigation (if any)", desc: "Insurer may investigate for policies in first 3 years" },
+                      { step: 5, title: "Claim Settlement", desc: "Amount is paid via NEFT to nominee's account" }
+                    ].map((item) => (
+                      <div key={item.step} className="flex gap-3">
+                        <Badge className="h-6 w-6 flex items-center justify-center shrink-0">{item.step}</Badge>
+                        <div>
+                          <h4 className="font-semibold text-sm">{item.title}</h4>
+                          <p className="text-xs text-muted-foreground">{item.desc}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </CardContent>
+                </Card>
+              </div>
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                <img
+                  src="/images/claims_process_flow.png"
+                  alt="Claims Process Flowchart"
+                  className="w-full h-auto"
+                />
+              </div>
             </div>
 
             {/* Health Insurance Claims */}
@@ -244,7 +219,7 @@ export default function ClaimsPage() {
                 <Phone className="mx-auto mb-4 h-12 w-12 text-primary" />
                 <h3 className="mb-2 text-xl font-bold">Need Help with Claims?</h3>
                 <p className="mb-4 text-muted-foreground">Our experts can assist you throughout the claim process</p>
-                <ScheduleCallButton defaultInterest="Claims Assistance" />
+                <ScheduleCallButton variant="outline" />
               </CardContent>
             </Card>
           </div>

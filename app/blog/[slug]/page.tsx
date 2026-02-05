@@ -1,22 +1,24 @@
-import { getBlogPostBySlug, getAllBlogSlugs, getBlogPosts } from "@/lib/strapi-api"
 import { notFound } from "next/navigation"
+import Image from "next/image"
+import Link from "next/link"
+import { blogPosts } from "@/lib/blog-data"
 import { ArticleNavigation } from "@/components/article-navigation"
+import { WhatsAppButton } from "@/components/whatsapp-button"
+import { ExpertAdviceButton } from "@/components/expert-advice-button"
+import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import Link from "next/link"
-import { ExpertAdviceButton } from "@/components/expert-advice-button"
-import { CheckCircle2, Share2, Calendar, User, Clock, ArrowLeft } from "lucide-react"
+import { Clock, Calendar, User, Facebook, Twitter, Linkedin, Link as LinkIcon, CheckCircle2, Share2, ArrowLeft } from "lucide-react"
 
 export async function generateStaticParams() {
-    const slugs = await getAllBlogSlugs()
-    return slugs.map((slug) => ({
-        slug: slug,
+    return blogPosts.map((post) => ({
+        slug: post.slug,
     }))
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params
-    const post = await getBlogPostBySlug(slug)
+    const post = blogPosts.find(p => p.slug === slug)
 
     if (!post) {
         return {
@@ -27,24 +29,49 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     return {
         title: `${post.title} | InsureWise`,
         description: post.excerpt,
+        openGraph: {
+            title: post.title,
+            description: post.excerpt,
+            type: "article",
+            publishedTime: post.date,
+            authors: ["InsureWise Team"],
+            images: post.image ? [post.image] : [],
+        },
     }
 }
 
 export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params
-    const post = await getBlogPostBySlug(slug)
+    const post = blogPosts.find(p => p.slug === slug)
 
     if (!post) {
         notFound()
     }
 
-    // Generate similar articles for navigation
-    // We can fetch these dynamically or assume the list is small enough to re-fetch
-    const allPosts = await getBlogPosts({ category: post.category });
-    const similarArticles = allPosts
-        .filter((p) => p.slug !== post.slug)
+    // Get related articles (same category, exclude current)
+    const similarArticles = blogPosts
+        .filter(p => p.category === post.category && p.slug !== slug)
         .slice(0, 3)
-        .map((p) => ({ title: p.title, slug: p.slug, href: `/blog/${p.slug}` }))
+        .map(p => ({
+            title: p.title,
+            slug: p.slug,
+            href: `/blog/${p.slug}`,
+            image: p.image
+        }))
+
+    // If not enough similar articles in category, fill with random others
+    if (similarArticles.length < 3) {
+        const otherPosts = blogPosts
+            .filter(p => p.slug !== slug && !similarArticles.find(s => s.slug === p.slug))
+            .slice(0, 3 - similarArticles.length)
+            .map(p => ({
+                title: p.title,
+                slug: p.slug,
+                href: `/blog/${p.slug}`,
+                image: p.image
+            }))
+        similarArticles.push(...otherPosts)
+    }
 
     return (
         <div className="min-h-screen">
@@ -56,7 +83,6 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
             </div>
 
             <article className="pb-12">
-                {/* Hero Header */}
                 <div className="container mx-auto px-4">
                     <div className="max-w-4xl mx-auto">
                         <div className="flex flex-wrap items-center gap-3 mb-6">
@@ -88,7 +114,9 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                                 </div>
                                 <div>
                                     <p className="font-medium text-sm">InsureWise Expert Team</p>
-                                    <p className="text-xs text-muted-foreground">Insurance Analysis</p>
+                                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                                        <span>Insurance Analysis</span>
+                                    </div>
                                 </div>
                             </div>
                             <Button variant="ghost" size="sm" className="gap-2">
@@ -99,10 +127,21 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                     </div>
                 </div>
 
-                {/* Content Body */}
                 <div className="container mx-auto px-4">
                     <div className="max-w-4xl mx-auto grid md:grid-cols-[1fr_300px] gap-12">
                         <div className="prose prose-lg max-w-none">
+                            {/* Hero Image in Content */}
+                            {post.image && (
+                                <div className="relative w-full aspect-video mb-8 rounded-xl overflow-hidden shadow-lg border not-prose">
+                                    <Image
+                                        src={post.image}
+                                        alt={post.title}
+                                        fill
+                                        className="object-cover"
+                                        priority
+                                    />
+                                </div>
+                            )}
 
                             {/* Introduction / Overview */}
                             <p className="lead">
@@ -110,45 +149,55 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                                 This guide breaks down everything you need to know about <strong>{post.title}</strong> to help you choose wisely.
                             </p>
 
-                            {/* Key Takeaways Box */}
-                            <div className="bg-green-50 border-l-4 border-green-600 p-6 my-8 not-prose rounded-r-lg">
-                                <h3 className="font-bold text-lg mb-4 text-green-900 flex items-center gap-2">
-                                    <CheckCircle2 className="w-6 h-6" />
-                                    Key Takeaways
-                                </h3>
-                                <ul className="space-y-3">
-                                    {post.takeaways.map((takeaway, index) => (
-                                        <li key={index} className="flex items-start gap-3 text-green-800">
-                                            <span className="mt-1.5 w-1.5 h-1.5 bg-green-600 rounded-full shrink-0" />
-                                            <span>{takeaway}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
+                            {/* Key Takeaways */}
+                            {post.takeaways && (
+                                <div className="bg-green-50 border-l-4 border-green-600 p-6 my-8 not-prose rounded-r-lg">
+                                    <h3 className="font-bold text-lg mb-4 text-green-900 flex items-center gap-2">
+                                        <CheckCircle2 className="w-6 h-6" />
+                                        Key Takeaways
+                                    </h3>
+                                    <ul className="space-y-3">
+                                        {post.takeaways.map((takeaway, index) => (
+                                            <li key={index} className="flex items-start gap-3 text-green-800">
+                                                <span className="mt-1.5 w-1.5 h-1.5 bg-green-600 rounded-full shrink-0" />
+                                                <span>{takeaway}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            )}
 
-                            {/* Dynamic Placeholder Content */}
-                            <h2>Understanding the Basics</h2>
-                            <p>
-                                When evaluating {post.category}, it's essential to look beyond just the premiums.
-                                The "fine print" often contains the most critical details regarding coverage limits, exclusions, and claim procedures.
-                            </p>
+                            {/* Dynamic Content Body */}
+                            {post.content ? (
+                                <div dangerouslySetInnerHTML={{ __html: post.content }} />
+                            ) : (
+                                <>
+                                    <h2>Understanding the Basics</h2>
+                                    <p>
+                                        When evaluating {post.category}, it's essential to look beyond just the premiums.
+                                        The "fine print" often contains the most critical details regarding coverage limits, exclusions, and claim procedures.
+                                    </p>
 
-                            <h2>Who Is This For?</h2>
-                            <div className="bg-blue-50 p-6 rounded-lg mb-6 not-prose">
-                                <p className="font-medium text-blue-900 mb-2">Target Audience</p>
-                                <p className="text-blue-800">{post.audience}</p>
-                            </div>
+                                    <h2>Who Is This For?</h2>
+                                    {post.audience && (
+                                        <div className="bg-blue-50 p-6 rounded-lg mb-6 not-prose">
+                                            <p className="font-medium text-blue-900 mb-2">Target Audience</p>
+                                            <p className="text-blue-800">{post.audience}</p>
+                                        </div>
+                                    )}
 
-                            <p>
-                                Whether you are a first-time buyer or looking to port your existing policy, understanding these nuances
-                                can save you significant money and stress during a claim.
-                            </p>
+                                    <p>
+                                        Whether you are a first-time buyer or looking to port your existing policy, understanding these nuances
+                                        can save you significant money and stress during a claim.
+                                    </p>
 
-                            <h2>Expert Recommendation</h2>
-                            <p>
-                                We strongly advise comparing at least 3 different plans before making a commitment.
-                                Look for a Claim Settlement Ratio (CSR) above 95% and ensure the network hospitals list includes facilities near your residence.
-                            </p>
+                                    <h2>Expert Recommendation</h2>
+                                    <p>
+                                        We strongly advise comparing at least 3 different plans before making a commitment.
+                                        Look for a Claim Settlement Ratio (CSR) above 95% and ensure the network hospitals list includes facilities near your residence.
+                                    </p>
+                                </>
+                            )}
 
                             {/* CTA */}
                             <div className="my-10 not-prose text-center bg-gray-50 p-8 rounded-2xl border">
@@ -165,7 +214,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                             </div>
                         </div>
 
-                        {/* Sidebar / Table of Contents / Related */}
+                        {/* Sidebar */}
                         <aside className="hidden md:block">
                             <div className="sticky top-24 space-y-8">
                                 <div className="p-6 bg-muted/30 rounded-xl border">
@@ -191,14 +240,24 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                 <div className="container mx-auto px-4 max-w-4xl">
                     <ArticleNavigation
                         currentSlug={post.slug}
-                        articles={allPosts.map(p => ({
+                        articles={blogPosts.map(p => ({
                             title: p.title,
                             slug: p.slug,
-                            href: `/blog/${p.slug}`
+                            href: `/blog/${p.slug}`,
+                            image: p.image
                         }))}
                     />
                 </div>
             </section>
+
+            {/* Footer */}
+            <footer className="bg-muted/30 py-12 border-t">
+                <div className="container mx-auto px-4">
+                    <div className="pt-8 text-center text-sm text-muted-foreground">
+                        <p>© 2025 InsureWise. All rights reserved.</p>
+                    </div>
+                </div>
+            </footer>
         </div>
     )
 }

@@ -8,6 +8,7 @@ export interface BlogPost {
     takeaways: string[]
     slug: string
     content?: string // Added for future full content
+    image?: string
 }
 
 export const blogPosts: BlogPost[] = [
@@ -24,6 +25,7 @@ export const blogPosts: BlogPost[] = [
             "Riders like Critical Illness also get 0% GST"
         ],
         slug: "gst-relief-insurance-2025",
+        image: "/images/gst-relief-2025.png",
     },
     {
         title: "Term Insurance vs. Whole Life: Which is Right for You?",
@@ -39,6 +41,7 @@ export const blogPosts: BlogPost[] = [
             "Most families benefit more from pure term coverage",
         ],
         slug: "term-vs-whole-life-insurance",
+        image: "/images/term-vs-whole-life.png",
     },
     {
         title: "Top 5 Things to Check Before Buying Health Insurance",
@@ -54,6 +57,7 @@ export const blogPosts: BlogPost[] = [
             "Co-payment clauses reduce premium but increase claim costs",
         ],
         slug: "top-5-things-to-check-before-buying-health-insurance",
+        image: "/images/top-5-health-checklist.png",
     },
     {
         title: "How to File Insurance Claims Successfully: A Step-by-Step Guide",
@@ -69,6 +73,7 @@ export const blogPosts: BlogPost[] = [
             "Avoid making unnecessary statements",
         ],
         slug: "how-to-file-insurance-claims-successfully",
+        image: "/images/how-to-file-claims.png",
     },
     {
         title: "Understanding Co-payment and Deductibles in Health Insurance",
@@ -84,6 +89,7 @@ export const blogPosts: BlogPost[] = [
             "Review your policy terms carefully",
         ],
         slug: "understanding-co-payment-and-deductibles-in-health-insurance",
+        image: "/images/copayment-deductibles.png",
     },
     {
         title: "Best Health Insurance Plans for Senior Citizens in 2024",
@@ -99,6 +105,7 @@ export const blogPosts: BlogPost[] = [
             "Consider plans with higher room rent limits",
         ],
         slug: "best-health-insurance-plans-for-senior-citizens-in-2024",
+        image: "/images/senior-citizens-health.png",
     },
     {
         title: "Family Floater vs Individual Health Plans: What's Better?",
@@ -114,6 +121,7 @@ export const blogPosts: BlogPost[] = [
             "Compare costs and benefits thoroughly",
         ],
         slug: "family-floater-vs-individual-health-plans",
+        image: "/images/family_floater_vs_individual.png",
     },
     {
         title: "Critical Illness Riders: Are They Worth the Extra Premium?",
@@ -129,6 +137,7 @@ export const blogPosts: BlogPost[] = [
             "Consider your family medical history before adding",
         ],
         slug: "critical-illness-riders",
+        image: "/images/critical_illness_riders.png",
     },
     {
         title: "How Much Life Insurance Cover Do You Really Need?",
@@ -144,6 +153,7 @@ export const blogPosts: BlogPost[] = [
             "Include children's education and marriage expenses",
         ],
         slug: "how-much-life-insurance-cover-do-you-really-need",
+        image: "/images/life_insurance_calculator.png",
     },
     {
         title: "Pre-Existing Disease Coverage: What You Need to Know",
@@ -159,6 +169,7 @@ export const blogPosts: BlogPost[] = [
             "Some plans offer reduced waiting periods at higher premium",
         ],
         slug: "pre-existing-disease-coverage",
+        image: "/images/pre_existing_disease_coverage.png",
     },
     {
         title: "Maternity Coverage in Health Insurance: Complete Guide",
@@ -174,6 +185,7 @@ export const blogPosts: BlogPost[] = [
             "Newborn baby covered from day one under most plans",
         ],
         slug: "maternity-coverage-in-health-insurance",
+        image: "/images/maternity_coverage.png",
     },
     {
         title: "Top 7 Reasons Why Insurance Claims Get Rejected",
@@ -189,6 +201,7 @@ export const blogPosts: BlogPost[] = [
             "File claims within the specified time limits",
         ],
         slug: "top-7-reasons-why-insurance-claims-get-rejected",
+        image: "/images/claim_rejection_reasons.png",
     },
     {
         title: "Health Insurance for Diabetics: Best Plans and Coverage Tips",
@@ -204,6 +217,7 @@ export const blogPosts: BlogPost[] = [
             "Annual health check-ups often included",
         ],
         slug: "health-insurance-for-diabetics",
+        image: "/images/health_insurance_diabetics.png",
     },
     {
         title: "Insurance for All by 2047: What It Means for Every Indian",
@@ -219,6 +233,7 @@ export const blogPosts: BlogPost[] = [
             "Increased transparency and simplicity in insurance policies",
         ],
         slug: "mission-2047-insurance-for-all",
+        image: "/images/mission2047insurance-20forall.png",
     },
 ]
 

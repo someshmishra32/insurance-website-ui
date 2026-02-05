@@ -103,11 +103,20 @@ export default function LearnInsurancePage() {
             <Badge className="mb-4">Life Insurance Basics</Badge>
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Term Plan vs Saving Plan: What's the Difference?</h2>
 
-            <div className="prose prose-lg max-w-none mb-8">
-              <p className="text-muted-foreground leading-relaxed text-lg">
-                This is one of the most confusing decisions in insurance. Let's break it down in simple terms so you can
-                choose what's right for your family.
-              </p>
+            <div className="grid lg:grid-cols-2 gap-12 items-center mb-12">
+              <div className="prose prose-lg max-w-none">
+                <p className="text-muted-foreground leading-relaxed text-lg">
+                  This is one of the most confusing decisions in insurance. Let's break it down in simple terms so you can
+                  choose what's right for your family.
+                </p>
+              </div>
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                <img
+                  src="/images/term_vs_savings.png.png"
+                  alt="Term Insurance vs Savings Plan Comparison"
+                  className="w-full h-auto"
+                />
+              </div>
             </div>
 
             <div className="grid md:grid-cols-2 gap-6 mb-12">
@@ -350,11 +359,20 @@ export default function LearnInsurancePage() {
             <Badge className="mb-4">Health Insurance</Badge>
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Understanding Health Insurance in India</h2>
 
-            <div className="prose prose-lg max-w-none mb-8">
-              <p className="text-muted-foreground leading-relaxed text-lg">
-                Health insurance covers your medical expenses during hospitalization. With rising healthcare costs
-                (10-15% annually), it's no longer optional – it's essential for every family.
-              </p>
+            <div className="grid lg:grid-cols-2 gap-12 items-center mb-12">
+              <div className="prose prose-lg max-w-none">
+                <p className="text-muted-foreground leading-relaxed text-lg">
+                  Health insurance covers your medical expenses during hospitalization. With rising healthcare costs
+                  (10-15% annually), it's no longer optional – it's essential for every family.
+                </p>
+              </div>
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                <img
+                  src="/images/health_insurance_guide.png"
+                  alt="Health Insurance Guide"
+                  className="w-full h-auto"
+                />
+              </div>
             </div>
 
             <div className="space-y-6 mb-12">
@@ -426,45 +444,45 @@ export default function LearnInsurancePage() {
                 </CardContent>
               </Card>
 
-              {/* Key Terms */}
-              <Card>
-                <CardHeader>
-                  <CardTitle>Important Terms You Must Understand</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid gap-4">
-                    <div className="p-4 border-l-4 border-blue-500 bg-blue-50/50">
-                      <h4 className="font-semibold text-sm mb-1">Room Rent Limit</h4>
-                      <p className="text-sm text-muted-foreground">
-                        Maximum daily room charges covered. If limit is ₹2,000/day but you take ₹4,000 room, your{" "}
-                        <strong>entire claim reduces by 50%</strong> (proportionate deduction). Always choose "No
-                        Capping" if affordable.
-                      </p>
+              {/* Important Terms with Image */}
+              <div className="grid lg:grid-cols-2 gap-8 items-start">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Important Terms You Must Understand</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid gap-4">
+                      <div className="p-4 border-l-4 border-blue-500 bg-blue-50/50">
+                        <h4 className="font-semibold text-sm mb-1">Room Rent Limit</h4>
+                        <p className="text-sm text-muted-foreground">
+                          Maximum daily room charges covered. If limit is ₹2,000/day but you take ₹4,000 room, your{" "}
+                          <strong>entire claim reduces by 50%</strong> (proportionate deduction). Always choose "No
+                          Capping" if affordable.
+                        </p>
+                      </div>
+                      <div className="p-4 border-l-4 border-green-500 bg-green-50/50">
+                        <h4 className="font-semibold text-sm mb-1">Co-Payment / Deductibles</h4>
+                        <p className="text-sm text-muted-foreground">
+                          Percentage you pay from your pocket on every claim. Example: 20% co-pay means if bill is ₹1
+                          lakh, you pay ₹20,000, insurance pays ₹80,000.
+                        </p>
+                      </div>
                     </div>
-                    <div className="p-4 border-l-4 border-green-500 bg-green-50/50">
-                      <h4 className="font-semibold text-sm mb-1">Co-Payment</h4>
-                      <p className="text-sm text-muted-foreground">
-                        Percentage you pay from your pocket on every claim. Example: 20% co-pay means if bill is ₹1
-                        lakh, you pay ₹20,000, insurance pays ₹80,000. Reduces premium but increases claim cost.
-                      </p>
-                    </div>
-                    <div className="p-4 border-l-4 border-orange-500 bg-orange-50/50">
-                      <h4 className="font-semibold text-sm mb-1">Waiting Period</h4>
-                      <p className="text-sm text-muted-foreground">
-                        Time before certain illnesses are covered. Initial: 30 days (except accidents). Pre-existing
-                        diseases: 2-4 years. Specific diseases (hernia, cataract, etc.): 1-2 years. Plan ahead!
-                      </p>
-                    </div>
-                    <div className="p-4 border-l-4 border-purple-500 bg-purple-50/50">
-                      <h4 className="font-semibold text-sm mb-1">Daycare Procedures</h4>
-                      <p className="text-sm text-muted-foreground">
-                        Treatments completed in less than 24 hours (cataract surgery, chemotherapy, dialysis, etc.).
-                        Ensure your policy covers these – modern medicine has many daycare procedures.
-                      </p>
-                    </div>
+                  </CardContent>
+                </Card>
+                <div className="relative rounded-2xl overflow-hidden shadow-xl">
+                  <img
+                    src="/images/copayment-deductibles.png"
+                    alt="Co-payment and Deductibles Explained"
+                    className="w-full h-auto"
+                  />
+                  <div className="p-4 bg-muted/50">
+                    <p className="text-sm text-muted-foreground font-medium">
+                      Wait! Check for "Wait periods" and "Daycare Procedures" as well.
+                    </p>
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             </div>
 
             <Card className="bg-primary text-primary-foreground">
@@ -500,11 +518,20 @@ export default function LearnInsurancePage() {
             <Badge className="mb-4">Business Insurance</Badge>
             <h2 className="text-3xl md:text-4xl font-bold mb-6">KeyMan Insurance: Protecting Your Business</h2>
 
-            <div className="prose prose-lg max-w-none mb-8">
-              <p className="text-muted-foreground leading-relaxed text-lg">
-                KeyMan Insurance protects your business from financial loss due to death or disability of key employees
-                whose skills, knowledge, or leadership are critical to company success.
-              </p>
+            <div className="grid lg:grid-cols-2 gap-12 items-center mb-12">
+              <div className="prose prose-lg max-w-none">
+                <p className="text-muted-foreground leading-relaxed text-lg">
+                  KeyMan Insurance protects your business from financial loss due to death or disability of key employees
+                  whose skills, knowledge, or leadership are critical to company success.
+                </p>
+              </div>
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                <img
+                  src="/images/keyman_insurance.png"
+                  alt="KeyMan Insurance for Businesses"
+                  className="w-full h-auto"
+                />
+              </div>
             </div>
 
             <div className="grid md:grid-cols-2 gap-6 mb-8">
@@ -623,11 +650,20 @@ export default function LearnInsurancePage() {
             <Badge className="mb-4">Business Insurance</Badge>
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Corporate Insurance Solutions</h2>
 
-            <div className="prose prose-lg max-w-none mb-8">
-              <p className="text-muted-foreground leading-relaxed text-lg">
-                Group insurance policies for businesses to protect employees and the company. Essential for attracting
-                talent and complying with labor laws.
-              </p>
+            <div className="grid lg:grid-cols-2 gap-12 items-center mb-12">
+              <div className="prose prose-lg max-w-none">
+                <p className="text-muted-foreground leading-relaxed text-lg">
+                  Group insurance policies for businesses to protect employees and the company. Essential for attracting
+                  talent and complying with labor laws.
+                </p>
+              </div>
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                <img
+                  src="/images/corporate_insurance.png"
+                  alt="Corporate Insurance Solutions"
+                  className="w-full h-auto"
+                />
+              </div>
             </div>
 
             <div className="space-y-6 mb-12">
