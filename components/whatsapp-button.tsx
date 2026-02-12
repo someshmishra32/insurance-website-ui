@@ -14,7 +14,7 @@ export function WhatsAppButton({ variant = "default", size = "default" }: WhatsA
     trackConversionEvent("whatsapp_clicked", "WhatsApp button clicked")
 
     // Replace with actual WhatsApp number
-    const phoneNumber = "919876543210"
+    const phoneNumber = "917021155995"
     const message = encodeURIComponent("Hi, I would like to know more about insurance options.")
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank")
   }

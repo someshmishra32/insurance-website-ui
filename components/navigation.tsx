@@ -27,6 +27,7 @@ export function Navigation() {
     { href: "/faq", label: "FAQ" },
     { href: "/testimonials", label: "Testimonials" },
     { href: "/transparency", label: "Trust & Transparency" },
+    { href: "/whatsapp-us", label: "WhatsApp Us" },
   ]
 
   const isActive = (href: string) => {
