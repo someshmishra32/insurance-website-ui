@@ -9,6 +9,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { trackConversionEvent, getUTMParams } from "@/lib/analytics"
+import { WhatsAppButton } from "./whatsapp-button"
 
 interface LeadCaptureFormProps {
   defaultInterest?: string
@@ -71,7 +72,7 @@ export function LeadCaptureForm({ defaultInterest, onSuccess }: LeadCaptureFormP
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    
+
     if (!validateForm()) {
       return
     }
@@ -99,13 +100,13 @@ export function LeadCaptureForm({ defaultInterest, onSuccess }: LeadCaptureFormP
 
       if (!response.ok) {
         const errorData = await response.json()
-        
+
         if (response.status === 400 && errorData.fieldErrors) {
           // Handle field-specific validation errors
           setFieldErrors(errorData.fieldErrors)
           throw new Error(errorData.error || "Please check the form for errors")
         }
-        
+
         throw new Error(errorData.error || "Failed to submit form")
       }
 
@@ -148,9 +149,13 @@ export function LeadCaptureForm({ defaultInterest, onSuccess }: LeadCaptureFormP
         <CardContent className="p-6 md:p-8 text-center">
           <div className="text-6xl mb-4">✅</div>
           <h3 className="text-2xl font-bold mb-2 text-foreground">Thank You!</h3>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm text-muted-foreground mb-6">
             Our expert will contact you within 24 hours to discuss your insurance needs.
           </p>
+          <div className="flex flex-col items-center gap-3">
+            <p className="text-xs text-muted-foreground">Need answers faster?</p>
+            <WhatsAppButton variant="outline" />
+          </div>
         </CardContent>
       </Card>
     )
