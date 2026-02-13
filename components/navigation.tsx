@@ -59,7 +59,9 @@ export function Navigation() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-sm font-medium transition-colors ${isActive(link.href) ? "text-primary" : "hover:text-primary"
+                  className={`text-base font-medium transition-colors border-b-2 py-1 ${isActive(link.href)
+                    ? "text-primary border-primary"
+                    : "text-foreground/60 border-transparent hover:text-primary hover:border-primary/50"
                     }`}
                 >
                   {link.label}
@@ -67,7 +69,7 @@ export function Navigation() {
               ))}
 
               <DropdownMenu>
-                <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-medium hover:text-primary transition-colors outline-hidden">
+                <DropdownMenuTrigger className="flex items-center gap-1 text-base font-medium text-foreground/60 hover:text-primary transition-colors outline-hidden border-b-2 border-transparent py-1 hover:border-primary/50">
                   Tools
                   <ChevronDown className="w-4 h-4" />
                 </DropdownMenuTrigger>
