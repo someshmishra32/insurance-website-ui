@@ -22,19 +22,19 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
     if (!post) {
         return {
-            title: "Post Not Found | InsureWise",
+            title: "Post Not Found | Life Cover Now",
         }
     }
 
     return {
-        title: `${post.title} | InsureWise`,
+        title: `${post.title} | Life Cover Now`,
         description: post.excerpt,
         openGraph: {
             title: post.title,
             description: post.excerpt,
             type: "article",
             publishedTime: post.date,
-            authors: ["InsureWise Team"],
+            authors: ["Life Cover Now Team"],
             images: post.image ? [post.image] : [],
         },
     }
@@ -113,7 +113,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                                     <User className="w-5 h-5 text-primary" />
                                 </div>
                                 <div>
-                                    <p className="font-medium text-sm">InsureWise Expert Team</p>
+                                    <p className="font-medium text-sm">Life Cover Now Expert Team</p>
                                     <div className="flex items-center gap-2 text-xs text-muted-foreground">
                                         <span>Insurance Analysis</span>
                                     </div>
@@ -254,7 +254,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
             <footer className="bg-muted/30 py-12 border-t">
                 <div className="container mx-auto px-4">
                     <div className="pt-8 text-center text-sm text-muted-foreground">
-                        <p>© 2025 InsureWise. All rights reserved.</p>
+                        <p>© 2025 Life Cover Now. All rights reserved.</p>
                     </div>
                 </div>
             </footer>

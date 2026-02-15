@@ -9,7 +9,7 @@ import { blogPosts } from "@/lib/blog-data"
 import { Clock, CheckCircle2, AlertCircle, Heart, Shield, Calendar } from "lucide-react"
 
 export const metadata = {
-    title: "Pre-Existing Disease Coverage in Health Insurance: Everything You Need to Know | InsureWise",
+    title: "Pre-Existing Disease Coverage in Health Insurance: Everything You Need to Know | Life Cover Now",
     description:
         "Understand how pre-existing conditions affect your health insurance coverage, waiting periods, and claim settlement. Complete guide with examples.",
     keywords:
@@ -373,7 +373,7 @@ export default function PreExistingDiseaseBlogPost() {
             <footer className="bg-muted/30 py-12 border-t">
                 <div className="container mx-auto px-4">
                     <div className="pt-8 text-center text-sm text-muted-foreground">
-                        <p>© 2025 InsureWise. All rights reserved.</p>
+                        <p>© 2025 Life Cover Now. All rights reserved.</p>
                     </div>
                 </div>
             </footer>

@@ -9,7 +9,7 @@ import { blogPosts } from "@/lib/blog-data"
 import { Calculator, CheckCircle2, AlertCircle, IndianRupee, Users, Shield } from "lucide-react"
 
 export const metadata = {
-    title: "How Much Life Insurance Cover Do You Really Need? | InsureWise",
+    title: "How Much Life Insurance Cover Do You Really Need? | Life Cover Now",
     description:
         "Calculate the ideal term insurance coverage for your family using our simple HLV calculator. Based on income, liabilities, and future goals.",
     keywords:
@@ -360,7 +360,7 @@ export default function HowMuchLifeInsuranceBlogPost() {
             <footer className="bg-muted/30 py-12 border-t">
                 <div className="container mx-auto px-4">
                     <div className="pt-8 text-center text-sm text-muted-foreground">
-                        <p>© 2025 InsureWise. All rights reserved.</p>
+                        <p>© 2025 Life Cover Now. All rights reserved.</p>
                     </div>
                 </div>
             </footer>

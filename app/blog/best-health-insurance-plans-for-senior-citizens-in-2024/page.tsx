@@ -9,7 +9,7 @@ import { blogPosts } from "@/lib/blog-data"
 import { Heart, CheckCircle2, AlertCircle, Shield, Clock, Users } from "lucide-react"
 
 export const metadata = {
-    title: "Best Health Insurance Plans for Senior Citizens in 2024 | InsureWise",
+    title: "Best Health Insurance Plans for Senior Citizens in 2024 | Life Cover Now",
     description:
         "Comprehensive comparison of senior citizen health insurance plans available in India, including coverage limits, premium costs, and pre-existing disease coverage.",
     keywords:
@@ -377,7 +377,7 @@ export default function SeniorCitizensHealthInsuranceBlogPost() {
             <footer className="bg-muted/30 py-12 border-t">
                 <div className="container mx-auto px-4">
                     <div className="pt-8 text-center text-sm text-muted-foreground">
-                        <p>© 2025 InsureWise. All rights reserved.</p>
+                        <p>© 2025 Life Cover Now. All rights reserved.</p>
                     </div>
                 </div>
             </footer>

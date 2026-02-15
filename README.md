@@ -1,10 +1,10 @@
-# InsureWise - India's Insurance Guidance Platform
+# Life Cover Now - India's Insurance Guidance Platform
 
 A modern, user-friendly web application helping Indians make informed insurance decisions with expert guidance, comparison tools, and comprehensive educational resources.
 
 ## 🎯 Overview
 
-InsureWise is a comprehensive insurance guidance platform designed specifically for the Indian market. It helps users:
+Life Cover Now is a comprehensive insurance guidance platform designed specifically for the Indian market. It helps users:
 
 - **Compare insurance policies** side-by-side with transparent comparisons
 - **Calculate coverage needs** using expert-designed calculators

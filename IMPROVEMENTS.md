@@ -1,4 +1,4 @@
-# InsureWise Website - Improvement Summary & Deployment Guide
+# Life Cover Now Website - Improvement Summary & Deployment Guide
 
 **Last Updated**: December 25, 2025
 **Version**: 1.0.0
@@ -6,7 +6,7 @@
 
 ## 📋 Executive Summary
 
-This document outlines all the improvements made to the InsureWise insurance guidance platform, organized by priority and implementation status.
+This document outlines all the improvements made to the Life Cover Now insurance guidance platform, organized by priority and implementation status.
 
 ## ✅ Completed Improvements
 
@@ -470,7 +470,7 @@ This project is licensed under the MIT License.
 
 ## 🎉 Conclusion
 
-The InsureWise platform is now production-ready with:
+The Life Cover Now platform is now production-ready with:
 
 ✅ Complete blog section with search
 ✅ Comprehensive FAQ covering all topics

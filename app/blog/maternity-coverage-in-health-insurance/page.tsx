@@ -9,7 +9,7 @@ import { blogPosts } from "@/lib/blog-data"
 import { Baby, CheckCircle2, AlertCircle, Clock, IndianRupee, Heart } from "lucide-react"
 
 export const metadata = {
-    title: "Maternity Coverage in Health Insurance: A Complete Guide | InsureWise",
+    title: "Maternity Coverage in Health Insurance: A Complete Guide | Life Cover Now",
     description:
         "Everything you need to know about maternity health insurance in India. Waiting periods, coverage limits, C-section coverage, and newborn baby benefits.",
     keywords:
@@ -370,7 +370,7 @@ export default function MaternityCoverageBlogPost() {
             <footer className="bg-muted/30 py-12 border-t">
                 <div className="container mx-auto px-4">
                     <div className="pt-8 text-center text-sm text-muted-foreground">
-                        <p>© 2025 InsureWise. All rights reserved.</p>
+                        <p>© 2025 Life Cover Now. All rights reserved.</p>
                     </div>
                 </div>
             </footer>

@@ -1,6 +1,6 @@
 # Quick Start: Deploy to Vercel with Supabase
 
-Follow these steps to deploy your InsureWise project:
+Follow these steps to deploy your Life Cover Now project:
 
 ## Step 1: Set Up Supabase (5 minutes)
 

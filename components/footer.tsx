@@ -6,9 +6,12 @@ export function Footer() {
             <div className="container mx-auto px-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-8">
                     <div>
-                        <h3 className="font-bold text-lg mb-4">InsureWise</h3>
+                        <div className="flex items-center gap-2 mb-4">
+                            <img src="/logo.png" alt="Life Cover Now Logo" className="h-6 w-auto" />
+                            <h3 className="font-bold text-lg">Life Cover Now</h3>
+                        </div>
                         <p className="text-sm text-muted-foreground leading-relaxed">
-                            Independent insurance advisory helping you make informed decisions.
+                            Empowering your family's future with transparent insurance. Your independent advisory for informed decisions.
                         </p>
                     </div>
                     <div>
@@ -59,7 +62,7 @@ export function Footer() {
                     <div>
                         <h4 className="font-semibold mb-4">Contact</h4>
                         <ul className="space-y-2 text-sm text-muted-foreground">
-                            <li>Email: contact@insurewise.in</li>
+                            <li>Email: contact@lifecovernow.in</li>
                             <li>Phone: +91 70211 55995</li>
                         </ul>
                     </div>
@@ -69,7 +72,7 @@ export function Footer() {
                         <strong>Disclaimer:</strong> Insurance is subject to terms and conditions. Information provided is for
                         educational purposes only. We are associated with a licensed insurance broker.
                     </p>
-                    <p>© 2025 InsureWise. All rights reserved.</p>
+                    <p>© 2025 lifecovernow.in. All rights reserved.</p>
                 </div>
             </div>
         </footer>

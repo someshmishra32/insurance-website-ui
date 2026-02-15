@@ -298,7 +298,7 @@ export default function TransparencyPage() {
       <footer className="bg-muted/30 py-12 border-t">
         <div className="container mx-auto px-4">
           <div className="pt-8 border-t text-center text-sm text-muted-foreground">
-            <p>© 2025 InsureWise. All rights reserved.</p>
+            <p>© 2025 Life Cover Now. All rights reserved.</p>
           </div>
         </div>
       </footer>

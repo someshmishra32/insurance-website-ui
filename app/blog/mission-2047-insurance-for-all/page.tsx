@@ -9,7 +9,7 @@ import { blogPosts } from "@/lib/blog-data"
 import { Landmark, Shield, IndianRupee, Users, CheckCircle2, TrendingUp } from "lucide-react"
 
 export const metadata = {
-  title: "Insurance for All by 2047 – Government of India's Mission Explained | InsureWise",
+  title: "Insurance for All by 2047 – Government of India's Mission Explained | Life Cover Now",
   description:
     "Comprehensive guide to IRDAI's Mission 2047, Bima Trinity initiatives, GST reforms, and how insurance is becoming affordable and accessible for every Indian household.",
   keywords:
@@ -494,7 +494,7 @@ export default function Mission2047BlogPost() {
               <strong>Disclaimer:</strong> Insurance is subject to terms and conditions. Information provided is for
               educational purposes only.
             </p>
-            <p>© 2025 InsureWise. All rights reserved.</p>
+            <p>© 2025 Life Cover Now. All rights reserved.</p>
           </div>
         </div>
       </footer>

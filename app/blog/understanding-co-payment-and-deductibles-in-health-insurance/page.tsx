@@ -9,7 +9,7 @@ import { blogPosts } from "@/lib/blog-data"
 import { IndianRupee, CheckCircle2, AlertCircle, Calculator, Percent, Wallet } from "lucide-react"
 
 export const metadata = {
-    title: "Understanding Co-payment and Deductibles in Health Insurance | InsureWise",
+    title: "Understanding Co-payment and Deductibles in Health Insurance | Life Cover Now",
     description:
         "What are co-payment clauses and how do they affect your out-of-pocket expenses? A detailed explanation with real examples.",
     keywords:
@@ -318,7 +318,7 @@ export default function CopaymentDeductiblesBlogPost() {
             <footer className="bg-muted/30 py-12 border-t">
                 <div className="container mx-auto px-4">
                     <div className="pt-8 text-center text-sm text-muted-foreground">
-                        <p>© 2025 InsureWise. All rights reserved.</p>
+                        <p>© 2025 Life Cover Now. All rights reserved.</p>
                     </div>
                 </div>
             </footer>

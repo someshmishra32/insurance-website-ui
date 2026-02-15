@@ -49,8 +49,9 @@ export function Navigation() {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <Link href="/" className="text-2xl font-bold text-primary">
-              InsureWise
+            <Link href="/" className="flex items-center gap-2 text-2xl font-bold text-primary">
+              <img src="/logo.png" alt="Life Cover Now Logo" className="h-8 w-auto" />
+              Life Cover Now
             </Link>
 
             {/* Desktop Navigation */}

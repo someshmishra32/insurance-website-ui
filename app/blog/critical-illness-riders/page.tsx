@@ -9,7 +9,7 @@ import { blogPosts } from "@/lib/blog-data"
 import { Shield, CheckCircle2, AlertCircle, Heart, HeartPulse, Activity } from "lucide-react"
 
 export const metadata = {
-    title: "Critical Illness Riders: Are They Worth the Extra Premium? | InsureWise",
+    title: "Critical Illness Riders: Are They Worth the Extra Premium? | Life Cover Now",
     description:
         "Detailed analysis of critical illness riders in term insurance. Learn which diseases are covered, claim statistics, and whether you actually need this add-on.",
     keywords:
@@ -371,7 +371,7 @@ export default function CriticalIllnessRidersBlogPost() {
             <footer className="bg-muted/30 py-12 border-t">
                 <div className="container mx-auto px-4">
                     <div className="pt-8 text-center text-sm text-muted-foreground">
-                        <p>© 2025 InsureWise. All rights reserved.</p>
+                        <p>© 2025 Life Cover Now. All rights reserved.</p>
                     </div>
                 </div>
             </footer>

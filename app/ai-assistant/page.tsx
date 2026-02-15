@@ -86,7 +86,7 @@ export default function AIAssistantPage() {
                 <Bot className="h-10 w-10 text-primary" />
               </div>
               <h1 className="mb-6 text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-balance leading-tight">
-                Insurance <span className="text-primary">FAQ Assistant</span>
+                Insurance <span className="text-primary">FAQ Assistant | Life Cover Now</span>
               </h1>
               <p className="text-xl text-muted-foreground text-pretty mb-8 leading-relaxed max-w-xl">
                 Get instant, accurate answers to your most pressing insurance questions. Our AI helps you demystify complex terms and hidden clauses.

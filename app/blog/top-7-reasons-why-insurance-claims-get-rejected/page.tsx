@@ -9,7 +9,7 @@ import { blogPosts } from "@/lib/blog-data"
 import { XCircle, CheckCircle2, AlertCircle, FileWarning, Shield, FileText } from "lucide-react"
 
 export const metadata = {
-    title: "Top 7 Reasons Why Insurance Claims Get Rejected | InsureWise",
+    title: "Top 7 Reasons Why Insurance Claims Get Rejected | Life Cover Now",
     description:
         "Learn the most common reasons for insurance claim rejections and how to avoid them. Protect your family from claim denials with these expert tips.",
     keywords:
@@ -402,7 +402,7 @@ export default function ClaimRejectionReasonsBlogPost() {
             <footer className="bg-muted/30 py-12 border-t">
                 <div className="container mx-auto px-4">
                     <div className="pt-8 text-center text-sm text-muted-foreground">
-                        <p>© 2025 InsureWise. All rights reserved.</p>
+                        <p>© 2025 Life Cover Now. All rights reserved.</p>
                     </div>
                 </div>
             </footer>

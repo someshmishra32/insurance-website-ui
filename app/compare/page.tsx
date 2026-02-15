@@ -347,7 +347,7 @@ export default function CompareInsurancePage() {
     report += `\nDISCLAIMER:\n`
     report += `Insurance is subject to terms and conditions. This comparison is for informational purposes only.\n`
     report += `Please consult with an insurance expert before making a purchase decision.\n\n`
-    report += `© 2025 InsureWise. All rights reserved.\n`
+    report += `© 2025 Life Cover Now. All rights reserved.\n`
 
     // Create and download report
     try {
@@ -1168,7 +1168,7 @@ export default function CompareInsurancePage() {
                 <strong>Disclaimer:</strong> Insurance is subject to terms and conditions. Information provided is for educational purposes only.
               </p>
               <p>Please consult with an insurance expert before making a purchase decision.</p>
-              <p>© 2025 InsureWise. All rights reserved.</p>
+              <p>© 2025 Life Cover Now. All rights reserved.</p>
             </div>
           </div>
         </div>

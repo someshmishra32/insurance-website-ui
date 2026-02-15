@@ -241,7 +241,7 @@ export function CompareClient({ initialProducts }: CompareClientProps) {
         report += `\nDISCLAIMER:\n`
         report += `Insurance is subject to terms and conditions. This comparison is for informational purposes only.\n`
         report += `Please consult with an insurance expert before making a purchase decision.\n\n`
-        report += `© 2025 InsureWise. All rights reserved.\n`
+        report += `© 2025 Life Cover Now. All rights reserved.\n`
 
         try {
             const file = new Blob([report], { type: "text/plain" })

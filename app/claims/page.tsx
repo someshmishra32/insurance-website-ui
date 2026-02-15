@@ -7,7 +7,7 @@ import { ExpertAdviceButton } from "@/components/expert-advice-button"
 import { ScheduleCallButton } from "@/components/schedule-call-button"
 
 export const metadata: Metadata = {
-  title: "Claims Education | How to File Insurance Claims | InsureWise",
+  title: "Claims Education | How to File Insurance Claims | Life Cover Now",
   description:
     "Step-by-step guide to filing life and health insurance claims. Learn about required documents, timelines, and common rejection reasons.",
 }

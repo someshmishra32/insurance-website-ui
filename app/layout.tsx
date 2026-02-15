@@ -12,9 +12,9 @@ const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Independent Insurance Advisor for Life & Health Insurance in India | InsureWise",
+  title: "Life Cover Now | Independent Insurance Advisor for Life & Health in India",
   description:
-    "Get honest, independent insurance advice from experts. Compare life insurance, term insurance, health insurance, ULIP, and investment plans across multiple insurers in India.",
+    "Empowering your family's future with transparent insurance. Get independent advice and compare life, term, and health insurance across multiple insurers in India.",
   keywords:
     "insurance advisor India, independent insurance expert, term insurance comparison, health insurance plans, family floater insurance, insurance consultant, best insurance advisor, ULIP plans, investment insurance",
   generator: "v0.app",

@@ -9,7 +9,7 @@ import { blogPosts } from "@/lib/blog-data"
 import { Activity, CheckCircle2, AlertCircle, Heart, Pill, Shield } from "lucide-react"
 
 export const metadata = {
-    title: "Health Insurance for Diabetics: Complete Guide to Coverage & Plans | InsureWise",
+    title: "Health Insurance for Diabetics: Complete Guide to Coverage & Plans | Life Cover Now",
     description:
         "A comprehensive guide to finding health insurance if you have diabetes. Understand waiting periods, coverage limits, loading charges, and best plans for diabetics.",
     keywords:
@@ -361,7 +361,7 @@ export default function HealthInsuranceForDiabeticsBlogPost() {
             <footer className="bg-muted/30 py-12 border-t">
                 <div className="container mx-auto px-4">
                     <div className="pt-8 text-center text-sm text-muted-foreground">
-                        <p>© 2025 InsureWise. All rights reserved.</p>
+                        <p>© 2025 Life Cover Now. All rights reserved.</p>
                     </div>
                 </div>
             </footer>

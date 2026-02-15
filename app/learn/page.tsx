@@ -6,7 +6,7 @@ import { ExpertAdviceButton } from "@/components/expert-advice-button"
 import { ArrowRight, Shield, Heart, Building2, Users } from "lucide-react"
 
 export const metadata = {
-  title: "Learn Insurance - Complete Guide to Life & Health Insurance | InsureWise",
+  title: "Learn Insurance - Complete Guide to Life & Health Insurance | Life Cover Now",
   description:
     "Understand term insurance, savings plans, health insurance, corporate insurance & keyman insurance. Expert guidance on choosing the right insurance coverage for your needs.",
 }
@@ -873,7 +873,7 @@ export default function LearnInsurancePage() {
               <strong>Disclaimer:</strong> Insurance is subject to terms and conditions. Information provided is for
               educational purposes only.
             </p>
-            <p>© 2025 InsureWise. All rights reserved.</p>
+            <p>© 2025 Life Cover Now. All rights reserved.</p>
           </div>
         </div>
       </footer>

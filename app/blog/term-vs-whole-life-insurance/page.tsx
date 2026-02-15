@@ -9,7 +9,7 @@ import Image from "next/image"
 import { blogPosts } from "@/lib/blog-data"
 
 export const metadata = {
-  title: "Term vs Whole Life Insurance: Which is Right for You? | InsureWise",
+  title: "Term vs Whole Life Insurance: Which is Right for You? | Life Cover Now",
   description: "Understanding the key differences between term and whole life insurance policies to make an informed decision for your family's financial security.",
 }
 
@@ -51,7 +51,7 @@ export default function BlogPost() {
               <div className="flex items-center gap-4 text-muted-foreground mb-6">
                 <div className="flex items-center gap-1">
                   <User className="w-4 h-4" />
-                  <span>InsureWise Team</span>
+                  <span>Life Cover Now Team</span>
                 </div>
                 <div className="flex items-center gap-1">
                   <Clock className="w-4 h-4" />

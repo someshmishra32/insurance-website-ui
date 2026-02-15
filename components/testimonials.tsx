@@ -20,7 +20,7 @@ const testimonials: Testimonial[] = [
     image: "AK",
     rating: 5,
     content:
-      "InsureWise helped me understand the difference between term and whole life insurance. Their comparison tools made it easy to choose a policy that actually fits my budget. Saved ₹2000/year!",
+      "Life Cover Now helped me understand the difference between term and whole life insurance. Their comparison tools made it easy to choose a policy that actually fits my budget. Saved ₹2000/year!",
     category: "Term Insurance",
   },
   {
@@ -47,7 +47,7 @@ const testimonials: Testimonial[] = [
     image: "SD",
     rating: 5,
     content:
-      "As a freelancer with irregular income, I thought I couldn't afford life insurance. InsureWise showed me I could get ₹50L coverage for just ₹600/month. Game changer!",
+      "As a freelancer with irregular income, I thought I couldn't afford life insurance. Life Cover Now showed me I could get ₹50L coverage for just ₹600/month. Game changer!",
     category: "Term Insurance",
   },
   {
@@ -65,7 +65,7 @@ const testimonials: Testimonial[] = [
     image: "AG",
     rating: 5,
     content:
-      "We were using InsureWise for employee education. The calculators and comparisons make insurance so easy to understand. Recommended it to all 200+ team members.",
+      "We were using Life Cover Now for employee education. The calculators and comparisons make insurance so easy to understand. Recommended it to all 200+ team members.",
     category: "Education",
   },
 ]

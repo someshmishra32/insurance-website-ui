@@ -3,7 +3,7 @@ import { MessageCircle, Clock, ShieldCheck, HeartPulse } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 
 export const metadata = {
-    title: "WhatsApp Us | InsureWise - Expert Insurance Advice",
+    title: "WhatsApp Us | Life Cover Now - Expert Insurance Advice",
     description: "Connect with our expert insurance advisors instantly on WhatsApp. Get quotes, policy help, and honest advice for health and life insurance.",
 }
 
@@ -99,7 +99,7 @@ export default function WhatsAppUsPage() {
                     </div>
 
                     <div className="bg-primary text-primary-foreground rounded-2xl p-8 md:p-12 text-center shadow-xl">
-                        <h2 className="text-3xl font-bold mb-6">Why InsureWise on WhatsApp?</h2>
+                        <h2 className="text-3xl font-bold mb-6">Why Life Cover Now on WhatsApp?</h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left max-w-2xl mx-auto">
                             <ul className="space-y-3">
                                 <li className="flex items-start gap-2">

@@ -249,7 +249,7 @@ export default function AboutPage() {
               <strong>Disclaimer:</strong> Insurance is subject to terms and conditions. Information provided is for
               educational purposes only.
             </p>
-            <p>© 2025 InsureWise. All rights reserved.</p>
+            <p>© 2025 Life Cover Now. All rights reserved.</p>
           </div>
         </div>
       </footer>

@@ -1,4 +1,4 @@
-# 🚀 Quick Deployment Guide - InsureWise
+# 🚀 Quick Deployment Guide - Life Cover Now
 
 ## Before You Deploy
 
@@ -219,7 +219,7 @@ If issues arise after deployment:
 
 ## 🎉 You're Ready to Deploy!
 
-The InsureWise platform is complete, tested, and production-ready.
+The Life Cover Now platform is complete, tested, and production-ready.
 
 **All 9 improvement tasks completed:**
 ✅ Pages audited

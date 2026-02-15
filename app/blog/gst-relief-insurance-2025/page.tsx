@@ -9,7 +9,7 @@ import { ArticleNavigation } from "@/components/article-navigation"
 import { IndianRupee, CheckCircle2, Calculator } from "lucide-react"
 
 export const metadata = {
-  title: "0% GST on Term & Health Insurance (2025 Update) – How Much You Save | InsureWise",
+  title: "0% GST on Term & Health Insurance (2025 Update) – How Much You Save | Life Cover Now",
   description:
     "Complete guide to GST relief on insurance premiums in 2025. Understand how 0% GST on term life insurance, health insurance, and riders reduces your premium costs.",
   keywords:
@@ -185,7 +185,7 @@ export default function GSTReliefBlogPost() {
       <footer className="bg-muted/30 py-12 border-t">
         <div className="container mx-auto px-4">
           <div className="pt-8 text-center text-sm text-muted-foreground">
-            <p>© 2025 InsureWise. All rights reserved.</p>
+            <p>© 2025 Life Cover Now. All rights reserved.</p>
           </div>
         </div>
       </footer>

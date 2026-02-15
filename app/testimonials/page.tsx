@@ -6,10 +6,10 @@ import { Star, Users, TrendingUp, Heart } from "lucide-react"
 import Link from "next/link"
 
 export const metadata = {
-  title: "Customer Testimonials & Reviews | InsureWise",
+  title: "Customer Testimonials & Reviews | Life Cover Now",
   description:
-    "Read real reviews from thousands of happy customers who found the right insurance with InsureWise. See how we've helped people save money and get better coverage.",
-  keywords: "insurance testimonials, customer reviews, InsureWise reviews, insurance success stories",
+    "Read real reviews from thousands of happy customers who found the right insurance with Life Cover Now. See how we've helped people save money and get better coverage.",
+  keywords: "insurance testimonials, customer reviews, Life Cover Now reviews, insurance success stories",
 }
 
 export default function TestimonialsPage() {
@@ -59,7 +59,7 @@ export default function TestimonialsPage() {
               Trusted by Thousands of Indians
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground">
-              See why people choose InsureWise for their most important life and health insurance decisions
+              See why people choose Life Cover Now for their most important life and health insurance decisions
             </p>
           </div>
         </div>
@@ -92,18 +92,18 @@ export default function TestimonialsPage() {
           <div className="text-center mb-12 pt-12">
             <h2 className="text-3xl font-bold mb-4">Customer Stories</h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Real people sharing their real experiences with InsureWise
+              Real people sharing their real experiences with Life Cover Now
             </p>
           </div>
         </div>
         <AllTestimonials />
       </section>
 
-      {/* Why Choose InsureWise */}
-      <section className="py-16 bg-muted/50">
+      {/* Why Choose Life Cover Now */}
+      <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold mb-12 text-center">Why People Choose InsureWise</h2>
+            <h2 className="text-3xl font-bold mb-12 text-center">Why People Choose Life Cover Now</h2>
 
             <div className="grid md:grid-cols-2 gap-8">
               <div className="space-y-4">

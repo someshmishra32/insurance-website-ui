@@ -9,7 +9,7 @@ import { ArticleNavigation } from "@/components/article-navigation"
 import { CheckCircle2, AlertCircle, Heart, DollarSign, Shield } from "lucide-react"
 
 export const metadata = {
-  title: "Top 5 Things to Check Before Buying Health Insurance | InsureWise",
+  title: "Top 5 Things to Check Before Buying Health Insurance | Life Cover Now",
   description:
     "Essential checklist of 5 critical factors to verify before buying health insurance. Avoid coverage gaps and choose the right plan for your family.",
   keywords:

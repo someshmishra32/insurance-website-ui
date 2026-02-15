@@ -443,7 +443,7 @@ export default function HomePage() {
                       ))}
                     </div>
                     <p className="text-muted-foreground mb-4 leading-relaxed">
-                      "InsureWise helped me choose the right term insurance plan. Their expert explained everything clearly and I got 50% more coverage at the same premium I was paying elsewhere."
+                      "Life Cover Now helped me choose the right term insurance plan. Their expert explained everything clearly and I got 50% more coverage at the same premium I was paying elsewhere."
                     </p>
                     <div className="flex items-center gap-3">
                       <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
@@ -493,7 +493,7 @@ export default function HomePage() {
                       ))}
                     </div>
                     <p className="text-muted-foreground mb-4 leading-relaxed">
-                      "As a senior citizen, I was worried about getting health insurance. InsureWise found me a plan with no waiting period for pre-existing conditions. Excellent service!"
+                      "As a senior citizen, I was worried about getting health insurance. Life Cover Now found me a plan with no waiting period for pre-existing conditions. Excellent service!"
                     </p>
                     <div className="flex items-center gap-3">
                       <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
@@ -745,7 +745,7 @@ export default function HomePage() {
                 {/* Service Questions */}
                 <AccordionItem value="service-1" className="border rounded-lg px-4">
                   <AccordionTrigger className="text-left font-semibold">
-                    How does InsureWise help me choose the right insurance?
+                    How does Life Cover Now help me choose the right insurance?
                   </AccordionTrigger>
                   <AccordionContent className="text-muted-foreground leading-relaxed">
                     <p className="mb-3">

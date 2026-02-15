@@ -1,6 +1,6 @@
 # Vercel Deployment Guide with Supabase PostgreSQL
 
-This guide will walk you through deploying your InsureWise project to Vercel and setting up Supabase PostgreSQL database.
+This guide will walk you through deploying your Life Cover Now project to Vercel and setting up Supabase PostgreSQL database.
 
 ---
 
@@ -149,7 +149,7 @@ git init
 git add .
 
 # Commit
-git commit -m "Initial commit - InsureWise production ready"
+git commit -m "Initial commit - Life Cover Now production ready"
 ```
 
 ### Step 2: Create GitHub Repository
@@ -157,7 +157,7 @@ git commit -m "Initial commit - InsureWise production ready"
 1. Go to [https://github.com/new](https://github.com/new)
 2. Fill in:
    - **Repository name**: `insurance-website-ui`
-   - **Description**: "InsureWise - Independent Insurance Advisor Platform"
+   - **Description**: "Life Cover Now - Independent Insurance Advisor Platform"
    - **Visibility**: Private (recommended) or Public
 3. Click **"Create repository"**
 4. **DO NOT** initialize with README (you already have one)
@@ -476,4 +476,4 @@ vercel env pull
 
 **Ready to Deploy!** 🚀
 
-Follow the steps above and your InsureWise platform will be live in ~30 minutes!
+Follow the steps above and your Life Cover Now platform will be live in ~30 minutes!
