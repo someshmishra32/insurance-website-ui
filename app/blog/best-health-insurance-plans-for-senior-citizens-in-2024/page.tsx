@@ -40,7 +40,7 @@ export default function SeniorCitizensHealthInsuranceBlogPost() {
                             <span className="text-sm font-medium text-purple-600">Senior Citizens</span>
                         </div>
                         <h1 className="text-4xl md:text-5xl font-bold mb-4 text-balance">
-                            Best Health Insurance Plans for Senior Citizens in 2024
+                            Best Health Insurance Plans for Senior Citizens in 2025
                         </h1>
                         <p className="text-xl text-muted-foreground leading-relaxed mb-6">
                             Comprehensive comparison of senior citizen health insurance plans to help you find the right coverage for yourself or your aging parents

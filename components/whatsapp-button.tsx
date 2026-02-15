@@ -7,9 +7,10 @@ import { trackConversionEvent } from "@/lib/analytics"
 interface WhatsAppButtonProps {
   variant?: "default" | "outline" | "secondary"
   size?: "default" | "sm" | "lg"
+  className?: string
 }
 
-export function WhatsAppButton({ variant = "default", size = "default" }: WhatsAppButtonProps) {
+export function WhatsAppButton({ variant = "default", size = "default", className }: WhatsAppButtonProps) {
   const handleClick = () => {
     trackConversionEvent("whatsapp_clicked", "WhatsApp button clicked")
 
@@ -20,7 +21,7 @@ export function WhatsAppButton({ variant = "default", size = "default" }: WhatsA
   }
 
   return (
-    <Button variant={variant} size={size} onClick={handleClick} className="gap-2">
+    <Button variant={variant} size={size} onClick={handleClick} className={`gap-2 ${className || ""}`}>
       <MessageCircle className="w-4 h-4" />
       WhatsApp Us
     </Button>
