@@ -10,9 +10,15 @@ interface ScheduleCallButtonProps {
   variant?: "default" | "secondary" | "outline"
   size?: "default" | "sm" | "lg"
   className?: string
+  defaultInterest?: string
 }
 
-export function ScheduleCallButton({ variant = "default", size = "default", className }: ScheduleCallButtonProps) {
+export function ScheduleCallButton({
+  variant = "default",
+  size = "default",
+  className,
+  defaultInterest = "schedule-call",
+}: ScheduleCallButtonProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
@@ -30,7 +36,7 @@ export function ScheduleCallButton({ variant = "default", size = "default", clas
               Fill in your details and we'll call you at a time convenient for you. No obligation, just honest advice.
             </DialogDescription>
           </DialogHeader>
-          <LeadCaptureForm defaultInterest="schedule-call" onSuccess={() => setIsOpen(false)} />
+          <LeadCaptureForm defaultInterest={defaultInterest} onSuccess={() => setIsOpen(false)} />
         </DialogContent>
       </Dialog>
     </>

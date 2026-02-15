@@ -14,24 +14,37 @@ export function CalculatorPageClient() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-b from-primary/5 to-background py-20 overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <img
-            src="/images/life_insurance_calculator.png"
-            alt="Life Insurance Calculator Background"
-            className="w-full h-full object-cover"
-          />
-        </div>
+      <section className="relative bg-gradient-to-b from-primary/5 to-background py-16 md:py-24 overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
-          <div className="mx-auto max-w-3xl text-center">
-            <div className="inline-flex items-center justify-center p-3 bg-primary/10 rounded-full mb-4">
-              <Calculator className="h-10 w-10 text-primary" />
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="max-w-3xl animate-in fade-in slide-in-from-left duration-700">
+              <div className="inline-flex items-center justify-center p-4 bg-primary/10 rounded-2xl mb-6 shadow-sm">
+                <Calculator className="h-10 w-10 text-primary" />
+              </div>
+              <h1 className="mb-6 text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-balance leading-tight">
+                Smart Insurance <span className="text-primary">Needs Calculator</span>
+              </h1>
+              <p className="text-xl text-muted-foreground text-pretty mb-8 leading-relaxed max-w-xl">
+                Get personalized recommendations for term life insurance and health insurance coverage based on your unique financial situation and goals.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <ScheduleCallButton size="lg" />
+                <Button size="lg" variant="outline" onClick={() => document.getElementById('calculator-tabs')?.scrollIntoView({ behavior: 'smooth' })}>
+                  Start Calculator
+                </Button>
+              </div>
             </div>
-            <h1 className="mb-4 text-4xl md:text-5xl font-bold tracking-tight text-balance">Smart Insurance Needs Calculator</h1>
-            <p className="text-xl text-muted-foreground text-pretty">
-              Get personalized recommendations for term life insurance and health insurance coverage based on your
-              unique situation
-            </p>
+            <div className="relative animate-in fade-in slide-in-from-right duration-1000">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl border-8 border-white bg-white transform lg:rotate-2 hover:rotate-0 transition-transform duration-500">
+                <img
+                  src="/images/life_insurance_calculator.png"
+                  alt="Life Insurance Calculator"
+                  className="w-full h-auto"
+                />
+              </div>
+              <div className="absolute -top-12 -right-12 w-48 h-48 bg-primary/10 rounded-full blur-3xl -z-10" />
+              <div className="absolute -bottom-12 -left-12 w-64 h-64 bg-blue-100 rounded-full blur-3xl -z-10" />
+            </div>
           </div>
         </div>
       </section>
@@ -40,18 +53,18 @@ export function CalculatorPageClient() {
       <section className="py-12">
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-4xl">
-            <Tabs defaultValue="insurance" className="space-y-6">
+            <Tabs id="calculator-tabs" defaultValue="insurance" className="space-y-6">
               <TabsList className="grid w-full grid-cols-2">
                 <TabsTrigger value="insurance">Life Insurance</TabsTrigger>
                 <TabsTrigger value="health">Health Insurance</TabsTrigger>
               </TabsList>
 
               <TabsContent value="insurance">
-                <InsuranceCalculator />
+                <TermInsuranceCalculator />
               </TabsContent>
 
               <TabsContent value="health">
-                <InsuranceCalculator />
+                <HealthInsuranceCalculator />
               </TabsContent>
             </Tabs>
           </div>
@@ -105,37 +118,37 @@ export function CalculatorPageClient() {
   )
 }
 
-function InsuranceCalculator() {
+function TermInsuranceCalculator() {
   return (
-    <div className="space-y-8">
-      {/* Term Insurance Calculator */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Shield className="h-5 w-5" />
-            Term Life Insurance Calculator
-          </CardTitle>
-          <CardDescription>Calculate your ideal term life insurance coverage</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <TermInsuranceForm />
-        </CardContent>
-      </Card>
+    <Card>
+      <CardHeader>
+        <CardTitle className="flex items-center gap-2">
+          <Shield className="h-5 w-5" />
+          Term Life Insurance Calculator
+        </CardTitle>
+        <CardDescription>Calculate your ideal term life insurance coverage</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <TermInsuranceForm />
+      </CardContent>
+    </Card>
+  )
+}
 
-      {/* Health Insurance Calculator */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Heart className="h-5 w-5" />
-            Health Insurance Calculator
-          </CardTitle>
-          <CardDescription>Calculate your recommended health insurance coverage</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <HealthInsuranceForm />
-        </CardContent>
-      </Card>
-    </div>
+function HealthInsuranceCalculator() {
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle className="flex items-center gap-2">
+          <Heart className="h-5 w-5" />
+          Health Insurance Calculator
+        </CardTitle>
+        <CardDescription>Calculate your recommended health insurance coverage</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <HealthInsuranceForm />
+      </CardContent>
+    </Card>
   )
 }
 

@@ -4,7 +4,6 @@ import { Badge } from "@/components/ui/badge"
 import { WhatsAppButton } from "@/components/whatsapp-button"
 import { ExpertAdviceButton } from "@/components/expert-advice-button"
 import { ArrowRight, Shield, Heart, Building2, Users } from "lucide-react"
-import { Navigation } from "@/components/navigation"
 
 export const metadata = {
   title: "Learn Insurance - Complete Guide to Life & Health Insurance | InsureWise",
@@ -44,22 +43,39 @@ export default function LearnInsurancePage() {
     },
   ]
 
+
   return (
     <div className="min-h-screen">
-      {/* Navigation Component */}
-      <Navigation />
 
       {/* Hero Section */}
-      <section className="py-16 bg-gradient-to-b from-blue-50/50 to-background">
+      <section className="py-16 md:py-24 bg-gradient-to-b from-blue-50/50 to-background overflow-hidden">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-balance">
-              Insurance Made Simple: Learn What You Actually Need
-            </h1>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              No jargon, no sales pitch. Just honest explanations to help you understand different types of insurance
-              and make informed decisions.
-            </p>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="text-left animate-in fade-in slide-in-from-left duration-700">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-balance leading-tight">
+                Insurance Made Simple: <span className="text-primary">Learn What You Actually Need</span>
+              </h1>
+              <p className="text-xl text-muted-foreground leading-relaxed mb-8 max-w-xl">
+                No jargon, no sales pitch. Just honest explanations to help you understand different types of insurance
+                and make informed decisions.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <WhatsAppButton size="lg" />
+                <ExpertAdviceButton size="lg" variant="outline" />
+              </div>
+            </div>
+            <div className="relative animate-in fade-in slide-in-from-right duration-1000">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl border-8 border-white bg-white transform lg:rotate-2 hover:rotate-0 transition-transform duration-500">
+                <img
+                  src="/images/insurance _made_simple.png"
+                  alt="Insurance Made Simple Illustration"
+                  className="w-full h-auto"
+                />
+              </div>
+              {/* Subtle decorative elements */}
+              <div className="absolute -top-12 -right-12 w-48 h-48 bg-primary/10 rounded-full blur-3xl -z-10" />
+              <div className="absolute -bottom-12 -left-12 w-64 h-64 bg-blue-100 rounded-full blur-3xl -z-10" />
+            </div>
           </div>
         </div>
       </section>

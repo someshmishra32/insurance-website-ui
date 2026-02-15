@@ -3,24 +3,39 @@ import { Award, Shield, Users, TrendingUp, CheckCircle2 } from "lucide-react"
 import { WhatsAppButton } from "@/components/whatsapp-button"
 import { LeadCaptureForm } from "@/components/lead-capture-form"
 import { ScheduleCallButton } from "@/components/schedule-call-button"
-import { Navigation } from "@/components/navigation"
 
 export default function AboutPage() {
   return (
     <div className="min-h-screen">
-      {/* Navigation - Updated navigation with intent-based labels */}
-      <Navigation />
 
       {/* Hero Section */}
-      <section className="py-16 bg-gradient-to-b from-blue-50/50 to-background">
+      <section className="py-16 md:py-24 bg-gradient-to-b from-blue-50/50 to-background overflow-hidden">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-balance">
-              Independent Insurance Advisor for Life & Health Insurance in India
-            </h1>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Helping individuals and families make informed insurance decisions with honest, unbiased advice since 2015
-            </p>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="text-left animate-in fade-in slide-in-from-left duration-700">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-balance leading-tight">
+                Independent Insurance Advisor for <span className="text-primary">Life & Health Insurance</span>
+              </h1>
+              <p className="text-xl text-muted-foreground leading-relaxed mb-8 max-w-xl">
+                Helping individuals and families make informed insurance decisions with honest, unbiased advice and expert guidance. Join 500+ families who trust us for their financial security.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <ScheduleCallButton size="lg" />
+                <WhatsAppButton size="lg" variant="outline" />
+              </div>
+            </div>
+            <div className="relative animate-in fade-in slide-in-from-right duration-1000">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl border-8 border-white bg-white transform lg:rotate-2 hover:rotate-0 transition-transform duration-500">
+                <img
+                  src="/images/about_advisory_hero.png"
+                  alt="Professional Insurance Advisory"
+                  className="w-full h-auto"
+                />
+              </div>
+              {/* Subtle decorative elements */}
+              <div className="absolute -top-12 -right-12 w-48 h-48 bg-primary/10 rounded-full blur-3xl -z-10" />
+              <div className="absolute -bottom-12 -left-12 w-64 h-64 bg-blue-100 rounded-full blur-3xl -z-10" />
+            </div>
           </div>
         </div>
       </section>
@@ -33,20 +48,20 @@ export default function AboutPage() {
               <CardContent className="p-8 md:p-12">
                 <div className="flex flex-col md:flex-row gap-8 items-start">
                   <div className="shrink-0">
-                    <div className="w-48 h-48 relative overflow-hidden rounded-lg shadow-md">
+                    <div className="w-full md:w-64 lg:w-72 aspect-[4/5] relative overflow-hidden rounded-2xl shadow-xl border-4 border-white bg-slate-50">
                       <img
                         src="/images/advisor_profile.png"
-                        alt="Independent Insurance Advisor Profile"
-                        className="w-full h-full object-cover"
+                        alt="Somesh Mishra - Independent Insurance Advisor"
+                        className="w-full h-full object-contain"
                       />
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h2 className="text-3xl font-bold mb-4">Your Independent Insurance Advisor</h2>
-                    <p className="text-muted-foreground mb-4 leading-relaxed">
-                      With over 10 years of experience in the insurance industry, I help individuals and families
-                      navigate the complex world of insurance. Unlike traditional agents tied to a single company, I
-                      work independently to provide unbiased advice across 20+ insurance providers.
+                    <h2 className="text-4xl font-bold mb-2 text-primary">Somesh Mishra</h2>
+                    <p className="text-xl font-semibold mb-4">Your Independent Insurance Advisor</p>
+                    <p className="text-muted-foreground mb-4 leading-relaxed text-lg">
+                      With over 6 years of experience in the insurance industry, I help individuals and families
+                      navigate the complex world of insurance. I spent 3+ years with Policybazaar and the rest of my career working with other top insurance companies in India, which allows me to provide truly unbiased advice across 20+ insurance providers.
                     </p>
                     <p className="text-foreground font-semibold mb-4 leading-relaxed text-lg">
                       I do not sell a single company's policy. I compare plans from multiple insurers and recommend what
@@ -68,7 +83,7 @@ export default function AboutPage() {
                       </div>
                       <div className="flex items-center gap-2">
                         <TrendingUp className="w-5 h-5 text-primary" />
-                        <span className="text-sm font-medium">10+ Years Experience</span>
+                        <span className="text-sm font-medium">6+ Years Experience</span>
                       </div>
                     </div>
                   </div>

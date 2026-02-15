@@ -2,8 +2,9 @@ import type { Metadata } from "next"
 import { FileText, CheckCircle, AlertTriangle, Phone, Upload, Shield } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { WhatsAppButton } from "@/components/whatsapp-button"
+import { ExpertAdviceButton } from "@/components/expert-advice-button"
 import { ScheduleCallButton } from "@/components/schedule-call-button"
-import { Navigation } from "@/components/navigation"
 
 export const metadata: Metadata = {
   title: "Claims Education | How to File Insurance Claims | InsureWise",
@@ -14,26 +15,37 @@ export const metadata: Metadata = {
 export default function ClaimsPage() {
   return (
     <div className="min-h-screen bg-background">
-      <Navigation />
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-b from-primary/5 to-background py-20 overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <img
-            src="/images/claims_support_hero.png"
-            alt="Claims Support Hero"
-            className="w-full h-full object-cover"
-          />
-        </div>
+      <section className="relative bg-gradient-to-b from-primary/5 to-background py-16 md:py-24 overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
-          <div className="mx-auto max-w-3xl text-center">
-            <div className="inline-flex items-center justify-center p-3 bg-primary/10 rounded-full mb-4">
-              <FileText className="h-10 w-10 text-primary" />
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="max-w-3xl animate-in fade-in slide-in-from-left duration-700">
+              <div className="inline-flex items-center justify-center p-4 bg-primary/10 rounded-2xl mb-6 shadow-sm">
+                <FileText className="h-10 w-10 text-primary" />
+              </div>
+              <h1 className="mb-6 text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-balance leading-tight">
+                Claims <span className="text-primary">Education Center</span>
+              </h1>
+              <p className="text-xl text-muted-foreground text-pretty mb-8 leading-relaxed max-w-xl">
+                Comprehensive guides to filing insurance claims successfully. Know your rights, avoid common pitfalls, and ensure a smooth settlement process.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <ExpertAdviceButton size="lg" />
+                <WhatsAppButton size="lg" variant="outline" />
+              </div>
             </div>
-            <h1 className="mb-4 text-4xl md:text-5xl font-bold tracking-tight text-balance">Claims Education Center</h1>
-            <p className="text-xl text-muted-foreground text-pretty">
-              Comprehensive guides to filing insurance claims successfully. Know your rights and avoid common mistakes.
-            </p>
+            <div className="relative animate-in fade-in slide-in-from-right duration-1000">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl border-8 border-white bg-white transform lg:rotate-2 hover:rotate-0 transition-transform duration-500">
+                <img
+                  src="/images/claims_support_hero.png"
+                  alt="Claims Support Hero"
+                  className="w-full h-auto"
+                />
+              </div>
+              <div className="absolute -top-12 -right-12 w-48 h-48 bg-primary/10 rounded-full blur-3xl -z-10" />
+              <div className="absolute -bottom-12 -left-12 w-64 h-64 bg-blue-100 rounded-full blur-3xl -z-10" />
+            </div>
           </div>
         </div>
       </section>

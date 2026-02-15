@@ -1,4 +1,3 @@
-import { Navigation } from "@/components/navigation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { AllTestimonials } from "@/components/testimonials"
@@ -39,7 +38,6 @@ export default function TestimonialsPage() {
 
   return (
     <div className="min-h-screen">
-      <Navigation />
 
       {/* Hero Section */}
       <section className="relative bg-gradient-to-b from-primary/5 to-background py-20 overflow-hidden">

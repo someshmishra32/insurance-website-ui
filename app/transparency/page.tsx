@@ -1,31 +1,47 @@
-import type { Metadata } from "next"
+"use client"
+
 import { Shield, DollarSign, Award, Users, CheckCircle, AlertCircle, ExternalLink } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { ScheduleCallButton } from "@/components/schedule-call-button"
 import { Badge } from "@/components/ui/badge"
 import { WhatsAppButton } from "@/components/whatsapp-button"
-import { ScheduleCallButton } from "@/components/schedule-call-button"
-import Navigation from "@/components/navigation" // Import the Navigation component
-
-export const metadata: Metadata = {
-  title: "Trust & Transparency | How We Work & Earn | InsureWise",
-  description:
-    "Complete transparency on how we earn commissions, why independence matters, and our commitments to clients. No hidden agendas.",
-}
 
 export default function TransparencyPage() {
   return (
     <div className="min-h-screen bg-background">
-      {/* Navigation */}
-      <Navigation /> {/* Replaced hardcoded navigation with shared Navigation component */}
       {/* Hero Section */}
-      <section className="bg-gradient-to-b from-primary/5 to-background py-16">
+      <section className="bg-gradient-to-b from-primary/5 to-background py-16 md:py-24 overflow-hidden">
         <div className="container mx-auto px-4">
-          <div className="mx-auto max-w-3xl text-center">
-            <Shield className="mx-auto mb-4 h-12 w-12 text-primary" />
-            <h1 className="mb-4 text-4xl font-bold tracking-tight text-balance">Trust & Transparency</h1>
-            <p className="text-lg text-muted-foreground text-pretty">
-              How we earn, why we're independent, and our commitments to you. No hidden agendas, just honest advice.
-            </p>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="max-w-3xl animate-in fade-in slide-in-from-left duration-700">
+              <div className="inline-flex items-center justify-center p-4 bg-primary/10 rounded-2xl mb-6 shadow-sm">
+                <Shield className="h-10 w-10 text-primary" />
+              </div>
+              <h1 className="mb-6 text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-balance leading-tight">
+                Our Guarantee: <span className="text-primary">100% Trust</span>
+              </h1>
+              <p className="text-xl text-muted-foreground text-pretty mb-8 leading-relaxed max-w-xl">
+                We believe in radical transparency. Learn how we earn, why we maintain strict independence, and our unwavering commitments to your financial well-being.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Button size="lg" onClick={() => document.getElementById('commitments')?.scrollIntoView({ behavior: 'smooth' })}>
+                  Our Commitments
+                </Button>
+                <ScheduleCallButton size="lg" variant="outline" />
+              </div>
+            </div>
+            <div className="relative animate-in fade-in slide-in-from-right duration-1000">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl border-8 border-white bg-white transform lg:-rotate-2 hover:rotate-0 transition-transform duration-500">
+                <img
+                  src="/images/trust_transparency_hero.png"
+                  alt="Trust and Transparency"
+                  className="w-full h-auto"
+                />
+              </div>
+              <div className="absolute -top-12 -right-12 w-48 h-48 bg-primary/10 rounded-full blur-3xl -z-10" />
+              <div className="absolute -bottom-12 -left-12 w-64 h-64 bg-blue-100 rounded-full blur-3xl -z-10" />
+            </div>
           </div>
         </div>
       </section>
@@ -121,7 +137,7 @@ export default function TransparencyPage() {
         </div>
       </section>
       {/* Our Commitments */}
-      <section className="bg-muted/50 py-12">
+      <section id="commitments" className="bg-muted/50 py-12">
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-4xl">
             <h2 className="mb-8 text-center text-3xl font-bold">Our Commitments to You</h2>

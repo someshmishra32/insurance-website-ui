@@ -4,7 +4,9 @@ import { Geist, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { AnalyticsTracker } from "@/components/analytics-tracker"
 import { FloatingWhatsApp } from "@/components/floating-whatsapp"
+import { Navigation } from "@/components/navigation"
 import "./globals.css"
+
 
 const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
@@ -50,10 +52,12 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
+        <Navigation />
         {children}
         <FloatingWhatsApp />
         <Analytics />
       </body>
     </html>
   )
+
 }

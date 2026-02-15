@@ -1,17 +1,11 @@
+"use client"
+
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { Navigation } from "@/components/navigation"
 import { ExpertAdviceButton } from "@/components/expert-advice-button"
 import { HelpCircle, MessageSquare, Shield, Heart, DollarSign, FileText } from "lucide-react"
-
-export const metadata = {
-  title: "Frequently Asked Questions | InsureWise",
-  description:
-    "Get answers to common insurance questions about term life, health insurance, claims, and more. Expert guidance on choosing the right insurance.",
-  keywords: "insurance FAQ, insurance questions, how insurance works, insurance claims process",
-}
 
 export default function FAQPage() {
   const faqCategories = [
@@ -154,19 +148,39 @@ export default function FAQPage() {
 
   return (
     <div className="min-h-screen">
-      <Navigation />
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-b from-blue-50 to-background py-12">
+      <section className="bg-gradient-to-b from-blue-50 to-background py-16 md:py-24 overflow-hidden">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <HelpCircle className="w-12 h-12 text-blue-600 mx-auto mb-4" />
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-balance">
-              Frequently Asked Questions
-            </h1>
-            <p className="text-xl text-muted-foreground">
-              Get answers to common insurance questions and make informed decisions about your coverage
-            </p>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="max-w-4xl animate-in fade-in slide-in-from-left duration-700">
+              <div className="inline-flex items-center justify-center p-4 bg-blue-100 rounded-2xl mb-6 shadow-sm">
+                <HelpCircle className="w-10 h-10 text-blue-600" />
+              </div>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-balance leading-tight">
+                Frequently <span className="text-blue-600">Asked Questions</span>
+              </h1>
+              <p className="text-xl text-muted-foreground mb-8 leading-relaxed max-w-xl">
+                Clear, honest answers to common insurance questions. We help you cut through the jargon and find the right coverage for your family.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Button size="lg" className="shadow-lg shadow-blue-200" onClick={() => document.getElementById('search-help')?.scrollIntoView({ behavior: 'smooth' })}>
+                  Contact Support
+                </Button>
+                <ExpertAdviceButton size="lg" variant="outline" />
+              </div>
+            </div>
+            <div className="relative animate-in fade-in slide-in-from-right duration-1000">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl border-8 border-white bg-white transform lg:-rotate-3 hover:rotate-0 transition-transform duration-500">
+                <img
+                  src="/images/faq_hero.png"
+                  alt="Frequently Asked Questions"
+                  className="w-full h-auto"
+                />
+              </div>
+              <div className="absolute -top-12 -right-12 w-48 h-48 bg-primary/10 rounded-full blur-3xl -z-10" />
+              <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-blue-100 rounded-full blur-3xl -z-10" />
+            </div>
           </div>
         </div>
       </section>
@@ -228,7 +242,7 @@ export default function FAQPage() {
       </section>
 
       {/* Still Have Questions Section */}
-      <section className="bg-gradient-to-r from-primary/10 to-blue-50 py-12">
+      <section id="search-help" className="bg-gradient-to-r from-primary/10 to-blue-50 py-12">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto text-center">
             <MessageSquare className="w-12 h-12 text-primary mx-auto mb-4" />

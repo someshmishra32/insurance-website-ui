@@ -248,7 +248,7 @@ export function LeadCaptureForm({ defaultInterest, onSuccess }: LeadCaptureFormP
                 <Input
                   id="phone"
                   type="tel"
-                  placeholder="98765 43210 or +91 98765 43210"
+                  placeholder="70211 55995 or +91 70211 55995"
                   value={formData.phone}
                   onChange={(e) => {
                     // Allow only numbers, spaces, +, and -
@@ -267,7 +267,7 @@ export function LeadCaptureForm({ defaultInterest, onSuccess }: LeadCaptureFormP
                   <p className="text-sm text-destructive">{fieldErrors.phone}</p>
                 )}
                 <p className="text-xs text-muted-foreground">
-                  Enter 10-digit Indian mobile number (e.g., 98765 43210)
+                  Enter 10-digit Indian mobile number (e.g., 70211 55995)
                 </p>
               </div>
 

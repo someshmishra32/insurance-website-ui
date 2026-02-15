@@ -29,31 +29,7 @@ export default function HealthInsuranceForDiabeticsBlogPost() {
 
     return (
         <div className="min-h-screen">
-            {/* Navigation */}
-            <nav className="border-b bg-background sticky top-0 z-50 backdrop-blur-sm bg-background/95">
-                <div className="container mx-auto px-4 py-4">
-                    <div className="flex items-center justify-between">
-                        <Link href="/" className="text-2xl font-bold text-primary">
-                            InsureWise
-                        </Link>
-                        <div className="hidden md:flex items-center gap-6">
-                            <Link href="/" className="text-sm font-medium hover:text-primary transition-colors">
-                                Home
-                            </Link>
-                            <Link href="/compare" className="text-sm font-medium hover:text-primary transition-colors">
-                                Compare Plans
-                            </Link>
-                            <Link href="/blog" className="text-sm font-medium text-primary">
-                                Learn Insurance
-                            </Link>
-                            <Link href="/about" className="text-sm font-medium hover:text-primary transition-colors">
-                                Get Expert Advice
-                            </Link>
-                            <WhatsAppButton />
-                        </div>
-                    </div>
-                </div>
-            </nav>
+
 
             {/* Article */}
             <article className="py-12">

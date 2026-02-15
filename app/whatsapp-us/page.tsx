@@ -1,4 +1,3 @@
-import { Navigation } from "@/components/navigation"
 import { WhatsAppButton } from "@/components/whatsapp-button"
 import { MessageCircle, Clock, ShieldCheck, HeartPulse } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
@@ -35,7 +34,6 @@ export default function WhatsAppUsPage() {
 
     return (
         <div className="min-h-screen bg-muted/30">
-            <Navigation />
 
             <main className="container mx-auto px-4 py-12 md:py-20" id="main-content">
                 <div className="max-w-4xl mx-auto">

@@ -9,7 +9,6 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { AlertCircle } from "lucide-react"
-import Navigation from "@/components/navigation"
 
 const faqDatabase = {
   "what is term insurance":
@@ -77,30 +76,53 @@ export default function AIAssistantPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <Navigation />
 
       {/* Hero Section */}
-      <section className="border-b bg-gradient-to-b from-primary/5 to-background py-12">
+      <section className="border-b bg-gradient-to-b from-primary/5 to-background py-16 md:py-24 overflow-hidden">
         <div className="container mx-auto px-4">
-          <div className="mx-auto max-w-3xl text-center">
-            <Bot className="mx-auto mb-4 h-12 w-12 text-primary" />
-            <h1 className="mb-4 text-4xl font-bold tracking-tight text-balance">Insurance FAQ Assistant</h1>
-            <p className="text-lg text-muted-foreground text-pretty">
-              Get instant answers to common insurance questions. For complex queries, schedule a consultation with our
-              expert.
-            </p>
-            <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
-              <Badge variant="secondary">Term Insurance</Badge>
-              <Badge variant="secondary">Health Insurance</Badge>
-              <Badge variant="secondary">Claims Process</Badge>
-              <Badge variant="secondary">Policy Comparison</Badge>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="max-w-3xl animate-in fade-in slide-in-from-left duration-700">
+              <div className="inline-flex items-center justify-center p-4 bg-primary/10 rounded-2xl mb-6 shadow-sm">
+                <Bot className="h-10 w-10 text-primary" />
+              </div>
+              <h1 className="mb-6 text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-balance leading-tight">
+                Insurance <span className="text-primary">FAQ Assistant</span>
+              </h1>
+              <p className="text-xl text-muted-foreground text-pretty mb-8 leading-relaxed max-w-xl">
+                Get instant, accurate answers to your most pressing insurance questions. Our AI helps you demystify complex terms and hidden clauses.
+              </p>
+              <div className="mb-10 flex flex-wrap items-center gap-2">
+                <Badge variant="secondary" className="px-3 py-1 font-medium">Term Insurance</Badge>
+                <Badge variant="secondary" className="px-3 py-1 font-medium">Health Insurance</Badge>
+                <Badge variant="secondary" className="px-3 py-1 font-medium">Claims Process</Badge>
+                <Badge variant="secondary" className="px-3 py-1 font-medium">Policy Comparison</Badge>
+              </div>
+              <div className="flex flex-wrap gap-4">
+                <Button size="lg" onClick={() => document.getElementById('chat-section')?.scrollIntoView({ behavior: 'smooth' })}>
+                  Ask a Question
+                </Button>
+                <Button size="lg" variant="outline" asChild>
+                  <a href="/faq">Browse All FAQs</a>
+                </Button>
+              </div>
+            </div>
+            <div className="relative animate-in fade-in slide-in-from-right duration-1000">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl border-8 border-white bg-white transform lg:rotate-3 hover:rotate-0 transition-transform duration-500">
+                <img
+                  src="/images/ai_assistant_hero.png"
+                  alt="AI Insurance Assistant"
+                  className="w-full h-auto"
+                />
+              </div>
+              <div className="absolute -top-12 -left-12 w-48 h-48 bg-primary/10 rounded-full blur-3xl -z-10" />
+              <div className="absolute -bottom-12 -right-12 w-64 h-64 bg-blue-100 rounded-full blur-3xl -z-10" />
             </div>
           </div>
         </div>
       </section>
 
       {/* Chat Interface */}
-      <section className="py-8">
+      <section id="chat-section" className="py-8">
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-4xl">
             <Card>
@@ -144,9 +166,8 @@ export default function AIAssistantPage() {
                         </div>
                       )}
                       <div
-                        className={`max-w-[80%] rounded-lg px-4 py-2 ${
-                          message.role === "user" ? "bg-primary text-primary-foreground" : "bg-muted"
-                        }`}
+                        className={`max-w-[80%] rounded-lg px-4 py-2 ${message.role === "user" ? "bg-primary text-primary-foreground" : "bg-muted"
+                          }`}
                       >
                         <p className="whitespace-pre-wrap text-sm">{message.text}</p>
                       </div>

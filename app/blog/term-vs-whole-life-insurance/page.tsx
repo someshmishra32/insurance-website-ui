@@ -1,6 +1,5 @@
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Navigation } from "@/components/navigation"
 import { WhatsAppButton } from "@/components/whatsapp-button"
 import { ScheduleCallButton } from "@/components/schedule-call-button"
 import { ArticleNavigation } from "@/components/article-navigation"
@@ -27,7 +26,7 @@ export default function BlogPost() {
 
   return (
     <div className="min-h-screen bg-background">
-      <Navigation />
+
 
       <article className="py-16">
         <div className="container mx-auto px-4">

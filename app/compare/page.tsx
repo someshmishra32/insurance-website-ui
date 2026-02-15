@@ -5,7 +5,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Check, Plus, X, Download, Info, Filter, TrendingUp, ChevronDown, Star, Clock, Zap, Heart, MapPin } from "lucide-react"
 import { ExpertAdviceButton } from "@/components/expert-advice-button"
-import { Navigation } from "@/components/navigation"
 import { WhatsAppButton } from "@/components/whatsapp-button"
 import { ScheduleCallButton } from "@/components/schedule-call-button"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
@@ -372,38 +371,39 @@ export default function CompareInsurancePage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
-      <Navigation />
 
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <img
-            src="/images/comparison_hero.png"
-            alt="Insurance Comparison"
-            className="w-full h-full object-cover"
-          />
-        </div>
+      <section className="relative py-12 md:py-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Smart Insurance Comparison</h1>
-            <p className="text-xl md:text-2xl opacity-90">Compare plans from India's top insurers in real-time with expert guidance</p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
-              <div className="bg-white/20 backdrop-blur p-4 rounded-lg">
-                <p className="text-3xl font-bold">14+</p>
-                <p className="text-sm opacity-80">Top Insurers</p>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="max-w-3xl">
+              <h1 className="text-4xl md:text-5xl font-bold mb-4">Smart Insurance Comparison</h1>
+              <p className="text-xl md:text-2xl opacity-90">Compare plans from India's top insurers in real-time with expert guidance</p>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8">
+                <div className="bg-white/20 backdrop-blur p-4 rounded-lg">
+                  <p className="text-3xl font-bold">14+</p>
+                  <p className="text-sm opacity-80">Top Insurers</p>
+                </div>
+                <div className="bg-white/20 backdrop-blur p-4 rounded-lg">
+                  <p className="text-3xl font-bold">50K+</p>
+                  <p className="text-sm opacity-80">Hospitals</p>
+                </div>
+                <div className="bg-white/20 backdrop-blur p-4 rounded-lg">
+                  <p className="text-3xl font-bold">95%+</p>
+                  <p className="text-sm opacity-80">Settlement Ratio</p>
+                </div>
+                <div className="bg-white/20 backdrop-blur p-4 rounded-lg">
+                  <p className="text-3xl font-bold">100%</p>
+                  <p className="text-sm opacity-80">Transparent</p>
+                </div>
               </div>
-              <div className="bg-white/20 backdrop-blur p-4 rounded-lg">
-                <p className="text-3xl font-bold">50K+</p>
-                <p className="text-sm opacity-80">Hospitals</p>
-              </div>
-              <div className="bg-white/20 backdrop-blur p-4 rounded-lg">
-                <p className="text-3xl font-bold">95%+</p>
-                <p className="text-sm opacity-80">Settlement Ratio</p>
-              </div>
-              <div className="bg-white/20 backdrop-blur p-4 rounded-lg">
-                <p className="text-3xl font-bold">100%</p>
-                <p className="text-sm opacity-80">Transparent</p>
-              </div>
+            </div>
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20">
+              <img
+                src="/images/comparison_hero.png"
+                alt="Insurance Comparison"
+                className="w-full h-auto"
+              />
             </div>
           </div>
         </div>

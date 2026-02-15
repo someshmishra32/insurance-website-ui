@@ -10,8 +10,8 @@ import { Input } from "@/components/ui/input"
 import { WhatsAppButton } from "@/components/whatsapp-button"
 import { LeadCaptureForm } from "@/components/lead-capture-form"
 import { ExpertAdviceButton } from "@/components/expert-advice-button"
+import { Footer } from "@/components/footer"
 import { Landmark, Shield, Search, X } from "lucide-react"
-import { Navigation } from "@/components/navigation"
 import { useState } from "react"
 
 export default function BlogPage() {
@@ -49,10 +49,9 @@ export default function BlogPage() {
 
   return (
     <div className="min-h-screen">
-      <Navigation />
 
       {/* Mission 2047 Featured Hero */}
-      <section className="relative py-24 bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 text-white overflow-hidden">
+      <section className="relative py-16 md:py-24 bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 text-white overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-10 left-10 w-64 h-64 border-2 border-white rounded-full"></div>
@@ -82,17 +81,17 @@ export default function BlogPage() {
 
             {/* Hero Content */}
             <div className="text-center mb-8">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-balance leading-tight">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 text-balance leading-tight">
                 Insurance for All by 2047: What It Means for Every Indian
               </h1>
-              <p className="text-xl md:text-2xl mb-8 opacity-95 leading-relaxed">
+              <p className="text-lg md:text-xl lg:text-2xl mb-8 opacity-95 leading-relaxed">
                 Understanding IRDAI's Mission 2047, GST reforms, and how insurance is becoming simpler, affordable, and
                 transparent
               </p>
             </div>
 
             {/* Mission Visual Icons */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-8">
               <div className="flex flex-col items-center gap-3">
                 <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
                   <Shield className="w-8 h-8" />
@@ -137,7 +136,7 @@ export default function BlogPage() {
               <Button size="lg" variant="secondary" asChild>
                 <Link href="/blog/mission-2047-insurance-for-all">Read Full Article →</Link>
               </Button>
-              <ExpertAdviceButton size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+              <ExpertAdviceButton size="lg" variant="outline" className="bg-transparent border-white text-white hover:bg-white/10">
                 Get Expert Guidance
               </ExpertAdviceButton>
             </div>
@@ -172,24 +171,27 @@ export default function BlogPage() {
                   </div>
 
                   {/* Category Filters */}
-                  <div className="flex flex-wrap gap-2">
-                    <span className="text-sm font-medium text-muted-foreground self-center">Filter by:</span>
-                    {categories.map((category) => (
-                      <Button
-                        key={category}
-                        variant={selectedCategory === category ? "default" : "outline"}
-                        size="sm"
-                        onClick={() => setSelectedCategory(category)}
-                      >
-                        {category}
-                      </Button>
-                    ))}
-                    {(searchQuery || selectedCategory !== "All") && (
-                      <Button variant="ghost" size="sm" onClick={clearFilters}>
-                        <X className="w-4 h-4 mr-1" />
-                        Clear Filters
-                      </Button>
-                    )}
+                  <div className="space-y-2">
+                    <span className="text-sm font-medium text-muted-foreground">Filter by:</span>
+                    <div className="flex gap-2 overflow-x-auto pb-2 -mx-2 px-2 scrollbar-hide">
+                      {categories.map((category) => (
+                        <Button
+                          key={category}
+                          variant={selectedCategory === category ? "default" : "outline"}
+                          size="sm"
+                          onClick={() => setSelectedCategory(category)}
+                          className="whitespace-nowrap shrink-0"
+                        >
+                          {category}
+                        </Button>
+                      ))}
+                      {(searchQuery || selectedCategory !== "All") && (
+                        <Button variant="ghost" size="sm" onClick={clearFilters} className="whitespace-nowrap shrink-0">
+                          <X className="w-4 h-4 mr-1" />
+                          Clear Filters
+                        </Button>
+                      )}
+                    </div>
                   </div>
 
                   {/* Results Count */}
@@ -342,18 +344,7 @@ export default function BlogPage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-muted/30 py-12 border-t">
-        <div className="container mx-auto px-4">
-          <div className="pt-8 text-center text-sm text-muted-foreground space-y-2">
-            <p className="leading-relaxed">
-              <strong>Disclaimer:</strong> Insurance is subject to terms and conditions. Information provided is for
-              educational purposes only.
-            </p>
-            <p>© 2025 InsureWise. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }

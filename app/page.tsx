@@ -10,12 +10,11 @@ import { LeadCaptureForm } from "@/components/lead-capture-form"
 import { ScheduleCallButton } from "@/components/schedule-call-button"
 import { ChevronRight, Shield, TrendingUp, Users, CheckCircle, Star, HelpCircle, IndianRupee, UserCheck, Building, FileCheck, HeartPulse, Landmark, HandHeart, UserRoundCog } from "lucide-react"
 import { ExpertAdviceButton } from "@/components/expert-advice-button"
-import { Navigation } from "@/components/navigation"
+import { Footer } from "@/components/footer"
 
 export default function HomePage() {
   return (
     <div className="min-h-screen">
-      <Navigation />
 
       {/* Main Content */}
       <main id="main-content">
@@ -62,21 +61,21 @@ export default function HomePage() {
         </section>
 
         {/* Hero Section */}
-        <section className="py-20 md:py-32 bg-gradient-to-b from-blue-50/50 to-background">
+        <section className="py-12 md:py-20 lg:py-32 bg-gradient-to-b from-blue-50/50 to-background">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
-              <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
                 {/* Left: Message */}
                 <div>
                   <div className="inline-flex items-center gap-2 bg-accent/50 px-4 py-2 rounded-full text-sm font-medium mb-6">
                     <span className="w-2 h-2 bg-success rounded-full animate-pulse"></span>
                     Independent & Unbiased Advice
                   </div>
-                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-balance leading-tight">
+                  <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 text-balance leading-tight">
                     Buy the Right Insurance with <span className="text-primary">Expert Guidance</span> — Not Sales
                     Pressure.
                   </h1>
-                  <p className="text-lg md:text-xl text-muted-foreground mb-8 text-pretty leading-relaxed">
+                  <p className="text-base md:text-lg lg:text-xl text-muted-foreground mb-8 text-pretty leading-relaxed">
                     Compare life and health insurance plans from top insurers with clear explanations, honest comparisons,
                     and expert support.
                   </p>
@@ -89,8 +88,8 @@ export default function HomePage() {
                   <p className="text-sm text-muted-foreground italic">No spam. No pressure. Honest advice.</p>
                 </div>
 
-                {/* Right: Lead Capture Form */}
-                <div className="lg:block hidden space-y-8">
+                {/* Right: Lead Capture Form - Hidden on mobile, shown on desktop */}
+                <div className="hidden lg:block space-y-8">
                   <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                     <img
                       src="/images/hero_advisor.png"
@@ -101,12 +100,17 @@ export default function HomePage() {
                   <LeadCaptureForm />
                 </div>
               </div>
+
+              {/* Show Lead Capture Form on mobile/tablet below hero text */}
+              <div className="lg:hidden mt-8">
+                <LeadCaptureForm />
+              </div>
             </div>
           </div>
         </section>
 
         {/* Trust Indicators Section */}
-        <section className="py-20 border-y bg-muted/30">
+        <section className="py-12 md:py-20 border-y bg-muted/30">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto mb-12 text-center">
               <h2 className="text-2xl md:text-3xl font-bold mb-4">Why Choose Independent Insurance Advice?</h2>
@@ -162,7 +166,7 @@ export default function HomePage() {
         </section>
 
         {/* Mission 2047 Section */}
-        <section className="py-20 bg-gradient-to-b from-blue-50/30 to-background">
+        <section className="py-12 md:py-20 bg-gradient-to-b from-blue-50/30 to-background">
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto">
               <div className="text-center mb-12">
@@ -239,7 +243,7 @@ export default function HomePage() {
         </section>
 
         {/* Insurance Categories Grid */}
-        <section className="py-20">
+        <section className="py-12 md:py-20">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -605,7 +609,7 @@ export default function HomePage() {
         </section>
 
         {/* FAQ Section */}
-        <section className="py-20 bg-background">
+        <section className="py-12 md:py-20 bg-background">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
@@ -794,7 +798,7 @@ export default function HomePage() {
         </section>
 
         {/* Final CTA Section */}
-        <section id="get-guidance" className="py-20 bg-primary text-primary-foreground">
+        <section id="get-guidance" className="py-12 md:py-20 bg-primary text-primary-foreground">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
               <h2 className="text-3xl md:text-5xl font-bold mb-6 text-balance">
@@ -814,78 +818,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Footer */}
-        <footer className="bg-muted/30 py-12 border-t">
-          <div className="container mx-auto px-4">
-            <div className="grid md:grid-cols-4 gap-8 mb-8">
-              <div>
-                <h3 className="font-bold text-lg mb-4">InsureWise</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Independent insurance advisory helping you make informed decisions.
-                </p>
-              </div>
-              <div>
-                <h4 className="font-semibold mb-4">Insurance Types</h4>
-                <ul className="space-y-2 text-sm">
-                  <li>
-                    <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                      Term Insurance
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                      Health Insurance
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                      Family Floater
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                      Senior Citizen Plans
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-semibold mb-4">Resources</h4>
-                <ul className="space-y-2 text-sm">
-                  <li>
-                    <Link href="/blog" className="text-muted-foreground hover:text-primary transition-colors">
-                      Learning Hub
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/compare" className="text-muted-foreground hover:text-primary transition-colors">
-                      Compare Plans
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/about" className="text-muted-foreground hover:text-primary transition-colors">
-                      About Us
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-semibold mb-4">Contact</h4>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>Email: contact@insurewise.in</li>
-                  <li>Phone: +91 98765 43210</li>
-                </ul>
-              </div>
-            </div>
-            <div className="pt-8 border-t text-center text-sm text-muted-foreground space-y-2">
-              <p className="leading-relaxed">
-                <strong>Disclaimer:</strong> Insurance is subject to terms and conditions. Information provided is for
-                educational purposes only. We are associated with a licensed insurance broker.
-              </p>
-              <p>© 2025 InsureWise. All rights reserved.</p>
-            </div>
-          </div>
-        </footer>
+        <Footer />
       </main>
     </div>
   )
