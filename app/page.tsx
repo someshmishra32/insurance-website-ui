@@ -90,13 +90,6 @@ export default function HomePage() {
 
                 {/* Right: Lead Capture Form - Hidden on mobile, shown on desktop */}
                 <div className="hidden lg:block space-y-8">
-                  <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                    <img
-                      src="/images/hero_advisor.png"
-                      alt="Expert Insurance Advisor"
-                      className="w-full h-auto"
-                    />
-                  </div>
                   <LeadCaptureForm />
                 </div>
               </div>
