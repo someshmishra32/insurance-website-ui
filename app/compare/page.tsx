@@ -12,6 +12,17 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 
+// Helper function to handle brochure download
+const handleBrochureDownload = (brochureUrl: string, companyName: string) => {
+  if (!brochureUrl || brochureUrl.includes('example.com')) {
+    alert(`${companyName} brochure link is not yet available. Please request it via WhatsApp or contact us for more information.`)
+    return
+  }
+  
+  // Open brochure in new tab
+  window.open(brochureUrl, '_blank')
+}
+
 // Enhanced data with detailed metrics
 const INSURANCE_COMPANIES = [
   {
@@ -373,9 +384,9 @@ export default function CompareInsurancePage() {
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
 
       {/* Hero Section */}
-      <section className="relative py-12 md:py-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white overflow-hidden">
+      <section className="relative py-16 md:py-24 bg-gradient-to-r from-blue-600 to-blue-800 text-white overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-12 md:gap-16 items-center">
             <div className="max-w-3xl">
               <h1 className="text-4xl md:text-5xl font-bold mb-4">Smart Insurance Comparison</h1>
               <p className="text-xl md:text-2xl opacity-90">Compare plans from India's top insurers in real-time with expert guidance</p>
@@ -410,7 +421,7 @@ export default function CompareInsurancePage() {
       </section>
 
       {/* Main Content */}
-      <section className="py-8">
+      <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
           {/* Premium Calculator */}
           <div className="mb-12">
@@ -989,12 +1000,16 @@ export default function CompareInsurancePage() {
                       {selectedCompanyDetails.map((company) => (
                         <td key={company.id} className="border p-4">
                           <div className="flex flex-col gap-2">
-                            <a href={company.plans[0].brochure} download>
-                              <Button size="sm" variant="outline" className="w-full gap-2">
-                                <Download className="w-4 h-4" />
-                                Brochure
-                              </Button>
-                            </a>
+                            <Button 
+                              size="sm" 
+                              variant="outline" 
+                              className="w-full gap-2"
+                              onClick={() => handleBrochureDownload(company.plans[0].brochure, company.company)}
+                              title="Download or view company brochure"
+                            >
+                              <Download className="w-4 h-4" />
+                              Brochure
+                            </Button>
                             <ExpertAdviceButton className="w-full" size="sm">
                               Get Quote
                             </ExpertAdviceButton>
@@ -1027,7 +1042,7 @@ export default function CompareInsurancePage() {
       </section>
 
       {/* Footer */}
-      <section className="py-12 bg-gradient-to-b from-slate-50 to-white border-t mt-12">
+      <section className="py-12 md:py-16 bg-gradient-to-b from-slate-50 to-white border-t mt-12">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             {/* Expert Tips */}

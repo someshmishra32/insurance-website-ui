@@ -20,21 +20,21 @@ export default function HomePage() {
       <main id="main-content">
         {/* GST Relief Banner */}
         <div className="bg-gradient-to-r from-green-50 to-emerald-50 border-y border-green-200">
-          <div className="container mx-auto px-4 py-4">
+          <div className="container mx-auto px-4 py-5 md:py-6">
             <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-green-600 flex items-center justify-center shrink-0">
-                  <IndianRupee className="w-5 h-5 text-white" />
+              <div className="flex items-center gap-3 min-h-[44px]">
+                <div className="w-12 h-12 rounded-full bg-green-600 flex items-center justify-center shrink-0">
+                  <IndianRupee className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-green-900">Insurance Made More Affordable (GST Update – 2025)</h3>
-                  <p className="text-sm text-green-700">
+                  <h3 className="font-semibold text-green-900 text-sm md:text-base">Insurance Made More Affordable (GST Update – 2025)</h3>
+                  <p className="text-xs md:text-sm text-green-700 mt-1">
                     <span className="font-medium">0% GST</span> on Term Life Insurance, Health Insurance & Critical
                     Illness Riders
                   </p>
                 </div>
               </div>
-              <Button variant="outline" size="sm" className="shrink-0 bg-white" asChild>
+              <Button variant="outline" size="sm" className="shrink-0 bg-white min-h-[44px]" asChild>
                 <Link href="/blog/gst-relief-insurance-2025">Learn More →</Link>
               </Button>
             </div>
@@ -61,27 +61,27 @@ export default function HomePage() {
         </section>
 
         {/* Hero Section */}
-        <section className="py-12 md:py-20 lg:py-32 bg-gradient-to-b from-blue-50/50 to-background">
+        <section className="py-16 md:py-24 lg:py-32 bg-gradient-to-b from-blue-50/50 to-background">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
-              <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
+              <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-center">
                 {/* Left: Message */}
                 <div>
-                  <div className="inline-flex items-center gap-2 bg-accent/50 px-4 py-2 rounded-full text-sm font-medium mb-6">
-                    <span className="w-2 h-2 bg-success rounded-full animate-pulse"></span>
+                  <div className="inline-flex items-center gap-2 bg-accent/50 px-4 py-2.5 rounded-full text-xs md:text-sm font-medium mb-6 md:mb-8">
+                    <span className="w-2.5 h-2.5 bg-success rounded-full animate-pulse"></span>
                     Independent & Unbiased Advice
                   </div>
-                  <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 text-balance leading-tight">
+                  <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 md:mb-8 text-balance leading-tight">
                     Buy the Right Insurance with <span className="text-primary">Expert Guidance</span> — Not Sales
                     Pressure.
                   </h1>
-                  <p className="text-base md:text-lg lg:text-xl text-muted-foreground mb-8 text-pretty leading-relaxed">
+                  <p className="text-base md:text-lg lg:text-xl text-muted-foreground mb-8 md:mb-10 text-pretty leading-relaxed">
                     Compare life and health insurance plans from top insurers with clear explanations, honest comparisons,
                     and expert support.
                   </p>
-                  <div className="flex flex-col sm:flex-row gap-4 mb-4">
-                    <ExpertAdviceButton size="lg">Get Free Expert Guidance</ExpertAdviceButton>
-                    <Button size="lg" variant="outline" className="text-base bg-transparent" asChild>
+                  <div className="flex flex-col sm:flex-row gap-4 md:gap-5 mb-6">
+                    <ExpertAdviceButton size="lg" className="min-h-[48px] text-base">Get Free Expert Guidance</ExpertAdviceButton>
+                    <Button size="lg" variant="outline" className="text-base bg-transparent min-h-[48px]" asChild>
                       <Link href="/compare">Compare Insurance Plans →</Link>
                     </Button>
                   </div>
@@ -95,7 +95,7 @@ export default function HomePage() {
               </div>
 
               {/* Show Lead Capture Form on mobile/tablet below hero text */}
-              <div className="lg:hidden mt-8">
+              <div className="lg:hidden mt-10 md:mt-12">
                 <LeadCaptureForm />
               </div>
             </div>
@@ -236,59 +236,93 @@ export default function HomePage() {
         </section>
 
         {/* Insurance Categories Grid */}
-        <section className="py-12 md:py-20">
+        <section className="py-16 md:py-24">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <div className="text-center mb-12 md:mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 md:mb-6">
                 Compare Life and Health Insurance Plans from Top Insurers
               </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
                 Expert guidance across all major insurance categories to protect what matters most
               </p>
             </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-7">
               {[
                 {
                   icon: Shield,
                   title: "Term Insurance",
                   description: "Affordable life coverage to protect your family's financial future",
-                  color: "bg-blue-50 text-blue-600",
-                  href: "/compare?tab=term",
+                  bgColor: "from-blue-500 to-blue-600",
+                  lightBg: "bg-blue-50",
+                  accentColor: "text-blue-600",
+                  borderColor: "border-blue-200",
+                  badgeColor: "bg-blue-100 text-blue-800",
+                  href: "/blog/term-vs-whole-life-insurance",
+                  badge: "Pure Protection",
                 },
                 {
                   icon: HeartPulse,
                   title: "Health Insurance",
                   description: "Comprehensive medical coverage for hospitalization and treatments",
-                  color: "bg-green-50 text-green-600",
-                  href: "/compare?tab=health",
+                  bgColor: "from-green-500 to-emerald-600",
+                  lightBg: "bg-green-50",
+                  accentColor: "text-green-600",
+                  borderColor: "border-green-200",
+                  badgeColor: "bg-green-100 text-green-800",
+                  href: "/blog/top-5-things-to-check-before-buying-health-insurance",
+                  badge: "Medical Coverage",
                 },
                 {
                   icon: Users,
                   title: "Family Floater",
                   description: "Single policy covering your entire family with shared sum insured",
-                  color: "bg-purple-50 text-purple-600",
-                  href: "/learn#health-insurance",
+                  bgColor: "from-purple-500 to-pink-600",
+                  lightBg: "bg-purple-50",
+                  accentColor: "text-purple-600",
+                  borderColor: "border-purple-200",
+                  badgeColor: "bg-purple-100 text-purple-800",
+                  href: "/blog/family-floater-vs-individual-health-plans",
+                  badge: "Family Plan",
                 },
                 {
                   icon: UserRoundCog,
                   title: "Senior Citizen Insurance",
                   description: "Specialized health plans for parents and elderly family members",
-                  color: "bg-orange-50 text-orange-600",
-                  href: "/learn#health-insurance",
+                  bgColor: "from-orange-500 to-red-600",
+                  lightBg: "bg-orange-50",
+                  accentColor: "text-orange-600",
+                  borderColor: "border-orange-200",
+                  badgeColor: "bg-orange-100 text-orange-800",
+                  href: "/blog/best-health-insurance-plans-for-senior-citizens-in-2024",
+                  badge: "Senior Care",
                 },
               ].map((category, index) => (
-                <Card key={index} className="hover:shadow-lg transition-shadow cursor-pointer group">
-                  <CardContent className="p-6">
-                    <div
-                      className={`w-12 h-12 rounded-lg ${category.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}
-                    >
-                      <category.icon className="w-6 h-6" />
+                <Card key={index} className={`group hover:shadow-2xl transition-all duration-300 cursor-pointer border-2 ${category.borderColor} hover:scale-105 overflow-hidden relative`}>
+                  {/* Background gradient */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${category.bgColor} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
+                  
+                  <CardContent className="p-6 md:p-7 relative z-10">
+                    {/* Badge */}
+                    <div className={`inline-block ${category.badgeColor} px-3 py-1 rounded-full text-xs font-semibold mb-4 group-hover:scale-110 transition-transform`}>
+                      {category.badge}
                     </div>
-                    <h3 className="font-semibold text-lg mb-2">{category.title}</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{category.description}</p>
-                    <Button variant="link" className="mt-4 px-0" asChild>
-                      <Link href={category.href}>
-                        Learn more →
+
+                    {/* Icon Container */}
+                    <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${category.bgColor} flex items-center justify-center mb-5 group-hover:scale-125 transition-transform duration-300 shadow-lg`}>
+                      <category.icon className="w-8 h-8 text-white" />
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="font-bold text-xl md:text-lg mb-3 group-hover:text-primary transition-colors">{category.title}</h3>
+
+                    {/* Description */}
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-5 line-clamp-3">{category.description}</p>
+
+                    {/* Button */}
+                    <Button asChild className={`w-full bg-gradient-to-r ${category.bgColor} text-white hover:shadow-lg hover:scale-105 transition-all duration-300 font-semibold py-2.5 rounded-lg min-h-[44px]`}>
+                      <Link href={category.href} className="flex items-center justify-center gap-2">
+                        Learn more
+                        <ChevronRight className="w-4 h-4" />
                       </Link>
                     </Button>
                   </CardContent>

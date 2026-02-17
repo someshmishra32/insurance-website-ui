@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { WhatsAppButton } from "@/components/whatsapp-button"
 import { ExpertAdviceButton } from "@/components/expert-advice-button"
-import { ArrowRight, Shield, Heart, Building2, Users } from "lucide-react"
+import { ArrowRight, Shield, Heart, Building2, Users, ChevronRight } from "lucide-react"
 
 export const metadata = {
   title: "Learn Insurance - Complete Guide to Life & Health Insurance | Life Cover Now",
@@ -18,28 +18,44 @@ export default function LearnInsurancePage() {
       icon: Shield,
       title: "Term Plan vs Saving Plan",
       shortDesc: "Understand the fundamental difference between pure protection and investment-linked insurance",
-      color: "blue",
+      bgColor: "from-indigo-500 to-indigo-600",
+      accentColor: "text-indigo-600",
+      borderColor: "border-indigo-200",
+      badgeColor: "bg-indigo-100 text-indigo-800",
+      badge: "Life Insurance",
     },
     {
       id: "health-insurance",
       icon: Heart,
       title: "Health Insurance Explained",
       shortDesc: "Complete guide to medical coverage, family floater, critical illness and more",
-      color: "green",
+      bgColor: "from-teal-500 to-teal-600",
+      accentColor: "text-teal-600",
+      borderColor: "border-teal-200",
+      badgeColor: "bg-teal-100 text-teal-800",
+      badge: "Medical Coverage",
     },
     {
       id: "keyman-insurance",
       icon: Users,
       title: "KeyMan Insurance",
       shortDesc: "Protect your business from financial loss due to key employee death or disability",
-      color: "purple",
+      bgColor: "from-rose-500 to-rose-600",
+      accentColor: "text-rose-600",
+      borderColor: "border-rose-200",
+      badgeColor: "bg-rose-100 text-rose-800",
+      badge: "Business Protection",
     },
     {
       id: "corporate-insurance",
       icon: Building2,
       title: "Corporate Insurance",
       shortDesc: "Group health, life, and liability insurance solutions for businesses",
-      color: "orange",
+      bgColor: "from-amber-500 to-amber-600",
+      accentColor: "text-amber-600",
+      borderColor: "border-amber-200",
+      badgeColor: "bg-amber-100 text-amber-800",
+      badge: "Enterprise Plans",
     },
   ]
 
@@ -50,7 +66,7 @@ export default function LearnInsurancePage() {
       {/* Hero Section */}
       <section className="py-16 md:py-24 bg-gradient-to-b from-blue-50/50 to-background overflow-hidden">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-center">
             <div className="text-left animate-in fade-in slide-in-from-left duration-700">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-balance leading-tight">
                 Insurance Made Simple: <span className="text-primary">Learn What You Actually Need</span>
@@ -81,27 +97,43 @@ export default function LearnInsurancePage() {
       </section>
 
       {/* Quick Navigation Cards */}
-      <section className="py-12">
+      <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-7 mb-16">
             {insuranceTypes.map((type) => {
               const Icon = type.icon
               return (
                 <Card
                   key={type.id}
-                  className="hover:shadow-lg transition-all cursor-pointer group border-2 hover:border-primary"
+                  className={`group hover:shadow-2xl transition-all duration-300 cursor-pointer border-2 ${type.borderColor} hover:scale-105 overflow-hidden relative`}
                 >
-                  <CardContent className="p-6">
-                    <div className={`w-12 h-12 rounded-lg bg-${type.color}-100 flex items-center justify-center mb-4`}>
-                      <Icon className={`w-6 h-6 text-${type.color}-600`} />
+                  {/* Background gradient */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${type.bgColor} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
+                  
+                  <CardContent className="p-6 md:p-7 relative z-10">
+                    {/* Badge */}
+                    <div className={`inline-block ${type.badgeColor} px-3 py-1 rounded-full text-xs font-semibold mb-4 group-hover:scale-110 transition-transform`}>
+                      {type.badge}
                     </div>
-                    <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">
+
+                    {/* Icon Container */}
+                    <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${type.bgColor} flex items-center justify-center mb-5 group-hover:scale-125 transition-transform duration-300 shadow-lg`}>
+                      <Icon className="w-8 h-8 text-white" />
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="font-bold text-xl md:text-lg mb-3 group-hover:text-primary transition-colors">
                       {type.title}
                     </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed mb-4">{type.shortDesc}</p>
-                    <Button variant="link" className="px-0 group-hover:gap-2 transition-all" asChild>
-                      <a href={`#${type.id}`}>
-                        Learn More <ArrowRight className="w-4 h-4 ml-1" />
+
+                    {/* Description */}
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-5 line-clamp-3">{type.shortDesc}</p>
+
+                    {/* Button */}
+                    <Button asChild className={`w-full bg-gradient-to-r ${type.bgColor} text-white hover:shadow-lg hover:scale-105 transition-all duration-300 font-semibold py-2.5 rounded-lg min-h-[44px]`}>
+                      <a href={`#${type.id}`} className="flex items-center justify-center gap-2">
+                        Learn More
+                        <ChevronRight className="w-4 h-4" />
                       </a>
                     </Button>
                   </CardContent>

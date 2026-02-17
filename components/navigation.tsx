@@ -46,21 +46,21 @@ export function Navigation() {
       </a>
 
       <nav className="border-b bg-background sticky top-0 z-50 backdrop-blur-sm bg-background/95">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
+        <div className="container mx-auto px-4 py-3 md:py-4">
+          <div className="flex items-center justify-between min-h-[56px]">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2 text-2xl font-bold text-primary">
-              <img src="/logo.png" alt="Life Cover Now Logo" className="h-8 w-auto" />
-              Life Cover Now
+            <Link href="/" className="flex items-center gap-2 text-xl md:text-2xl font-bold text-primary shrink-0">
+              <img src="/logo.png" alt="Life Cover Now Logo" className="h-7 md:h-8 w-auto" />
+              <span className="hidden sm:inline">Life Cover Now</span>
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-6">
+            <div className="hidden lg:flex items-center gap-6 md:gap-8">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-base font-medium transition-colors border-b-2 py-1 ${isActive(link.href)
+                  className={`text-sm md:text-base font-medium transition-colors border-b-2 py-2 min-h-[44px] flex items-center ${isActive(link.href)
                     ? "text-primary border-primary"
                     : "text-foreground/60 border-transparent hover:text-primary hover:border-primary/50"
                     }`}
@@ -70,14 +70,14 @@ export function Navigation() {
               ))}
 
               <DropdownMenu>
-                <DropdownMenuTrigger className="flex items-center gap-1 text-base font-medium text-foreground/60 hover:text-primary transition-colors outline-hidden border-b-2 border-transparent py-1 hover:border-primary/50">
+                <DropdownMenuTrigger className="flex items-center gap-1 text-sm md:text-base font-medium text-foreground/60 hover:text-primary transition-colors outline-hidden border-b-2 border-transparent py-2 hover:border-primary/50 min-h-[44px]">
                   Tools
                   <ChevronDown className="w-4 h-4" />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="w-56">
                   {toolsLinks.map((link) => (
                     <DropdownMenuItem key={link.href} asChild>
-                      <Link href={link.href} className="cursor-pointer transition-colors hover:bg-accent">
+                      <Link href={link.href} className="cursor-pointer transition-colors hover:bg-accent min-h-[44px] flex items-center">
                         {link.label}
                       </Link>
                     </DropdownMenuItem>
@@ -90,9 +90,10 @@ export function Navigation() {
 
             {/* Mobile Menu Button */}
             <button
-              className="lg:hidden p-3 min-h-[44px] min-w-[44px] flex items-center justify-center"
+              className="lg:hidden p-2 md:p-3 min-h-[48px] min-w-[48px] flex items-center justify-center rounded-md hover:bg-muted transition-colors"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle menu"
+              aria-expanded={mobileMenuOpen}
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -100,13 +101,13 @@ export function Navigation() {
 
           {/* Mobile Menu */}
           {mobileMenuOpen && (
-            <div className="lg:hidden pt-4 pb-4 border-t mt-4">
-              <div className="flex flex-col gap-4">
+            <div className="lg:hidden pt-4 pb-6 border-t mt-4">
+              <div className="flex flex-col gap-2">
                 {navLinks.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
-                    className={`text-base font-medium transition-colors py-3 px-4 rounded-md min-h-[44px] flex items-center ${isActive(link.href) ? "text-primary bg-primary/5" : "hover:text-primary hover:bg-muted"
+                    className={`text-base font-medium transition-colors py-3 px-4 rounded-md min-h-[48px] flex items-center ${isActive(link.href) ? "text-primary bg-primary/5" : "hover:text-primary hover:bg-muted"
                       }`}
                     onClick={() => setMobileMenuOpen(false)}
                   >
@@ -115,13 +116,13 @@ export function Navigation() {
                 ))}
 
                 {/* Mobile Tools Section */}
-                <div className="border-t pt-4">
-                  <p className="text-xs font-semibold text-muted-foreground mb-2">TOOLS</p>
+                <div className="border-t pt-4 mt-2">
+                  <p className="text-xs font-semibold text-muted-foreground mb-3 px-4">TOOLS</p>
                   {toolsLinks.map((link) => (
                     <Link
                       key={link.href}
                       href={link.href}
-                      className="block py-3 px-4 text-base hover:text-primary transition-colors min-h-[44px] flex items-center rounded-md hover:bg-muted"
+                      className="block py-3 px-4 text-base hover:text-primary transition-colors min-h-[48px] flex items-center rounded-md hover:bg-muted"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       {link.label}
@@ -129,7 +130,7 @@ export function Navigation() {
                   ))}
                 </div>
 
-                <div className="pt-4 border-t">
+                <div className="pt-4 border-t mt-2">
                   <WhatsAppButton />
                 </div>
               </div>

@@ -40,7 +40,7 @@ export default function TestimonialsPage() {
     <div className="min-h-screen">
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-b from-primary/5 to-background py-20 overflow-hidden">
+      <section className="relative bg-gradient-to-b from-primary/5 to-background py-16 md:py-24 overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <img
             src="/images/testimonials_grid.png"
@@ -66,7 +66,7 @@ export default function TestimonialsPage() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-12 bg-muted/50">
+      <section className="py-12 md:py-16 bg-muted/50">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
             {stats.map((stat, index) => (

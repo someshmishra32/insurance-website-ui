@@ -2,9 +2,9 @@ import Link from "next/link"
 
 export function Footer() {
     return (
-        <footer className="bg-muted/30 py-12 border-t">
+        <footer className="bg-muted/30 py-12 md:py-16 border-t">
             <div className="container mx-auto px-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-10 mb-8 md:mb-12">
                     <div>
                         <div className="flex items-center gap-2 mb-4">
                             <img src="/logo.png" alt="Life Cover Now Logo" className="h-6 w-auto" />
@@ -15,8 +15,8 @@ export function Footer() {
                         </p>
                     </div>
                     <div>
-                        <h4 className="font-semibold mb-4">Insurance Types</h4>
-                        <ul className="space-y-2 text-sm">
+                        <h4 className="font-semibold mb-4 text-base">Insurance Types</h4>
+                        <ul className="space-y-3 text-sm">
                             <li>
                                 <Link href="/compare?tab=term" className="text-muted-foreground hover:text-primary transition-colors">
                                     Term Insurance
@@ -40,8 +40,8 @@ export function Footer() {
                         </ul>
                     </div>
                     <div>
-                        <h4 className="font-semibold mb-4">Resources</h4>
-                        <ul className="space-y-2 text-sm">
+                        <h4 className="font-semibold mb-4 text-base">Resources</h4>
+                        <ul className="space-y-3 text-sm">
                             <li>
                                 <Link href="/blog" className="text-muted-foreground hover:text-primary transition-colors">
                                     Learning Hub
@@ -60,14 +60,14 @@ export function Footer() {
                         </ul>
                     </div>
                     <div>
-                        <h4 className="font-semibold mb-4">Contact</h4>
-                        <ul className="space-y-2 text-sm text-muted-foreground">
+                        <h4 className="font-semibold mb-4 text-base">Contact</h4>
+                        <ul className="space-y-3 text-sm text-muted-foreground">
                             <li>Email: contact@lifecovernow.in</li>
                             <li>Phone: +91 70211 55995</li>
                         </ul>
                     </div>
                 </div>
-                <div className="pt-8 border-t text-center text-sm text-muted-foreground space-y-2">
+                <div className="pt-8 md:pt-12 border-t text-center text-xs md:text-sm text-muted-foreground space-y-2 md:space-y-3">
                     <p className="leading-relaxed">
                         <strong>Disclaimer:</strong> Insurance is subject to terms and conditions. Information provided is for
                         educational purposes only. We are associated with a licensed insurance broker.
