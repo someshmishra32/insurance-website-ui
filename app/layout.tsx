@@ -19,20 +19,7 @@ export const metadata: Metadata = {
     "insurance advisor India, independent insurance expert, term insurance comparison, health insurance plans, family floater insurance, insurance consultant, best insurance advisor, ULIP plans, investment insurance",
   generator: "v0.app",
   icons: {
-    icon: [
-      {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/icon-dark-32x32.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
-      },
-    ],
+    icon: "/icon.svg",
     apple: "/apple-icon.png",
   },
 }
