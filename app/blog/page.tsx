@@ -283,10 +283,10 @@ export default function BlogPage() {
 
                   <div className="hidden lg:block">
                     <div className="sticky top-24 ml-4">
-                      <div className="grid grid-cols-2 gap-4 items-center">
-                        {/* Image Section */}
-                        <div className="flex justify-center">
-                          <div className="w-full h-56 bg-gradient-to-br from-blue-100 to-orange-100 rounded-lg flex items-center justify-center overflow-hidden">
+                      <div className="flex flex-col h-full">
+                        {/* Image Section - Full Width Top */}
+                        <div className="flex justify-center mb-4">
+                          <div className="w-full h-64 bg-gradient-to-br from-blue-100 to-orange-100 rounded-lg flex items-center justify-center overflow-hidden">
                             <img 
                               src="/images/personalized-advice-illustration.png" 
                               alt="Personalized Advice" 
@@ -295,18 +295,22 @@ export default function BlogPage() {
                           </div>
                         </div>
                         
-                        {/* Advice Card */}
-                        <div>
-                          <Card className="bg-primary text-primary-foreground">
-                            <CardContent className="p-4">
-                              <h3 className="text-lg font-bold mb-2">Need Personalized Advice?</h3>
-                              <p className="text-xs mb-3 opacity-90 leading-relaxed">
-                                Talk to an expert and get recommendations tailored to your needs.
-                              </p>
-                              <ExpertAdviceButton variant="secondary" className="w-full mb-2 text-sm">
-                                Get Free Consultation
-                              </ExpertAdviceButton>
-                              <WhatsAppButton variant="secondary" className="w-full text-sm" />
+                        {/* Advice Card - Below Image, Full Width */}
+                        <div className="flex-grow">
+                          <Card className="bg-primary text-primary-foreground h-full">
+                            <CardContent className="p-6 flex flex-col justify-between h-full">
+                              <div>
+                                <h3 className="text-lg font-bold mb-3">Need Personalized Advice?</h3>
+                                <p className="text-sm mb-4 opacity-90 leading-relaxed">
+                                  Talk to an expert and get recommendations tailored to your needs.
+                                </p>
+                              </div>
+                              <div className="space-y-2">
+                                <ExpertAdviceButton variant="secondary" className="w-full text-sm py-2">
+                                  Get Free Consultation
+                                </ExpertAdviceButton>
+                                <WhatsAppButton variant="secondary" className="w-full text-sm py-2" />
+                              </div>
                             </CardContent>
                           </Card>
                         </div>
