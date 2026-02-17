@@ -183,19 +183,35 @@ export function BlogContent({ initialPosts }: BlogContentProps) {
                                     </div>
 
                                     <div className="hidden lg:block">
-                                        <div className="sticky top-24">
-                                            <Card className="bg-primary text-primary-foreground">
-                                                <CardContent className="p-6">
-                                                    <h3 className="text-xl font-bold mb-3">Need Personalized Advice?</h3>
-                                                    <p className="text-sm mb-4 opacity-90 leading-relaxed">
-                                                        Talk to an expert and get recommendations tailored to your needs.
-                                                    </p>
-                                                    <ExpertAdviceButton variant="secondary" className="w-full mb-3">
-                                                        Get Free Consultation
-                                                    </ExpertAdviceButton>
-                                                    <WhatsAppButton variant="secondary" className="w-full" />
-                                                </CardContent>
-                                            </Card>
+                                        <div className="sticky top-24 ml-4">
+                                            <div className="grid grid-cols-2 gap-4 items-start">
+                                                {/* Image Section */}
+                                                <div className="flex justify-center">
+                                                    <div className="w-full bg-white rounded-lg flex items-center justify-center overflow-hidden border border-gray-200">
+                                                        <img 
+                                                            src="/images/personalized-advice-illustration.png" 
+                                                            alt="Personalized Advice" 
+                                                            className="w-full h-auto object-contain"
+                                                        />
+                                                    </div>
+                                                </div>
+                                                
+                                                {/* Advice Card */}
+                                                <div>
+                                                    <Card className="bg-primary text-primary-foreground h-full">
+                                                        <CardContent className="p-4 flex flex-col justify-center">
+                                                            <h3 className="text-base font-bold mb-2">Need Personalized Advice?</h3>
+                                                            <p className="text-xs mb-3 opacity-90 leading-relaxed">
+                                                                Talk to an expert and get recommendations tailored to your needs.
+                                                            </p>
+                                                            <ExpertAdviceButton variant="secondary" className="w-full mb-2 text-xs py-1">
+                                                                Get Free Consultation
+                                                            </ExpertAdviceButton>
+                                                            <WhatsAppButton variant="secondary" className="w-full text-xs py-1" />
+                                                        </CardContent>
+                                                    </Card>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
