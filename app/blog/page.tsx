@@ -51,9 +51,16 @@ export default function BlogPage() {
     <div className="min-h-screen">
 
       {/* Mission 2047 Featured Hero */}
-      <section className="relative py-16 md:py-24 bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 text-white overflow-hidden">
+      <section className="relative py-16 md:py-24 text-white overflow-hidden" style={{
+        backgroundImage: 'url(/insuranceforall.png)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed'
+      }}>
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-black/40 z-0"></div>
         {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 opacity-10 z-0">
           <div className="absolute top-10 left-10 w-64 h-64 border-2 border-white rounded-full"></div>
           <div className="absolute bottom-10 right-10 w-96 h-96 border-2 border-white rounded-full"></div>
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full">

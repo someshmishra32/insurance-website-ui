@@ -24,7 +24,7 @@ export function LeadCaptureForm({ defaultInterest, onSuccess }: LeadCaptureFormP
     email: "",
     phone: "",
     insuranceType: defaultInterest || "",
-    currentCoverage: "",
+    preferredDateTime: "",
     specificNeeds: "",
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -66,6 +66,17 @@ export function LeadCaptureForm({ defaultInterest, onSuccess }: LeadCaptureFormP
       errors.phone = "Please enter a valid 10-digit Indian mobile number starting with 6, 7, 8, or 9"
     }
 
+    // Preferred date and time validation
+    if (!formData.preferredDateTime.trim()) {
+      errors.preferredDateTime = "Preferred date and time is required"
+    } else {
+      const selectedDateTime = new Date(formData.preferredDateTime)
+      const now = new Date()
+      if (selectedDateTime <= now) {
+        errors.preferredDateTime = "Please select a future date and time"
+      }
+    }
+
     setFieldErrors(errors)
     return Object.keys(errors).length === 0
   }
@@ -89,7 +100,7 @@ export function LeadCaptureForm({ defaultInterest, onSuccess }: LeadCaptureFormP
           email: formData.email,
           phone: formData.phone,
           insuranceType: formData.insuranceType,
-          currentCoverage: formData.currentCoverage,
+          preferredDateTime: formData.preferredDateTime,
           specificNeeds: formData.specificNeeds,
           sourcePage: pathname,
           utm: getUTMParams(),
@@ -99,15 +110,13 @@ export function LeadCaptureForm({ defaultInterest, onSuccess }: LeadCaptureFormP
       const data = await response.json()
 
       if (!response.ok) {
-        const errorData = await response.json()
-
-        if (response.status === 400 && errorData.fieldErrors) {
+        if (response.status === 400 && data.fieldErrors) {
           // Handle field-specific validation errors
-          setFieldErrors(errorData.fieldErrors)
-          throw new Error(errorData.error || "Please check the form for errors")
+          setFieldErrors(data.fieldErrors)
+          throw new Error(data.error || "Please check the form for errors")
         }
 
-        throw new Error(errorData.error || "Failed to submit form")
+        throw new Error(data.error || "Failed to submit form")
       }
 
       trackConversionEvent("form_submitted", formData.insuranceType, 1, data.leadId)
@@ -125,7 +134,7 @@ export function LeadCaptureForm({ defaultInterest, onSuccess }: LeadCaptureFormP
           email: "",
           phone: "",
           insuranceType: "",
-          currentCoverage: "",
+          preferredDateTime: "",
           specificNeeds: "",
         })
         setStep("select")
@@ -272,14 +281,24 @@ export function LeadCaptureForm({ defaultInterest, onSuccess }: LeadCaptureFormP
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="currentCoverage">Current Insurance Coverage (Optional)</Label>
+                <Label htmlFor="preferredDateTime">Preferred Date and Time *</Label>
                 <Input
-                  id="currentCoverage"
-                  placeholder="e.g., 10 Lakh health insurance from XYZ"
-                  value={formData.currentCoverage}
-                  onChange={(e) => setFormData({ ...formData, currentCoverage: e.target.value })}
+                  id="preferredDateTime"
+                  type="datetime-local"
+                  value={formData.preferredDateTime}
+                  onChange={(e) => {
+                    setFormData({ ...formData, preferredDateTime: e.target.value })
+                    if (fieldErrors.preferredDateTime) {
+                      setFieldErrors({ ...fieldErrors, preferredDateTime: "" })
+                    }
+                  }}
+                  required
                   disabled={isSubmitting}
+                  className={fieldErrors.preferredDateTime ? "border-destructive" : ""}
                 />
+                {fieldErrors.preferredDateTime && (
+                  <p className="text-sm text-destructive">{fieldErrors.preferredDateTime}</p>
+                )}
               </div>
 
               <div className="space-y-2">

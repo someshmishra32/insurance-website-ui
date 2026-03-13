@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { ScheduleCallButton } from "@/components/schedule-call-button"
+import { EnhancedCalculator } from "@/components/enhanced-calculator"
 
 export function CalculatorPageClient() {
   return (
@@ -22,10 +23,10 @@ export function CalculatorPageClient() {
                 <Calculator className="h-10 w-10 text-primary" />
               </div>
               <h1 className="mb-6 text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-balance leading-tight">
-                Smart Insurance <span className="text-primary">Needs Calculator</span>
+                Smart Insurance & <span className="text-primary">Pension Calculator</span>
               </h1>
               <p className="text-xl text-muted-foreground text-pretty mb-8 leading-relaxed max-w-xl">
-                Get personalized recommendations for term life insurance and health insurance coverage based on your unique financial situation and goals.
+                Get personalized recommendations for insurance coverage and retirement planning based on your unique financial situation and goals.
               </p>
               <div className="flex flex-wrap gap-4">
                 <ScheduleCallButton size="lg" />
@@ -35,7 +36,7 @@ export function CalculatorPageClient() {
               </div>
             </div>
             <div className="relative animate-in fade-in slide-in-from-right duration-1000">
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl border-8 border-white bg-white transform lg:rotate-2 hover:rotate-0 transition-transform duration-500">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl border-8 border-background dark:border-slate-800 bg-background dark:bg-slate-800 transform lg:rotate-2 hover:rotate-0 transition-transform duration-500">
                 <img
                   src="/images/life_insurance_calculator.png"
                   alt="Life Insurance Calculator"
@@ -54,9 +55,10 @@ export function CalculatorPageClient() {
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-4xl">
             <Tabs id="calculator-tabs" defaultValue="insurance" className="space-y-6">
-              <TabsList className="grid w-full grid-cols-2">
+              <TabsList className="grid w-full grid-cols-3">
                 <TabsTrigger value="insurance">Life Insurance</TabsTrigger>
                 <TabsTrigger value="health">Health Insurance</TabsTrigger>
+                <TabsTrigger value="enhanced">Smart Pension Calculator</TabsTrigger>
               </TabsList>
 
               <TabsContent value="insurance">
@@ -65,6 +67,10 @@ export function CalculatorPageClient() {
 
               <TabsContent value="health">
                 <HealthInsuranceCalculator />
+              </TabsContent>
+
+              <TabsContent value="enhanced">
+                <EnhancedCalculator />
               </TabsContent>
             </Tabs>
           </div>

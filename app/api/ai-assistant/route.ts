@@ -1,53 +1,91 @@
-import { streamText, convertToModelMessages, type UIMessage } from "ai"
+import { NextRequest, NextResponse } from "next/server"
+import { aiService, type ChatMessage } from "@/lib/ai-service"
 
 export const maxDuration = 30
 
-const SYSTEM_PROMPT = `You are an insurance education assistant for an independent insurance advisory website in India. Your role is to:
-
-1. EDUCATE users about insurance concepts, not sell products
-2. Explain insurance terms in simple language
-3. Help users understand differences between insurance types
-4. Guide users on claims process and documentation
-5. Answer questions about IRDAI regulations and consumer rights
-
-CRITICAL RULES:
-- NEVER recommend a specific insurance company or product
-- NEVER provide exact premium quotes or policy names
-- ALWAYS suggest consulting a licensed advisor for specific recommendations
-- Stay within scope of general insurance education
-- If asked about specific products, redirect to general category education
-- For complex queries, suggest scheduling a call with a human expert
-
-ALLOWED TOPICS:
-- Insurance concepts (term, health, ULIP, endowment)
-- Differences between policy types
-- Claims process and documentation
-- Riders and add-ons explanation
-- GST and tax benefits (general information)
-- Red flags in policies (co-pay, room rent, sub-limits)
-- Mission 2047 and Bima Trinity initiatives
-
-FORBIDDEN:
-- Recommending specific insurers
-- Providing exact premium calculations
-- Guaranteeing claim approval
-- Making misleading statements about returns
-- Political commentary
-
-Keep responses concise (2-3 paragraphs max). Use Indian context and examples.`
-
-export async function POST(req: Request) {
-  const { messages }: { messages: UIMessage[] } = await req.json()
-
-  const prompt = convertToModelMessages(messages)
-
-  const result = streamText({
-    model: "openai/gpt-5-mini",
-    system: SYSTEM_PROMPT,
-    messages: prompt,
-    maxOutputTokens: 500,
-    temperature: 0.7,
-  })
-
-  return result.toUIMessageStreamResponse()
+interface AIAssistantRequest {
+  // Primary documented field in README
+  message?: string
+  // Optional extended history support
+  messages?: Array<{ role: "user" | "assistant"; content: string }>
 }
+
+/**
+ * POST /api/ai-assistant
+ *
+ * Public AI assistant endpoint documented in the README.
+ * Accepts either:
+ *   - { "message": "..." }                        // simple usage (README)
+ *   - { "message": "...", "messages": [...] }    // with limited history
+ *
+ * Returns: { success: boolean, message: string }
+ */
+export async function POST(request: NextRequest) {
+  try {
+    const body = (await request.json()) as AIAssistantRequest
+
+    const singleMessage = body.message
+    const history = Array.isArray(body.messages) ? body.messages : []
+
+    if (!singleMessage || typeof singleMessage !== "string") {
+      return NextResponse.json(
+        { success: false, error: "Invalid request: 'message' string is required" },
+        { status: 400 }
+      )
+    }
+
+    // Sanitize and limit history to last 10 messages
+    const sanitizedHistory: ChatMessage[] = history
+      .map((msg) => ({
+        role: msg.role === "assistant" ? "assistant" : "user",
+        content: String(msg.content).substring(0, 2000),
+      }))
+      .slice(-10)
+
+    const conversation: ChatMessage[] = [
+      ...sanitizedHistory,
+      {
+        role: "user",
+        content: singleMessage.substring(0, 2000),
+      },
+    ]
+
+    const response = await aiService.chat(conversation)
+
+    return NextResponse.json(
+      {
+        success: true,
+        message: response,
+      },
+      { status: 200 }
+    )
+  } catch (error) {
+    console.error("[AI Assistant API] Error:", error)
+
+    let errorMessage = "Failed to process AI assistant request"
+    let userMessage =
+      "I apologize, but I encountered an error processing your request. Please try again or contact support if the problem persists."
+
+    if (error instanceof Error) {
+      errorMessage = error.message
+      if (error.message.includes("Invalid API key")) {
+        userMessage =
+          "⚠️ There's an issue with the AI API key configuration. Please ensure OPENAI_API_KEY is correctly set in .env.local and the server has been restarted."
+      } else if (error.message.includes("Rate limit")) {
+        userMessage = "I'm receiving too many requests right now. Please wait a moment and try again."
+      } else if (error.message.includes("unavailable")) {
+        userMessage = "The AI service is temporarily unavailable. Please try again in a moment."
+      }
+    }
+
+    return NextResponse.json(
+      {
+        success: false,
+        error: errorMessage,
+        message: userMessage,
+      },
+      { status: 500 }
+    )
+  }
+}
+

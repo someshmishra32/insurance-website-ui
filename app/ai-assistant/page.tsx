@@ -1,252 +1,134 @@
 "use client"
 
-import type React from "react"
-
-import { useState } from "react"
-import { Bot, Send } from "lucide-react"
+import { useRef } from "react"
+import { AIChatAssistant, type AIChatAssistantHandle } from "@/components/ai-chat-assistant"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { AlertCircle } from "lucide-react"
+import { CheckCircle, Zap, Shield } from "lucide-react"
 
-const faqDatabase = {
-  "what is term insurance":
-    "Term insurance is pure life cover without savings. It pays your nominees if you pass away during the policy term. It's the most affordable life insurance option, ideal for income replacement and debt protection.",
-  "difference between term and ulip":
-    "Term insurance offers pure death cover at low cost. ULIP combines insurance + investment, with higher premiums. For pure protection, term is better. ULIPs are suitable only if you want both insurance and market-linked returns.",
-  "how much health insurance":
-    "For metro cities: ₹10-15L minimum. Tier 1 cities: ₹7-10L. Tier 2/3: ₹5-7L. Consider family size, age, and medical history. Add super top-up for high coverage at lower cost.",
-  "claim process":
-    "Life insurance: Notify insurer → Submit death certificate, policy docs, claim form → Investigation (if needed) → Settlement in 30-90 days. Health: Cashless at network hospitals or reimbursement at any hospital.",
-  "what is co-pay":
-    "Co-pay means you pay a percentage of every claim. E.g., 20% co-pay on ₹1L claim means you pay ₹20K, insurer pays ₹80K. Policies without co-pay are better but may cost slightly more.",
-  "room rent limit":
-    "Many policies limit room rent to 1-2% of sum insured. This can trigger proportionate deductions on entire bill if you choose expensive room. Look for policies with no room rent capping.",
-  "pre-existing disease":
-    "PED (Pre-Existing Disease) waiting period is 2-4 years in most health policies. Conditions you had before buying policy aren't covered initially. Some insurers offer lower waiting periods.",
-  rider:
-    "A rider is an add-on benefit to base policy. Common riders: Critical illness, accidental death, waiver of premium, hospital cash. Riders enhance coverage at additional cost.",
-}
+const POPULAR_QUESTIONS = [
+  "What is the difference between term and whole life insurance?",
+  "How much health insurance coverage do I need?",
+  "What is a critical illness rider?",
+  "How do I file an insurance claim?",
+  "What does co-payment mean?",
+  "What is the claim settlement process timeline?",
+]
 
 export default function AIAssistantPage() {
-  const [messages, setMessages] = useState<Array<{ role: string; text: string }>>([])
-  const [input, setInput] = useState("")
-  const [isTyping, setIsTyping] = useState(false)
+  const chatRef = useRef<AIChatAssistantHandle>(null)
 
-  const findAnswer = (query: string): string => {
-    const lowerQuery = query.toLowerCase()
-
-    // Find best match from FAQ database
-    for (const [key, answer] of Object.entries(faqDatabase)) {
-      if (lowerQuery.includes(key) || key.includes(lowerQuery)) {
-        return answer
-      }
+  const handleQuestionClick = async (question: string) => {
+    // Scroll to chat component
+    const chatElement = document.querySelector('[data-chat-assistant]')
+    if (chatElement) {
+      chatElement.scrollIntoView({ behavior: "smooth", block: "start" })
     }
 
-    // Default response
-    return "I apologize, but I don't have specific information about that. For detailed guidance, I recommend scheduling a consultation with our insurance expert who can provide personalized advice for your situation."
+    // Send the question to the AI Assistant
+    if (chatRef.current) {
+      try {
+        await chatRef.current.sendMessage(question)
+      } catch (error) {
+        console.error("Failed to send question:", error)
+      }
+    }
   }
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!input.trim()) return
-
-    const userMessage = input.trim()
-    setMessages((prev) => [...prev, { role: "user", text: userMessage }])
-    setInput("")
-    setIsTyping(true)
-
-    // Simulate typing delay
-    setTimeout(() => {
-      const answer = findAnswer(userMessage)
-      setMessages((prev) => [...prev, { role: "assistant", text: answer }])
-      setIsTyping(false)
-    }, 1000)
-  }
-
-  const quickQuestions = [
-    "What is term insurance?",
-    "Difference between term and ULIP",
-    "How much health insurance do I need?",
-    "What is co-pay?",
-    "Explain room rent limit",
-    "What is a rider?",
-  ]
-
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-b from-blue-50/50 dark:from-slate-900 to-background pt-8 pb-12">
+      <div className="container mx-auto px-4 max-w-4xl">
+        {/* Header */}
+        <div className="text-center mb-8">
+          <Badge className="mb-4 bg-primary/20 text-primary hover:bg-primary/30">
+            <Zap className="w-3 h-3 mr-1" />
+            AI-Powered Guidance
+          </Badge>
+          <h1 className="text-3xl md:text-4xl font-bold mb-3 text-foreground">
+            Insurance AI Assistant
+          </h1>
+          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
+            Get instant answers about insurance products, coverage, costs, and claims. Our AI
+            advisor provides personalized recommendations based on your needs.
+          </p>
+        </div>
 
-      {/* Hero Section */}
-      <section className="border-b bg-gradient-to-b from-primary/5 to-background py-16 md:py-24 overflow-hidden">
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="max-w-3xl animate-in fade-in slide-in-from-left duration-700">
-              <div className="inline-flex items-center justify-center p-4 bg-primary/10 rounded-2xl mb-6 shadow-sm">
-                <Bot className="h-10 w-10 text-primary" />
-              </div>
-              <h1 className="mb-6 text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-balance leading-tight">
-                Insurance <span className="text-primary">FAQ Assistant | Life Cover Now</span>
-              </h1>
-              <p className="text-xl text-muted-foreground text-pretty mb-8 leading-relaxed max-w-xl">
-                Get instant, accurate answers to your most pressing insurance questions. Our AI helps you demystify complex terms and hidden clauses.
+        {/* Features */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+          <Card className="border border-primary/20 bg-primary/5 dark:bg-primary/10">
+            <CardContent className="pt-6">
+              <CheckCircle className="w-8 h-8 text-primary mb-2" />
+              <h3 className="font-semibold text-sm">Instant Answers</h3>
+              <p className="text-xs text-muted-foreground mt-1">
+                Get responses in seconds, 24/7 availability
               </p>
-              <div className="mb-10 flex flex-wrap items-center gap-2">
-                <Badge variant="secondary" className="px-3 py-1 font-medium">Term Insurance</Badge>
-                <Badge variant="secondary" className="px-3 py-1 font-medium">Health Insurance</Badge>
-                <Badge variant="secondary" className="px-3 py-1 font-medium">Claims Process</Badge>
-                <Badge variant="secondary" className="px-3 py-1 font-medium">Policy Comparison</Badge>
-              </div>
-              <div className="flex flex-wrap gap-4">
-                <Button size="lg" onClick={() => document.getElementById('chat-section')?.scrollIntoView({ behavior: 'smooth' })}>
-                  Ask a Question
-                </Button>
-                <Button size="lg" variant="outline" asChild>
-                  <a href="/faq">Browse All FAQs</a>
-                </Button>
-              </div>
-            </div>
-            <div className="relative animate-in fade-in slide-in-from-right duration-1000">
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl border-8 border-white bg-white transform lg:rotate-3 hover:rotate-0 transition-transform duration-500">
-                <img
-                  src="/images/ai_assistant_hero.png"
-                  alt="AI Insurance Assistant"
-                  className="w-full h-auto"
-                />
-              </div>
-              <div className="absolute -top-12 -left-12 w-48 h-48 bg-primary/10 rounded-full blur-3xl -z-10" />
-              <div className="absolute -bottom-12 -right-12 w-64 h-64 bg-blue-100 rounded-full blur-3xl -z-10" />
-            </div>
-          </div>
-        </div>
-      </section>
+            </CardContent>
+          </Card>
 
-      {/* Chat Interface */}
-      <section id="chat-section" className="py-8">
-        <div className="container mx-auto px-4">
-          <div className="mx-auto max-w-4xl">
-            <Card>
-              <CardHeader>
-                <CardTitle>Ask Insurance Questions</CardTitle>
-                <CardDescription>Get answers to common insurance questions instantly</CardDescription>
-              </CardHeader>
-              <CardContent>
-                {/* Disclaimer */}
-                <div className="mb-4 flex gap-2 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm">
-                  <AlertCircle className="h-4 w-4 shrink-0 text-amber-600" />
-                  <p className="text-amber-800">
-                    <strong>Important:</strong> This assistant provides educational information only. Always consult a
-                    licensed advisor before purchasing insurance.
+          <Card className="border border-primary/20 bg-primary/5 dark:bg-primary/10">
+            <CardContent className="pt-6">
+              <Shield className="w-8 h-8 text-primary mb-2" />
+              <h3 className="font-semibold text-sm">Expert Knowledge</h3>
+              <p className="text-xs text-muted-foreground mt-1">
+                Trained on IRDAI guidelines and best practices
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="border border-primary/20 bg-primary/5 dark:bg-primary/10">
+            <CardContent className="pt-6">
+              <Zap className="w-8 h-8 text-primary mb-2" />
+              <h3 className="font-semibold text-sm">Download Chat</h3>
+              <p className="text-xs text-muted-foreground mt-1">
+                Save conversations for future reference
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Chat Component */}
+        <div data-chat-assistant>
+          <AIChatAssistant ref={chatRef} />
+        </div>
+
+        {/* FAQ Section */}
+        <div className="mt-12">
+          <h2 className="text-2xl font-bold mb-6 text-foreground">Popular Questions</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {POPULAR_QUESTIONS.map((question, i) => (
+              <Card
+                key={i}
+                onClick={() => handleQuestionClick(question)}
+                className="cursor-pointer hover:shadow-md hover:border-primary/50 transition-all duration-200 dark:hover:bg-slate-800 active:scale-95"
+              >
+                <CardContent className="pt-6">
+                  <p className="text-sm text-foreground hover:text-primary transition-colors">
+                    {question}
                   </p>
-                </div>
-
-                {/* Messages */}
-                <div className="mb-4 h-[400px] space-y-4 overflow-y-auto rounded-lg border p-4">
-                  {messages.length === 0 && (
-                    <div className="flex h-full flex-col items-center justify-center text-center text-muted-foreground">
-                      <Bot className="mb-4 h-12 w-12 opacity-50" />
-                      <p className="mb-2 font-semibold">Start a conversation</p>
-                      <p className="text-sm">Try asking:</p>
-                      <ul className="mt-2 space-y-1 text-sm">
-                        <li>• "What's the difference between term and ULIP?"</li>
-                        <li>• "How much health insurance do I need?"</li>
-                        <li>• "Explain co-pay and room rent limits"</li>
-                      </ul>
-                    </div>
-                  )}
-
-                  {messages.map((message, index) => (
-                    <div
-                      key={index}
-                      className={`flex gap-3 ${message.role === "user" ? "justify-end" : "justify-start"}`}
-                    >
-                      {message.role === "assistant" && (
-                        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground">
-                          <Bot className="h-4 w-4" />
-                        </div>
-                      )}
-                      <div
-                        className={`max-w-[80%] rounded-lg px-4 py-2 ${message.role === "user" ? "bg-primary text-primary-foreground" : "bg-muted"
-                          }`}
-                      >
-                        <p className="whitespace-pre-wrap text-sm">{message.text}</p>
-                      </div>
-                      {message.role === "user" && (
-                        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-muted">
-                          <span className="text-xs font-semibold">You</span>
-                        </div>
-                      )}
-                    </div>
-                  ))}
-
-                  {isTyping && (
-                    <div className="flex gap-3">
-                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground">
-                        <Bot className="h-4 w-4" />
-                      </div>
-                      <div className="flex items-center gap-2 rounded-lg bg-muted px-4 py-2">
-                        <div className="flex gap-1">
-                          <div
-                            className="h-2 w-2 rounded-full bg-muted-foreground animate-bounce"
-                            style={{ animationDelay: "0ms" }}
-                          ></div>
-                          <div
-                            className="h-2 w-2 rounded-full bg-muted-foreground animate-bounce"
-                            style={{ animationDelay: "150ms" }}
-                          ></div>
-                          <div
-                            className="h-2 w-2 rounded-full bg-muted-foreground animate-bounce"
-                            style={{ animationDelay: "300ms" }}
-                          ></div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-                {/* Input Form */}
-                <form onSubmit={handleSubmit} className="flex gap-2">
-                  <Input
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)}
-                    placeholder="Ask a question about insurance..."
-                    className="flex-1"
-                  />
-                  <Button type="submit" disabled={!input.trim()}>
-                    <Send className="h-4 w-4" />
-                  </Button>
-                </form>
-
-                {/* Sample Questions */}
-                <div className="mt-4">
-                  <p className="mb-2 text-sm font-semibold">Quick Questions:</p>
-                  <div className="flex flex-wrap gap-2">
-                    {quickQuestions.map((q) => (
-                      <Button
-                        key={q}
-                        variant="outline"
-                        size="sm"
-                        type="button"
-                        onClick={() => {
-                          setInput(q)
-                          setMessages((prev) => [...prev, { role: "user", text: q }])
-                          setIsTyping(true)
-                          setTimeout(() => {
-                            setMessages((prev) => [...prev, { role: "assistant", text: findAnswer(q) }])
-                            setIsTyping(false)
-                          }, 1000)
-                        }}
-                      >
-                        {q}
-                      </Button>
-                    ))}
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
-      </section>
+
+        {/* CTA Section */}
+        <Card className="mt-12 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/30 border-blue-200 dark:border-blue-900">
+          <CardContent className="pt-8">
+            <h3 className="text-lg font-semibold mb-2 text-foreground">Need Expert Assistance?</h3>
+            <p className="text-muted-foreground mb-4">
+              While our AI assistant provides helpful information, for personalized recommendations
+              and policy-specific details, we recommend consulting with our insurance experts.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <button className="px-6 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors font-medium">
+                Schedule Expert Consultation
+              </button>
+              <button className="px-6 py-2 border border-primary text-primary rounded-lg hover:bg-primary/10 transition-colors font-medium">
+                WhatsApp Support
+              </button>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   )
 }

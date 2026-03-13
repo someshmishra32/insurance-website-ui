@@ -187,7 +187,7 @@ export function BlogContent({ initialPosts }: BlogContentProps) {
                                             <div className="flex flex-col h-full">
                                                 {/* Image Section - Full Width Top */}
                                                 <div className="flex justify-center mb-4">
-                                                    <div className="w-full bg-white rounded-lg flex items-center justify-center overflow-hidden border border-gray-200">
+                                                    <div className="w-full bg-background dark:bg-slate-800 rounded-lg flex items-center justify-center overflow-hidden border border-gray-200 dark:border-gray-700">
                                                         <img 
                                                             src="/images/personalized-advice-illustration.png" 
                                                             alt="Personalized Advice" 
