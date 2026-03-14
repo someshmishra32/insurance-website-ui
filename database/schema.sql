@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS leads (
   email VARCHAR(255) NOT NULL,
   phone VARCHAR(20) NOT NULL,
   insurance_type VARCHAR(100) NOT NULL,
-  current_coverage TEXT,
+  preferred_datetime TIMESTAMP,
   specific_needs TEXT,
   source_page TEXT NOT NULL,
   utm_source TEXT,
@@ -69,7 +69,7 @@ COMMENT ON COLUMN leads.name IS 'Full name of the lead';
 COMMENT ON COLUMN leads.email IS 'Email address (unique)';
 COMMENT ON COLUMN leads.phone IS 'Indian mobile number (10 digits, starts with 6-9)';
 COMMENT ON COLUMN leads.insurance_type IS 'Type of insurance interested in';
-COMMENT ON COLUMN leads.current_coverage IS 'Current insurance coverage details';
+COMMENT ON COLUMN leads.preferred_datetime IS 'Preferred date and time for consultation';
 COMMENT ON COLUMN leads.specific_needs IS 'Specific questions or concerns';
 COMMENT ON COLUMN leads.source_page IS 'Page from which the form was submitted';
 COMMENT ON COLUMN leads.utm_source IS 'UTM source parameter';

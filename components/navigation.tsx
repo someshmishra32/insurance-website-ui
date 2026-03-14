@@ -3,9 +3,11 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { WhatsAppButton } from "@/components/whatsapp-button"
+
 import { Menu, X, ChevronDown } from "lucide-react"
 import { useState } from "react"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { motion, AnimatePresence } from "framer-motion"
 
 export function Navigation() {
   const pathname = usePathname()
@@ -85,6 +87,7 @@ export function Navigation() {
                 </DropdownMenuContent>
               </DropdownMenu>
 
+
               <WhatsAppButton />
             </div>
 
@@ -100,42 +103,78 @@ export function Navigation() {
           </div>
 
           {/* Mobile Menu */}
-          {mobileMenuOpen && (
-            <div className="lg:hidden pt-4 pb-6 border-t mt-4">
-              <div className="flex flex-col gap-2">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className={`text-base font-medium transition-colors py-3 px-4 rounded-md min-h-[48px] flex items-center ${isActive(link.href) ? "text-primary bg-primary/5" : "hover:text-primary hover:bg-muted"
-                      }`}
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-
-                {/* Mobile Tools Section */}
-                <div className="border-t pt-4 mt-2">
-                  <p className="text-xs font-semibold text-muted-foreground mb-3 px-4">TOOLS</p>
-                  {toolsLinks.map((link) => (
-                    <Link
+          <AnimatePresence>
+            {mobileMenuOpen && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.3 }}
+                className="lg:hidden pt-4 pb-6 border-t mt-4 overflow-hidden"
+              >
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.1 }}
+                  className="flex flex-col gap-2"
+                >
+                  {navLinks.map((link, index) => (
+                    <motion.div
                       key={link.href}
-                      href={link.href}
-                      className="block py-3 px-4 text-base hover:text-primary transition-colors min-h-[48px] flex items-center rounded-md hover:bg-muted"
-                      onClick={() => setMobileMenuOpen(false)}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.05 }}
                     >
-                      {link.label}
-                    </Link>
+                      <Link
+                        href={link.href}
+                        className={`text-base font-medium transition-colors py-3 px-4 rounded-md min-h-[48px] flex items-center ${isActive(link.href) ? "text-primary bg-primary/5" : "hover:text-primary hover:bg-muted"
+                          }`}
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        {link.label}
+                      </Link>
+                    </motion.div>
                   ))}
-                </div>
 
-                <div className="pt-4 border-t mt-2">
-                  <WhatsAppButton />
-                </div>
-              </div>
-            </div>
-          )}
+                  {/* Mobile Tools Section */}
+                  <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: navLinks.length * 0.05 }}
+                    className="border-t pt-4 mt-2"
+                  >
+                    <p className="text-xs font-semibold text-muted-foreground mb-3 px-4">TOOLS</p>
+                    {toolsLinks.map((link, index) => (
+                      <motion.div
+                        key={link.href}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: (navLinks.length + index) * 0.05 }}
+                      >
+                        <Link
+                          href={link.href}
+                          className="block py-3 px-4 text-base hover:text-primary transition-colors min-h-[48px] flex items-center rounded-md hover:bg-muted"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          {link.label}
+                        </Link>
+                      </motion.div>
+                    ))}
+                  </motion.div>
+
+                  <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: (navLinks.length + toolsLinks.length) * 0.05 }}
+                    className="pt-4 border-t mt-2 flex items-center gap-3"
+                  >
+
+                    <WhatsAppButton />
+                  </motion.div>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </nav>
     </>

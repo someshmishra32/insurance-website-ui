@@ -377,7 +377,7 @@ export default function Top5HealthInsuranceBlogPost() {
                     <ExpertAdviceButton size="lg" variant="secondary">
                       Get Free Expert Advice
                     </ExpertAdviceButton>
-                    <Button asChild size="lg" variant="outline" className="bg-white text-primary hover:bg-white/90">
+                    <Button asChild size="lg" variant="outline" className="bg-background dark:bg-slate-800 text-primary hover:bg-muted dark:hover:bg-slate-700">
                       <Link href="/compare">Compare Plans</Link>
                     </Button>
                   </div>

@@ -18,48 +18,55 @@ const handleBrochureDownload = (brochureUrl: string, companyName: string) => {
     alert(`${companyName} brochure link is not yet available. Please request it via WhatsApp or contact us for more information.`)
     return
   }
-  
+
   // Open brochure in new tab
   window.open(brochureUrl, '_blank')
 }
 
 // Enhanced data with detailed metrics
 const INSURANCE_COMPANIES = [
+  // TERM PLANS
   {
-    id: "hdfc-life",
+    id: "hdfc-life-term",
     company: "HDFC Life",
-    logo: "🏢",
+    logoDomain: "hdfclife.com",
     type: "term",
     established: 2000,
-    claimSettlement: 99.1,
+    claimSettlement: 99.68,
     avgApprovalTime: "15 mins",
     premiumRange: "₹8,456 - ₹45,000",
-    coverage: "₹25 Lakh - ₹1 Crore+",
+    coverage: "₹25 Lakh - ₹5 Crore+",
     taxBenefit: "80C - ₹1.5L/year",
     hospitalNetwork: 9500,
     plans: [
       {
-        id: "hdfc-click2protect",
-        name: "Click 2 Protect 3D Plus",
+        id: "hdfc-click2protect-term",
+        name: "Click 2 Protect Super",
         premium: "₹8,456/year",
         coverage: "₹1 Crore",
         term: "30 years",
         medicalExam: "No (up to ₹50L)",
         waitingPeriod: "30 days",
         features: ["Life Cover + Death Benefit", "Return of Premium Option", "Critical Illness Rider", "Accidental Death Benefit"],
-        advantages: ["No medical exam up to ₹50L", "Online approval in 15 mins", "Highest claim settlement"],
-        brochure: "https://example.com/hdfc-click2protect.pdf",
-        rating: 4.5,
+        advantages: ["No medical exam up to ₹50L", "Highest CSR 99.68%", "Online approval in 15 mins"],
+        brochure: "https://www.hdfclife.com/content/dam/hdfclifeterm/brochures/C2P3DPlus_Brochure.pdf",
+        rating: 4.8,
+        detailedFeatures: {
+          terminalIllness: "Included (Accelerated payout up to ₹2Cr)",
+          waiverOfPremium: "Covers 60 Critical Illnesses & Disability",
+          riders: "Accidental Death, Income Benefit, Critical Illness",
+          specialFeature: "Life Stage Benefit (Increase cover at marriage/birth)"
+        }
       },
     ],
   },
   {
-    id: "icici-prudential",
+    id: "icici-pru-term",
     company: "ICICI Prudential",
-    logo: "🏦",
+    logoDomain: "iciciprulife.com",
     type: "term",
     established: 1999,
-    claimSettlement: 98.5,
+    claimSettlement: 99.17,
     avgApprovalTime: "20 mins",
     premiumRange: "₹7,812 - ₹42,000",
     coverage: "₹25 Lakh - ₹2 Crore",
@@ -67,7 +74,7 @@ const INSURANCE_COMPANIES = [
     hospitalNetwork: 8800,
     plans: [
       {
-        id: "icici-iprotect",
+        id: "icici-iprotect-term",
         name: "iProtect Smart",
         premium: "₹7,812/year",
         coverage: "₹1 Crore",
@@ -75,19 +82,25 @@ const INSURANCE_COMPANIES = [
         medicalExam: "No (up to ₹50L)",
         waitingPeriod: "30 days",
         features: ["Flexible Payout Options", "Waiver of Premium", "Income Benefit Option", "Terminal Illness Cover"],
-        advantages: ["Family protection rider", "28-day waiting waiver", "Transparent pricing"],
-        brochure: "https://example.com/icici-iprotect.pdf",
-        rating: 4.6,
+        advantages: ["Family protection rider", "28-day waiting waiver", "High trust brand"],
+        brochure: "https://www.iciciprulife.com/content/dam/icicipru/brochures/iProtect-Smart-Brochure.pdf",
+        rating: 4.7,
+        detailedFeatures: {
+          terminalIllness: "100% Payout on diagnosis (Base SA)",
+          waiverOfPremium: "Waiver on Accidental Permanent Disability",
+          riders: "Covers 34 Critical Illnesses in base plan",
+          specialFeature: "Smart Exit (Premium refund after certain years)"
+        }
       },
     ],
   },
   {
-    id: "max-life",
-    company: "Max Life",
-    logo: "📊",
+    id: "max-life-term",
+    company: "Max Life (Axis Bank)",
+    logoDomain: "maxlife.in",
     type: "term",
     established: 2000,
-    claimSettlement: 99.3,
+    claimSettlement: 99.65,
     avgApprovalTime: "10 mins",
     premiumRange: "₹8,203 - ₹43,500",
     coverage: "₹25 Lakh - ₹1.5 Crore",
@@ -95,7 +108,7 @@ const INSURANCE_COMPANIES = [
     hospitalNetwork: 7500,
     plans: [
       {
-        id: "max-smart",
+        id: "max-smart-term",
         name: "Smart Secure Plus",
         premium: "₹8,203/year",
         coverage: "₹1 Crore",
@@ -103,93 +116,597 @@ const INSURANCE_COMPANIES = [
         medicalExam: "No (up to ₹40L)",
         waitingPeriod: "30 days",
         features: ["Monthly Income Option", "Terminal Illness Benefit", "Accidental TPD", "Critical Illness Rider"],
-        advantages: ["Best for young professionals", "AI underwriting", "Fastest approval"],
-        brochure: "https://example.com/max-smart.pdf",
-        rating: 4.7,
+        advantages: ["Fastest 10-min approval", "99.65% Claim Settlement", "Special 2025 AI underwriting"],
+        brochure: "https://www.maxlifeinsurance.com/content/dam/corporate/brochures/Smart-Secure-Plus-Brochure.pdf",
+        rating: 4.9,
+        detailedFeatures: {
+          terminalIllness: "Accelerated payout up to ₹1 Crore",
+          waiverOfPremium: "Covers 11 CI & 4 Disability types",
+          riders: "Critical Illness (up to 64 illnesses)",
+          specialFeature: "Cover Continuance (Premium deferral allowed)"
+        }
       },
     ],
   },
   {
-    id: "star-health",
-    company: "Star Health",
-    logo: "⭐",
-    type: "health",
-    established: 2007,
-    claimSettlement: 95.2,
-    avgApprovalTime: "30 mins",
-    premiumRange: "₹2,500 - ₹25,000",
-    coverage: "₹3 Lakh - ₹50 Lakh",
-    taxBenefit: "80D - ₹15,000/year",
-    hospitalNetwork: 13500,
+    id: "tata-aia-term",
+    company: "Tata AIA Life",
+    logoDomain: "tataaia.com",
+    type: "term",
+    established: 2001,
+    claimSettlement: 99.41,
+    avgApprovalTime: "12 mins",
+    premiumRange: "₹8,100 - ₹44,000",
+    coverage: "₹25 Lakh - ₹2 Crore+",
+    taxBenefit: "80C - ₹1.5L/year",
+    hospitalNetwork: 7000,
     plans: [
       {
-        id: "star-comprehensive",
-        name: "Comprehensive Health",
-        premium: "₹5,200/year",
-        coverage: "₹5 Lakh",
-        term: "1 year",
-        medicalExam: "Age based",
-        waitingPeriod: "30 days (pre-existing 2 years)",
-        features: ["Hospitalization", "Pre/Post hospitalization", "OPD Coverage", "Ambulance"],
-        advantages: ["Cashless at 13,500+ hospitals", "24x7 claim support", "No sub-limits on surgery"],
-        brochure: "https://example.com/star-comprehensive.pdf",
-        rating: 4.4,
+        id: "tata-mpp-term",
+        name: "Maha Raksha Supreme",
+        premium: "₹8,100/year",
+        coverage: "₹1 Crore",
+        term: "35 years",
+        medicalExam: "Tele-medical possible",
+        waitingPeriod: "30 days",
+        features: ["Life Cover + Life Stage Plus", "Accelerator Rider", "Return of Premium", "Payout on TPD"],
+        advantages: ["Tata Group Trust", "Flexible premium options", "99.41% Settlement"],
+        brochure: "https://tataaia.com/content/dam/tataaia/brochures/Maha_Raksha_Supreme_Brochure.pdf",
+        rating: 4.8,
+        detailedFeatures: {
+          terminalIllness: "50% Accelerated Sum Assured payout",
+          waiverOfPremium: "Comprehensive WOP on CI & TPD",
+          riders: "Accidental Disability & Death Riders",
+          specialFeature: "Whole Life Cover (Option up to 100 years)"
+        }
       },
     ],
   },
   {
-    id: "care-health",
-    company: "Care Health",
-    logo: "❤️",
-    type: "health",
-    established: 2011,
-    claimSettlement: 94.8,
+    id: "bajaj-life-term",
+    company: "Bajaj Allianz Life",
+    logoDomain: "bajajallianzlife.com",
+    type: "term",
+    established: 2001,
+    claimSettlement: 99.29,
+    avgApprovalTime: "18 mins",
+    premiumRange: "₹7,950 - ₹41,000",
+    coverage: "₹25 Lakh - ₹1.5 Crore",
+    taxBenefit: "80C - ₹1.5L/year",
+    hospitalNetwork: 6500,
+    plans: [
+      {
+        id: "bajaj-smart-term",
+        name: "Smart Protect Goal",
+        premium: "₹7,950/year",
+        coverage: "₹1 Crore",
+        term: "30 years",
+        medicalExam: "No (up to ₹30L)",
+        waitingPeriod: "30 days",
+        features: ["Return of Premium", "Child Education Extra", "Joint Life Option", "Add-on Critical Illness"],
+        advantages: ["Comprehensive 55 CI cover", "Fast claim processing", "Joint life option"],
+        brochure: "https://www.bajajallianzlife.com/content/dam/balic/brochures/Smart-Protect-Goal-Brochure.pdf",
+        rating: 4.6,
+        detailedFeatures: {
+          terminalIllness: "Included in base plan",
+          waiverOfPremium: "Available as add-on for 55 illnesses",
+          riders: "Child Education & Accidental Cover",
+          specialFeature: "Joint Life Option (Cover for both spouses)"
+        }
+      },
+    ],
+  },
+  {
+    id: "aditya-birla-term",
+    company: "Aditya Birla Sun Life",
+    logoDomain: "adityabirlasunlifeinsurance.com",
+    type: "term",
+    established: 2000,
+    claimSettlement: 98.74,
     avgApprovalTime: "25 mins",
-    premiumRange: "₹2,200 - ₹22,000",
-    coverage: "₹3 Lakh - ₹75 Lakh",
-    taxBenefit: "80D - ₹15,000/year",
-    hospitalNetwork: 12000,
+    premiumRange: "₹8,300 - ₹46,000",
+    coverage: "₹25 Lakh - ₹2 Crore",
+    taxBenefit: "80C - ₹1.5L/year",
+    hospitalNetwork: 6000,
     plans: [
       {
-        id: "care-suraksha",
-        name: "Care Suraksha Plus",
-        premium: "₹4,800/year",
-        coverage: "₹5 Lakh",
-        term: "1 year",
-        medicalExam: "Age based",
-        waitingPeriod: "30 days (pre-existing 2 years)",
-        features: ["Room Rent", "Diagnostics", "Day Care", "Pre-hospitalization"],
-        advantages: ["Wide hospital network", "Good claim settlement", "Affordable premiums"],
-        brochure: "https://example.com/care-suraksha.pdf",
-        rating: 4.3,
+        id: "aditya-digishield-term",
+        name: "DigiShield Plan",
+        premium: "₹8,300/year",
+        coverage: "₹1 Crore",
+        term: "30 years",
+        medicalExam: "Standard requirement",
+        waitingPeriod: "30 days",
+        features: ["Multiple plan options", "Enhanced life cover", "Terminal illness benefit", "Waiver of premium"],
+        advantages: ["10 customized variants", "Birla Group legacy", "Survival benefits"],
+        brochure: "https://lifeinsurance.adityabirlacapital.com/content/dam/adityabirla/lifeinsurance/brochures/DigiShield_Brochure.pdf",
+        rating: 4.5,
+        detailedFeatures: {
+          terminalIllness: "Acceleration based on life expectancy",
+          waiverOfPremium: "Standard CI & TPD waiver",
+          riders: "10 customized variants available",
+          specialFeature: "Survival Benefit (Monthly income option)"
+        }
       },
     ],
   },
+
+  // HEALTH PLANS
   {
-    id: "niva-bupa",
+    id: "niva-bupa-health",
     company: "Niva Bupa",
-    logo: "🏥",
+    logoDomain: "nivabupa.com",
     type: "health",
     established: 2009,
-    claimSettlement: 96.1,
+    claimSettlement: 92.4,
     avgApprovalTime: "20 mins",
     premiumRange: "₹3,000 - ₹28,000",
     coverage: "₹3 Lakh - ₹1 Crore",
     taxBenefit: "80D - ₹15,000/year",
-    hospitalNetwork: 14000,
+    hospitalNetwork: 10400,
     plans: [
       {
-        id: "niva-restore",
-        name: "Restore Health",
+        id: "niva-restore-health",
+        name: "ReAssure 2.0",
         premium: "₹5,500/year",
         coverage: "₹5 Lakh",
         term: "1 year",
         medicalExam: "Age based",
         waitingPeriod: "30 days (pre-existing 2 years)",
-        features: ["Cashless hospitalization", "OPD coverage", "Health checkup", "Mental health"],
-        advantages: ["Best for families", "Wellness benefits", "Highest coverage options"],
-        brochure: "https://example.com/niva-restore.pdf",
+        features: ["Lock-the-clock premium", "ReAssure benefit", "Live healthy discount", "Mental health"],
+        advantages: ["Best for families", "Wellness benefits", "Unlimited restoration"],
+        brochure: "https://www.nivabupa.com/content/dam/nivabupa/pdf/product-brochures/ReAssure-Brochure.pdf",
+        rating: 4.7,
+        detailedFeatures: {
+          ncb: "Booster+ (Carry forward up to 10x SI)",
+          restoration: "ReAssure+ (Unlimited, even for same illness)",
+          roomRent: "No Limit (Any room category)",
+          consumables: "Included via Claim Safeguard Plus"
+        }
+      },
+    ],
+  },
+  {
+    id: "hdfc-ergo-health",
+    company: "HDFC ERGO",
+    logoDomain: "hdfcergo.com",
+    type: "health",
+    established: 2002,
+    claimSettlement: 98.85,
+    avgApprovalTime: "30 mins",
+    premiumRange: "₹3,200 - ₹30,000",
+    coverage: "₹3 Lakh - ₹1 Crore",
+    taxBenefit: "80D - ₹15,000/year",
+    hospitalNetwork: 13000,
+    plans: [
+      {
+        id: "hdfc-ergo-optima-health",
+        name: "Optima Secure",
+        premium: "₹5,800/year",
+        coverage: "₹5 Lakh",
+        term: "1 year",
+        medicalExam: "Standard",
+        waitingPeriod: "30 days",
+        features: ["Secure Benefit", "Plus Benefit", "Restore Benefit", "Protect Benefit"],
+        advantages: ["4x coverage in 1 year", "No sub-limits", "98.85% CSR"],
+        brochure: "https://www.hdfcergo.com/content/dam/hdfcergo/documents/product-brochures/Optima-Secure-Brochure.pdf",
+        rating: 4.9,
+        detailedFeatures: {
+          ncb: "Multiplier Benefit (50% per year up to 100%)",
+          restoration: "100% Automatic restoration once a year",
+          roomRent: "No Room Rent Limit",
+          consumables: "Included under Protect Benefit"
+        }
+      },
+    ],
+  },
+  {
+    id: "icici-lombard-health",
+    company: "ICICI Lombard",
+    logoDomain: "icicilombard.com",
+    type: "health",
+    established: 2001,
+    claimSettlement: 98.45,
+    avgApprovalTime: "25 mins",
+    premiumRange: "₹3,100 - ₹29,000",
+    coverage: "₹3 Lakh - ₹1 Crore",
+    taxBenefit: "80D - ₹15,000/year",
+    hospitalNetwork: 10800,
+    plans: [
+      {
+        id: "icici-anytime-health",
+        name: "Health AdvantEdge",
+        premium: "₹5,400/year",
+        coverage: "₹5 Lakh",
+        term: "1 year",
+        medicalExam: "Not required <45y",
+        waitingPeriod: "30 days",
+        features: ["OPD Coverage", "Unlimited Restoration", "Free health checkup", "AYUSH treatment"],
+        advantages: ["Largest private network", "Fastest cashless approval", "Wellness discounts"],
+        brochure: "https://www.icicilombard.com/docs/default-source/product-documents/health-insurance/health-care-brochure.pdf",
+        rating: 4.8,
+        detailedFeatures: {
+          ncb: "Cumulative Bonus (20% per year)",
+          restoration: "Unlimited restoration (via add-on)",
+          roomRent: "Any Room category allowed",
+          consumables: "Covered via BeFit add-on"
+        }
+      },
+    ],
+  },
+  {
+    id: "digit-health",
+    company: "Go Digit",
+    logoDomain: "godigit.com",
+    type: "health",
+    established: 2017,
+    claimSettlement: 97.0,
+    avgApprovalTime: "15 mins",
+    premiumRange: "₹2,800 - ₹25,000",
+    coverage: "₹3 Lakh - ₹50 Lakh",
+    taxBenefit: "80D - ₹15,000/year",
+    hospitalNetwork: 9000,
+    plans: [
+      {
+        id: "digit-complete-health",
+        name: "Health Plus",
+        premium: "₹4,900/year",
+        coverage: "₹5 Lakh",
+        term: "1 year",
+        medicalExam: "Usually not required",
+        waitingPeriod: "30 days",
+        features: ["Zero co-payment", "No room rent sub-limit", "Road ambulance", "Psychiatric benefit"],
+        advantages: ["Paperless process", "Young & tech-savvy", "Transparent claims"],
+        brochure: "https://www.godigit.com/content/dam/godigit/directportal/en/brochures/health-insurance-brochure.pdf",
+        rating: 4.6,
+        detailedFeatures: {
+          ncb: "Initial discount + Cumulative bonus",
+          restoration: "100% Restoration benefit",
+          roomRent: "No room rent sub-limits",
+          consumables: "Available as add-on"
+        }
+      },
+    ],
+  },
+  {
+    id: "tata-aig-health",
+    company: "Tata AIG",
+    logoDomain: "tataaig.com",
+    type: "health",
+    established: 2001,
+    claimSettlement: 95.43,
+    avgApprovalTime: "30 mins",
+    premiumRange: "₹3,300 - ₹32,000",
+    coverage: "₹3 Lakh - ₹1 Crore",
+    taxBenefit: "80D - ₹15,000/year",
+    hospitalNetwork: 11000,
+    plans: [
+      {
+        id: "tata-mediprime-health",
+        name: "MediCare Premier",
+        premium: "₹5,900/year",
+        coverage: "₹5 Lakh",
+        term: "1 year",
+        medicalExam: "Age based",
+        waitingPeriod: "30 days",
+        features: ["Consumables cover", "Global cover", "Maternity benefit", "Restoration benefit"],
+        advantages: ["Comprehensive TATA cover", "High sub-limit flexibility", "Global medical benefit"],
+        brochure: "https://www.tataaig.com/content/dam/tataaig/documents/brochures/Health_Medicare_Brochure.pdf",
+        rating: 4.7,
+        detailedFeatures: {
+          ncb: "Cumulative Bonus (50% max)",
+          restoration: "Automatic restoration",
+          roomRent: "Single Private Room covered",
+          consumables: "Inbuilt Consumables cover"
+        }
+      },
+    ],
+  },
+  {
+    id: "care-health-ins",
+    company: "Care Health",
+    logoDomain: "careinsurance.com",
+    type: "health",
+    established: 2011,
+    claimSettlement: 99.95,
+    avgApprovalTime: "25 mins",
+    premiumRange: "₹2,500 - ₹24,000",
+    coverage: "₹3 Lakh - ₹2 Crore",
+    taxBenefit: "80D - ₹15,000/year",
+    hospitalNetwork: 24800,
+    plans: [
+      {
+        id: "care-supreme-health",
+        name: "Care Supreme",
+        premium: "₹5,100/year",
+        coverage: "₹5 Lakh",
+        term: "1 year",
+        medicalExam: "Age based",
+        waitingPeriod: "30 days",
+        features: ["Cumulative bonus", "No claim bonus", "Health checkup", "Annual check-up"],
+        advantages: ["Largest hospital network", "99.95% CSR for health", "Value for money"],
+        brochure: "https://www.careinsurance.com/content/dam/careinsurance/documents/brochure/Care-Supreme-Brochure.pdf",
         rating: 4.5,
+        detailedFeatures: {
+          ncb: "Up to 50% year-on-year bonus",
+          restoration: "Every claim restoration",
+          roomRent: "Single Private Room",
+          consumables: "Available as optional cover"
+        }
+      },
+    ],
+  },
+  {
+    id: "manipal-cigna-health",
+    company: "ManipalCigna",
+    logoDomain: "manipalcigna.com",
+    type: "health",
+    established: 2012,
+    claimSettlement: 99.88,
+    avgApprovalTime: "35 mins",
+    premiumRange: "₹3,400 - ₹35,000",
+    coverage: "₹3 Lakh - ₹1 Crore",
+    taxBenefit: "80D - ₹15,000/year",
+    hospitalNetwork: 8500,
+    plans: [
+      {
+        id: "manipal-prohealth",
+        name: "ProHealth Prime",
+        premium: "₹6,200/year",
+        coverage: "₹5 Lakh",
+        term: "1 year",
+        medicalExam: "Standard",
+        waitingPeriod: "30 days",
+        features: ["Switch off benefit", "Cashless OPD", "Unlimited restoration", "Critical illness cover"],
+        advantages: ["Multi-year discounts", "Global emergency cover", "99.88% Settlement"],
+        brochure: "https://www.manipalcigna.com/content/dam/manipal-cigna/documents/brochures/ProHealth-Prime-Brochure.pdf",
+        rating: 4.6,
+        detailedFeatures: {
+          ncb: "Guaranteed NCB (even with claims)",
+          restoration: "Unlimited Restoration Benefit",
+          roomRent: "No limit on room categories",
+          consumables: "In-built Non-medical cover"
+        }
+      },
+    ],
+  },
+  {
+    id: "bajaj-gen-health",
+    company: "Bajaj Allianz General",
+    logoDomain: "bajajallianz.com",
+    type: "health",
+    established: 2001,
+    claimSettlement: 98.56,
+    avgApprovalTime: "20 mins",
+    premiumRange: "₹3,100 - ₹28,000",
+    coverage: "₹3 Lakh - ₹50 Lakh",
+    taxBenefit: "80D - ₹15,000/year",
+    hospitalNetwork: 18400,
+    plans: [
+      {
+        id: "bajaj-health-guard",
+        name: "Health Guard Plus",
+        premium: "₹5,300/year",
+        coverage: "₹5 Lakh",
+        term: "1 year",
+        medicalExam: "Not required <45y",
+        waitingPeriod: "30 days",
+        features: ["Bariatric surgery", "Air ambulance", "Daily cash benefit", "Recovery benefit"],
+        advantages: ["Trusted brand", "Wide 18k+ network", "Fast settlement"],
+        brochure: "https://www.bajajallianz.com/content/dam/balic/brochures/Health-Guard-Plus-Brochure.pdf",
+        rating: 4.7,
+        detailedFeatures: {
+          ncb: "Cumulative Bonus up to 100%",
+          restoration: "Available as an add-on",
+          roomRent: "No limit on room category",
+          consumables: "Available as add-on"
+        }
+      },
+    ],
+  },
+
+  // INVESTMENT PLANS
+  {
+    id: "hdfc-life-invest",
+    company: "HDFC Life",
+    logoDomain: "hdfclife.com",
+    type: "investment",
+    established: 2000,
+    claimSettlement: 99.68,
+    avgApprovalTime: "15 mins",
+    premiumRange: "₹50,000 - ₹5,00,000",
+    coverage: "10x Annual Premium",
+    taxBenefit: "80C & 10(10D)",
+    hospitalNetwork: 9500,
+    plans: [
+      {
+        id: "hdfc-c2i-invest",
+        name: "Click 2 Invest ULIP",
+        premium: "₹50,000/year",
+        coverage: "₹5 Lakh",
+        term: "10-20 years",
+        medicalExam: "Usually not required",
+        waitingPeriod: "None",
+        features: ["Market linked returns", "0% Allocation charge", "11 Fund options", "Partial withdrawals"],
+        advantages: ["Low charge structure", "HDFC Fund performance", "Flexible tenure"],
+        brochure: "https://www.hdfclife.com/content/dam/hdfclifeinvestment/brochures/C2I_Brochure.pdf",
+        rating: 4.6,
+        detailedFeatures: {
+          fundPerformance: "Multi-Cap Fund (~13.8% 5yr CAGR)",
+          wealthBoosters: "Added to fund value after 10 years",
+          mortalityReturn: "Return of Mortality Charges at maturity",
+          loyaltyAdditions: "Loyalty additions after 10 years"
+        }
+      },
+    ],
+  },
+  {
+    id: "icici-pru-invest",
+    company: "ICICI Prudential",
+    logoDomain: "iciciprulife.com",
+    type: "investment",
+    established: 1999,
+    claimSettlement: 99.17,
+    avgApprovalTime: "20 mins",
+    premiumRange: "₹30,000 - ₹10,00,000+",
+    coverage: "10x Annual Premium",
+    taxBenefit: "80C & 10(10D)",
+    hospitalNetwork: 8800,
+    plans: [
+      {
+        id: "icici-sig-invest",
+        name: "Pru Signature ULIP",
+        premium: "₹60,000/year",
+        coverage: "₹6 Lakh",
+        term: "15 years",
+        medicalExam: "No",
+        waitingPeriod: "None",
+        features: ["Wealth Boosters", "Unlimited switches", "Systematic Withdrawal", "Return of Mortality charges"],
+        advantages: ["Best for wealth creation", "Unlimited free switches", "Premium waiver benefit"],
+        brochure: "https://www.iciciprulife.com/content/dam/icicipru/brochures/Signature-Brochure.pdf",
+        rating: 4.7,
+        detailedFeatures: {
+          fundPerformance: "Opportunities Fund (~13.2% 5yr CAGR)",
+          wealthBoosters: "1.50% - 3.25% added every 5 years",
+          mortalityReturn: "Return of 100% Mortality Charges",
+          loyaltyAdditions: "Regular Loyalty Additions from 6th year"
+        }
+      },
+    ],
+  },
+  {
+    id: "max-life-invest",
+    company: "Max Life",
+    logoDomain: "maxlife.in",
+    type: "investment",
+    established: 2000,
+    claimSettlement: 99.65,
+    avgApprovalTime: "10 mins",
+    premiumRange: "₹25,000 - ₹5,00,000",
+    coverage: "10x Annual Premium",
+    taxBenefit: "80C & 10(10D)",
+    hospitalNetwork: 7500,
+    plans: [
+      {
+        id: "max-savings-invest",
+        name: "Online Savings Plan",
+        premium: "₹45,000/year",
+        coverage: "₹4.5 Lakh",
+        term: "10-25 years",
+        medicalExam: "No",
+        waitingPeriod: "None",
+        features: ["Auto-Rebalancing", "Life stage fund", "8 Fund options", "Loyalty additions"],
+        advantages: ["Portfolio management", "Zero allocation charge", "Flexible withdrawals"],
+        brochure: "https://www.maxlifeinsurance.com/content/dam/corporate/brochures/Online-Savings-Plan-Brochure.pdf",
+        rating: 4.5,
+        detailedFeatures: {
+          fundPerformance: "High Growth Fund (~13.9% 5yr CAGR)",
+          wealthBoosters: "Added to fund at maturity",
+          mortalityReturn: "Complete Return of Mortality Charges",
+          loyaltyAdditions: "Guaranteed Loyalty additions"
+        }
+      },
+    ],
+  },
+  {
+    id: "tata-aia-invest",
+    company: "Tata AIA",
+    logoDomain: "tataaia.com",
+    type: "investment",
+    established: 2001,
+    claimSettlement: 99.41,
+    avgApprovalTime: "12 mins",
+    premiumRange: "₹50,000 - ₹2,00,000+",
+    coverage: "10x Annual Premium",
+    taxBenefit: "80C & 10(10D)",
+    hospitalNetwork: 7000,
+    plans: [
+      {
+        id: "tata-pro-invest",
+        name: "Fortune Pro ULIP",
+        premium: "₹50,000/year",
+        coverage: "₹5 Lakh",
+        term: "15 years",
+        medicalExam: "No",
+        waitingPeriod: "None",
+        features: ["Guaranteed Additions", "Index Fund options", "Multi-cap exposure", "Critical illness rider"],
+        advantages: ["TATA brand trust", "Excellent fund selection", "Market-beating returns"],
+        brochure: "https://tataaia.com/content/dam/tataaia/brochures/Fortune_Pro_Brochure.pdf",
+        rating: 4.6,
+        detailedFeatures: {
+          fundPerformance: "Top 200 Fund (~16.8% 5yr CAGR)",
+          wealthBoosters: "High Premium Boosters available",
+          mortalityReturn: "Refund of Mortality Charges as Loyalty",
+          loyaltyAdditions: "Regular Loyalty Additions"
+        }
+      },
+    ],
+  },
+  {
+    id: "aditya-birla-invest",
+    company: "Aditya Birla Sun Life",
+    logoDomain: "adityabirlasunlifeinsurance.com",
+    type: "investment",
+    established: 2000,
+    claimSettlement: 98.74,
+    avgApprovalTime: "25 mins",
+    premiumRange: "₹30,000 - ₹5,00,000",
+    coverage: "10x Annual Premium",
+    taxBenefit: "80C & 10(10D)",
+    hospitalNetwork: 6000,
+    plans: [
+      {
+        id: "aditya-wealth-invest",
+        name: "Wealth Alpha Plan",
+        premium: "₹40,000/year",
+        coverage: "₹4 Lakh",
+        term: "10-20 years",
+        medicalExam: "No",
+        waitingPeriod: "None",
+        features: ["Wealth Boosters", "Systematic Withdrawal", "Multiple fund strategies", "Return of Mortality charges"],
+        advantages: ["Choice of 3 investment strategies", "Birla Group legacy", "Loyalty additions"],
+        brochure: "https://lifeinsurance.adityabirlacapital.com/content/dam/adityabirla/lifeinsurance/brochures/Wealth_Alpha_Brochure.pdf",
+        rating: 4.5,
+        detailedFeatures: {
+          fundPerformance: "Equity/Debt mix (~14% average performance)",
+          wealthBoosters: "Wealth-Boosting Additions periodically",
+          mortalityReturn: "Return of Premium Allocation & Mortality Charges",
+          loyaltyAdditions: "Guaranteed Additions every 5 years"
+        }
+      },
+    ],
+  },
+  {
+    id: "bajaj-life-invest",
+    company: "Bajaj Allianz Life",
+    logoDomain: "bajajallianzlife.com",
+    type: "investment",
+    established: 2001,
+    claimSettlement: 99.29,
+    avgApprovalTime: "18 mins",
+    premiumRange: "₹25,000 - ₹10,00,000",
+    coverage: "10x Annual Premium",
+    taxBenefit: "80C & 10(10D)",
+    hospitalNetwork: 6500,
+    plans: [
+      {
+        id: "bajaj-wealth-invest",
+        name: "Future Wealth Gain",
+        premium: "₹50,000/year",
+        coverage: "₹5 Lakh",
+        term: "10-15 years",
+        medicalExam: "No",
+        waitingPeriod: "None",
+        features: ["Market linked growth", "Loyalty additions", "Choice of 8 funds", "Partial withdrawals"],
+        advantages: ["Compounded growth", "Bajaj brand trust", "Systematic planning"],
+        brochure: "https://www.bajajallianzlife.com/content/dam/balic/brochures/Future-Wealth-Gain-Brochure.pdf",
+        rating: 4.6,
+        detailedFeatures: {
+          fundPerformance: "Accelerator Mid-Cap Fund (~13.1% 5yr CAGR)",
+          wealthBoosters: "Fund Boosters at maturity",
+          mortalityReturn: "Return of Mortality Charges at maturity",
+          loyaltyAdditions: "Loyalty Additions every 5 years from 10th year"
+        }
       },
     ],
   },
@@ -381,7 +898,7 @@ export default function CompareInsurancePage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
+    <div className="min-h-screen bg-gradient-to-b from-slate-50  to-white ">
 
       {/* Hero Section */}
       <section className="relative py-16 md:py-24 bg-gradient-to-r from-blue-600 to-blue-800 text-white overflow-hidden">
@@ -446,7 +963,7 @@ export default function CompareInsurancePage() {
             </button>
 
             {showCalculator && (
-              <Card className="mt-4 border-2 border-blue-500 bg-gradient-to-br from-blue-50 to-indigo-50">
+              <Card className="mt-4 border-2 border-blue-500 bg-gradient-to-br from-blue-50  to-indigo-50 ">
                 <CardContent className="pt-6">
                   <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
                     {/* Age Input */}
@@ -512,7 +1029,7 @@ export default function CompareInsurancePage() {
                   </div>
 
                   {/* Result */}
-                  <div className="bg-white p-6 rounded-lg border-2 border-blue-200">
+                  <div className="bg-background  p-6 rounded-lg border-2 border-blue-200 ">
                     <div className="grid md:grid-cols-3 gap-6">
                       <div className="text-center">
                         <p className="text-sm text-slate-600 mb-2">Estimated Annual Premium</p>
@@ -538,12 +1055,15 @@ export default function CompareInsurancePage() {
 
           {/* Tabs */}
           <Tabs value={activeTab} onValueChange={setActiveTab} className="mb-8">
-            <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-8">
+            <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-3 mb-8">
               <TabsTrigger value="term" className="text-base">
-                🛡️ Term Insurance
+                🛡️ Term Plan
               </TabsTrigger>
               <TabsTrigger value="health" className="text-base">
-                ❤️ Health Insurance
+                ❤️ Health Plan
+              </TabsTrigger>
+              <TabsTrigger value="investment" className="text-base">
+                💰 Investment Plan
               </TabsTrigger>
             </TabsList>
 
@@ -590,7 +1110,7 @@ export default function CompareInsurancePage() {
 
               {/* Advanced Filters */}
               {showFilters && (
-                <Card className="bg-gradient-to-r from-blue-50 to-slate-50">
+                <Card className="bg-gradient-to-r from-blue-50  to-slate-50 ">
                   <CardContent className="p-6">
                     <div className="grid md:grid-cols-3 gap-6">
                       <div>
@@ -665,7 +1185,14 @@ export default function CompareInsurancePage() {
                       <CardHeader className="pb-3">
                         <div className="flex items-start justify-between">
                           <div className="flex items-center gap-3">
-                            <div className="text-4xl">{company.logo}</div>
+                            <img
+                              src={`https://logo.clearbit.com/${company.logoDomain}`}
+                              alt={company.company}
+                              className="w-10 h-10 object-contain rounded bg-white p-1 border shadow-sm"
+                              onError={(e) => {
+                                (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(company.company)}&background=random`;
+                              }}
+                            />
                             <div>
                               <CardTitle className="text-lg">{company.company}</CardTitle>
                               <p className="text-xs text-slate-500">Est. {company.established}</p>
@@ -744,6 +1271,18 @@ export default function CompareInsurancePage() {
                               </div>
                             </>
                           )}
+                          {company.type === "investment" && (
+                            <>
+                              <div className="flex items-center gap-2 text-xs">
+                                <TrendingUp className="w-3.5 h-3.5 text-blue-600" />
+                                <span>Market Linked Returns</span>
+                              </div>
+                              <div className="flex items-center gap-2 text-xs">
+                                <Zap className="w-3.5 h-3.5 text-green-600" />
+                                <span>Tax Free Returns (10(10D))</span>
+                              </div>
+                            </>
+                          )}
                         </div>
 
                         {/* Action Button */}
@@ -808,7 +1347,12 @@ export default function CompareInsurancePage() {
                     Export Report
                   </Button>
                   <ScheduleCallButton variant="outline" />
-                  <Button variant="outline" size="sm" className="gap-2">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="gap-2"
+                    onClick={() => window.print()}
+                  >
                     <TrendingUp className="w-4 h-4" />
                     Print Comparison
                   </Button>
@@ -825,15 +1369,34 @@ export default function CompareInsurancePage() {
                       {selectedCompanyDetails.map((company) => (
                         <th key={company.id} className="border p-4 text-center font-semibold text-sm min-w-[250px]">
                           <div className="flex flex-col items-center gap-2">
-                            <span className="text-2xl">{company.logo}</span>
+                            <img
+                              src={`https://logo.clearbit.com/${company.logoDomain}`}
+                              alt={company.company}
+                              className="w-12 h-12 object-contain rounded bg-white p-1 border shadow-sm mb-1"
+                              onError={(e) => {
+                                (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(company.company)}&background=random`;
+                              }}
+                            />
                             <span>{company.company}</span>
-                            <Badge variant="outline">{activeTab === "term" ? "Term" : "Health"}</Badge>
+                            <Badge variant="outline" className="capitalize">
+                              {activeTab} Plan
+                            </Badge>
                           </div>
                         </th>
                       ))}
                     </tr>
                   </thead>
                   <tbody>
+                    {/* Plan Name */}
+                    <tr>
+                      <td className="sticky left-0 bg-background border p-4 font-semibold text-sm">📄 Full Plan Name</td>
+                      {selectedCompanyDetails.map((company) => (
+                        <td key={company.id} className="border p-4 text-center text-sm font-bold text-slate-800">
+                          {company.plans[0].name}
+                        </td>
+                      ))}
+                    </tr>
+
                     {/* Premium */}
                     <tr className="bg-blue-50 hover:bg-blue-100 transition-colors">
                       <td className="sticky left-0 bg-blue-50 border p-4 font-semibold text-sm">💰 Premium (Annual)</td>
@@ -846,13 +1409,127 @@ export default function CompareInsurancePage() {
 
                     {/* Coverage */}
                     <tr>
-                      <td className="sticky left-0 bg-white border p-4 font-semibold text-sm">🛡️ Coverage Amount</td>
+                      <td className="sticky left-0 bg-background border p-4 font-semibold text-sm">🛡️ Coverage Amount</td>
                       {selectedCompanyDetails.map((company) => (
                         <td key={company.id} className="border p-4 text-center text-sm">
                           {company.plans[0].coverage}
                         </td>
                       ))}
                     </tr>
+
+                    {/* Term Specific Rows */}
+                    {activeTab === "term" && (
+                      <>
+                        <tr className="bg-orange-50 hover:bg-orange-100 transition-colors">
+                          <td className="sticky left-0 bg-orange-50 border p-4 font-semibold text-sm">🏥 Terminal Illness</td>
+                          {selectedCompanyDetails.map((company) => (
+                            <td key={company.id} className="border p-4 text-center text-sm">
+                              {company.plans[0].detailedFeatures?.terminalIllness || "Included"}
+                            </td>
+                          ))}
+                        </tr>
+                        <tr>
+                          <td className="sticky left-0 bg-background border p-4 font-semibold text-sm">✍️ Waiver of Premium</td>
+                          {selectedCompanyDetails.map((company) => (
+                            <td key={company.id} className="border p-4 text-center text-sm">
+                              {company.plans[0].detailedFeatures?.waiverOfPremium || "Available"}
+                            </td>
+                          ))}
+                        </tr>
+                        <tr className="bg-indigo-50 hover:bg-indigo-100 transition-colors">
+                          <td className="sticky left-0 bg-indigo-50 border p-4 font-semibold text-sm">🎭 Key Riders</td>
+                          {selectedCompanyDetails.map((company) => (
+                            <td key={company.id} className="border p-4 text-center text-sm">
+                              {company.plans[0].detailedFeatures?.riders || "Accidental/CI"}
+                            </td>
+                          ))}
+                        </tr>
+                        <tr>
+                          <td className="sticky left-0 bg-background border p-4 font-semibold text-sm">✨ Special Benefit</td>
+                          {selectedCompanyDetails.map((company) => (
+                            <td key={company.id} className="border p-4 text-center text-sm font-semibold text-indigo-600">
+                              {company.plans[0].detailedFeatures?.specialFeature || "N/A"}
+                            </td>
+                          ))}
+                        </tr>
+                      </>
+                    )}
+
+                    {/* Health Specific Rows */}
+                    {activeTab === "health" && (
+                      <>
+                        <tr className="bg-emerald-50 hover:bg-emerald-100 transition-colors">
+                          <td className="sticky left-0 bg-emerald-50 border p-4 font-semibold text-sm">📈 No Claim Bonus</td>
+                          {selectedCompanyDetails.map((company) => (
+                            <td key={company.id} className="border p-4 text-center text-sm">
+                              {company.plans[0].detailedFeatures?.ncb || "50% per year"}
+                            </td>
+                          ))}
+                        </tr>
+                        <tr>
+                          <td className="sticky left-0 bg-background border p-4 font-semibold text-sm">🔄 Restoration</td>
+                          {selectedCompanyDetails.map((company) => (
+                            <td key={company.id} className="border p-4 text-center text-sm">
+                              {company.plans[0].detailedFeatures?.restoration || "100% Restore"}
+                            </td>
+                          ))}
+                        </tr>
+                        <tr className="bg-amber-50 hover:bg-amber-100 transition-colors">
+                          <td className="sticky left-0 bg-amber-50 border p-4 font-semibold text-sm">🏨 Room Rent Limit</td>
+                          {selectedCompanyDetails.map((company) => (
+                            <td key={company.id} className="border p-4 text-center text-sm">
+                              {company.plans[0].detailedFeatures?.roomRent || "No Limit"}
+                            </td>
+                          ))}
+                        </tr>
+                        <tr>
+                          <td className="sticky left-0 bg-background border p-4 font-semibold text-sm">📦 Consumables</td>
+                          {selectedCompanyDetails.map((company) => (
+                            <td key={company.id} className="border p-4 text-center text-sm font-semibold text-amber-600">
+                              {company.plans[0].detailedFeatures?.consumables || "Optional"}
+                            </td>
+                          ))}
+                        </tr>
+                      </>
+                    )}
+
+                    {/* Investment Specific Rows */}
+                    {activeTab === "investment" && (
+                      <>
+                        <tr className="bg-orange-50 hover:bg-orange-100 transition-colors">
+                          <td className="sticky left-0 bg-orange-50 border p-4 font-semibold text-sm">📈 Fund Performance</td>
+                          {selectedCompanyDetails.map((company) => (
+                            <td key={company.id} className="border p-4 text-center text-sm font-bold text-orange-600">
+                              {company.plans[0].detailedFeatures?.fundPerformance || "13-15% CAGR"}
+                            </td>
+                          ))}
+                        </tr>
+                        <tr>
+                          <td className="sticky left-0 bg-background border p-4 font-semibold text-sm">🚀 Wealth Boosters</td>
+                          {selectedCompanyDetails.map((company) => (
+                            <td key={company.id} className="border p-4 text-center text-sm">
+                              {company.plans[0].detailedFeatures?.wealthBoosters || "Added units"}
+                            </td>
+                          ))}
+                        </tr>
+                        <tr className="bg-blue-50 hover:bg-blue-100 transition-colors">
+                          <td className="sticky left-0 bg-blue-50 border p-4 font-semibold text-sm">⚰️ Mortality Return</td>
+                          {selectedCompanyDetails.map((company) => (
+                            <td key={company.id} className="border p-4 text-center text-sm">
+                              {company.plans[0].detailedFeatures?.mortalityReturn || "Yes (Maturity)"}
+                            </td>
+                          ))}
+                        </tr>
+                        <tr>
+                          <td className="sticky left-0 bg-background border p-4 font-semibold text-sm">🎁 Loyalty Additions</td>
+                          {selectedCompanyDetails.map((company) => (
+                            <td key={company.id} className="border p-4 text-center text-sm font-semibold text-blue-600">
+                              {company.plans[0].detailedFeatures?.loyaltyAdditions || "Periodic additions"}
+                            </td>
+                          ))}
+                        </tr>
+                      </>
+                    )}
 
                     {/* Claim Settlement */}
                     <tr className="bg-green-50 hover:bg-green-100 transition-colors">
@@ -866,7 +1543,7 @@ export default function CompareInsurancePage() {
 
                     {/* Rating */}
                     <tr>
-                      <td className="sticky left-0 bg-white border p-4 font-semibold text-sm">⭐ Rating</td>
+                      <td className="sticky left-0 bg-background border p-4 font-semibold text-sm">⭐ Rating</td>
                       {selectedCompanyDetails.map((company) => (
                         <td key={company.id} className="border p-4 text-center">
                           <div className="flex items-center justify-center gap-2">
@@ -901,7 +1578,7 @@ export default function CompareInsurancePage() {
                     {activeTab === "term" && (
                       <>
                         <tr>
-                          <td className="sticky left-0 bg-white border p-4 font-semibold text-sm">📅 Policy Term</td>
+                          <td className="sticky left-0 bg-background  border p-4 font-semibold text-sm">📅 Policy Term</td>
                           {selectedCompanyDetails.map((company) => (
                             <td key={company.id} className="border p-4 text-center text-sm">
                               {company.plans[0].term}
@@ -919,7 +1596,7 @@ export default function CompareInsurancePage() {
                         </tr>
 
                         <tr>
-                          <td className="sticky left-0 bg-white border p-4 font-semibold text-sm">⏳ Waiting Period</td>
+                          <td className="sticky left-0 bg-background  border p-4 font-semibold text-sm">⏳ Waiting Period</td>
                           {selectedCompanyDetails.map((company) => (
                             <td key={company.id} className="border p-4 text-center text-sm">
                               {company.plans[0].waitingPeriod}
@@ -930,11 +1607,22 @@ export default function CompareInsurancePage() {
                     )}
 
                     {activeTab === "health" && (
-                      <tr>
-                        <td className="sticky left-0 bg-white border p-4 font-semibold text-sm">🏥 Hospital Network</td>
+                      <tr className="bg-blue-50/50">
+                        <td className="sticky left-0 bg-blue-50/50 border p-4 font-semibold text-sm">🏥 Hospital Network</td>
                         {selectedCompanyDetails.map((company) => (
                           <td key={company.id} className="border p-4 text-center text-sm font-semibold text-blue-600">
-                            {company.hospitalNetwork.toLocaleString()}+
+                            {company.hospitalNetwork?.toLocaleString()}+
+                          </td>
+                        ))}
+                      </tr>
+                    )}
+
+                    {activeTab === "investment" && (
+                      <tr className="bg-orange-50 hover:bg-orange-100 transition-colors">
+                        <td className="sticky left-0 bg-orange-50 border p-4 font-semibold text-sm">📈 Fund Options</td>
+                        {selectedCompanyDetails.map((company) => (
+                          <td key={company.id} className="border p-4 text-center text-sm font-semibold text-orange-600">
+                            {company.plans[0].features.find(f => f.includes('Fund')) || "Multi-fund options"}
                           </td>
                         ))}
                       </tr>
@@ -986,7 +1674,7 @@ export default function CompareInsurancePage() {
 
                     {/* Tax Benefits */}
                     <tr>
-                      <td className="sticky left-0 bg-white border p-4 font-semibold text-sm">💵 Tax Benefits</td>
+                      <td className="sticky left-0 bg-background  border p-4 font-semibold text-sm">💵 Tax Benefits</td>
                       {selectedCompanyDetails.map((company) => (
                         <td key={company.id} className="border p-4 text-center text-sm font-semibold text-green-600">
                           {company.taxBenefit}
@@ -1000,9 +1688,9 @@ export default function CompareInsurancePage() {
                       {selectedCompanyDetails.map((company) => (
                         <td key={company.id} className="border p-4">
                           <div className="flex flex-col gap-2">
-                            <Button 
-                              size="sm" 
-                              variant="outline" 
+                            <Button
+                              size="sm"
+                              variant="outline"
                               className="w-full gap-2"
                               onClick={() => handleBrochureDownload(company.plans[0].brochure, company.company)}
                               title="Download or view company brochure"
@@ -1042,12 +1730,12 @@ export default function CompareInsurancePage() {
       </section>
 
       {/* Footer */}
-      <section className="py-12 md:py-16 bg-gradient-to-b from-slate-50 to-white border-t mt-12">
+      <section className="py-12 md:py-16 bg-gradient-to-b from-slate-50  to-white  border-t mt-12">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             {/* Expert Tips */}
             <div className="grid md:grid-cols-2 gap-6 mb-8">
-              <div className="bg-white p-6 rounded-lg border-2 border-blue-200">
+              <div className="bg-background  p-6 rounded-lg border-2 border-blue-200 ">
                 <h3 className="font-bold text-lg mb-4 flex items-center gap-2">
                   <span className="text-2xl">🛡️</span>
                   Term Insurance Tips
@@ -1076,7 +1764,7 @@ export default function CompareInsurancePage() {
                 </ul>
               </div>
 
-              <div className="bg-white p-6 rounded-lg border-2 border-red-200">
+              <div className="bg-background  p-6 rounded-lg border-2 border-red-200 ">
                 <h3 className="font-bold text-lg mb-4 flex items-center gap-2">
                   <span className="text-2xl">❤️</span>
                   Health Insurance Tips
@@ -1107,7 +1795,7 @@ export default function CompareInsurancePage() {
             </div>
 
             {/* Comparison Tips */}
-            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-lg border-2 border-blue-300 mb-8">
+            <div className="bg-gradient-to-r from-blue-50  to-indigo-50  p-8 rounded-lg border-2 border-blue-300 mb-8">
               <h3 className="font-bold text-lg mb-4 flex items-center gap-2">
                 <span className="text-2xl">📋</span>
                 How to Compare Insurance Plans
@@ -1144,7 +1832,7 @@ export default function CompareInsurancePage() {
             </div>
 
             {/* Common Mistakes */}
-            <div className="bg-white p-6 rounded-lg border-2 border-amber-200 mb-8">
+            <div className="bg-background  p-6 rounded-lg border-2 border-amber-200  mb-8">
               <h3 className="font-bold text-lg mb-4 flex items-center gap-2">
                 <span className="text-2xl">⚠️</span>
                 Common Mistakes to Avoid

@@ -36,7 +36,7 @@ export default function ClaimsPage() {
               </div>
             </div>
             <div className="relative animate-in fade-in slide-in-from-right duration-1000">
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl border-8 border-white bg-white transform lg:rotate-2 hover:rotate-0 transition-transform duration-500">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl border-8 border-background dark:border-slate-800 bg-background dark:bg-slate-800 transform lg:rotate-2 hover:rotate-0 transition-transform duration-500">
                 <img
                   src="/images/claims_support_hero.png"
                   alt="Claims Support Hero"

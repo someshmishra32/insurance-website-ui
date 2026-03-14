@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { WhatsAppButton } from "@/components/whatsapp-button"
 import { ExpertAdviceButton } from "@/components/expert-advice-button"
+import { ScrollAnimation } from "@/components/scroll-animation"
 import { ArrowRight, Shield, Heart, Building2, Users, ChevronRight } from "lucide-react"
 
 export const metadata = {
@@ -64,7 +65,7 @@ export default function LearnInsurancePage() {
     <div className="min-h-screen">
 
       {/* Hero Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-b from-blue-50/50 to-background overflow-hidden">
+      <section className="py-16 md:py-24 bg-gradient-to-b from-blue-50/50 dark:from-slate-900/50 to-background overflow-hidden\">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-center">
             <div className="text-left animate-in fade-in slide-in-from-left duration-700">
@@ -81,7 +82,7 @@ export default function LearnInsurancePage() {
               </div>
             </div>
             <div className="relative animate-in fade-in slide-in-from-right duration-1000">
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl border-8 border-white bg-white transform lg:rotate-2 hover:rotate-0 transition-transform duration-500">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl border-8 border-background dark:border-slate-800 bg-background dark:bg-slate-800 transform lg:rotate-2 hover:rotate-0 transition-transform duration-500">
                 <img
                   src="/images/insurance _made_simple.png"
                   alt="Insurance Made Simple Illustration"
@@ -100,44 +101,50 @@ export default function LearnInsurancePage() {
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-7 mb-16">
-            {insuranceTypes.map((type) => {
+            {insuranceTypes.map((type, index) => {
               const Icon = type.icon
               return (
-                <Card
+                <ScrollAnimation
                   key={type.id}
-                  className={`group hover:shadow-2xl transition-all duration-300 cursor-pointer border-2 ${type.borderColor} hover:scale-105 overflow-hidden relative`}
+                  variant="slide-up"
+                  delay={index * 0.1}
+                  className="h-full"
                 >
-                  {/* Background gradient */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${type.bgColor} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
-                  
-                  <CardContent className="p-6 md:p-7 relative z-10">
-                    {/* Badge */}
-                    <div className={`inline-block ${type.badgeColor} px-3 py-1 rounded-full text-xs font-semibold mb-4 group-hover:scale-110 transition-transform`}>
-                      {type.badge}
-                    </div>
+                  <Card
+                    className={`group hover:shadow-2xl transition-all duration-300 cursor-pointer border-2 ${type.borderColor} hover:scale-105 overflow-hidden relative h-full`}
+                  >
+                    {/* Background gradient */}
+                    <div className={`absolute inset-0 bg-gradient-to-br ${type.bgColor} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
+                    
+                    <CardContent className="p-6 md:p-7 relative z-10 flex flex-col h-full">
+                      {/* Badge */}
+                      <div className={`inline-block ${type.badgeColor} px-3 py-1 rounded-full text-xs font-semibold mb-4 group-hover:scale-110 transition-transform`}>
+                        {type.badge}
+                      </div>
 
-                    {/* Icon Container */}
-                    <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${type.bgColor} flex items-center justify-center mb-5 group-hover:scale-125 transition-transform duration-300 shadow-lg`}>
-                      <Icon className="w-8 h-8 text-white" />
-                    </div>
+                      {/* Icon Container */}
+                      <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${type.bgColor} flex items-center justify-center mb-5 group-hover:scale-125 transition-transform duration-300 shadow-lg`}>
+                        <Icon className="w-8 h-8 text-white" />
+                      </div>
 
-                    {/* Title */}
-                    <h3 className="font-bold text-xl md:text-lg mb-3 group-hover:text-primary transition-colors">
-                      {type.title}
-                    </h3>
+                      {/* Title */}
+                      <h3 className="font-bold text-xl md:text-lg mb-3 group-hover:text-primary transition-colors">
+                        {type.title}
+                      </h3>
 
-                    {/* Description */}
-                    <p className="text-sm text-muted-foreground leading-relaxed mb-5 line-clamp-3">{type.shortDesc}</p>
+                      {/* Description */}
+                      <p className="text-sm text-muted-foreground leading-relaxed mb-5 line-clamp-3 flex-grow">{type.shortDesc}</p>
 
-                    {/* Button */}
-                    <Button asChild className={`w-full bg-gradient-to-r ${type.bgColor} text-white hover:shadow-lg hover:scale-105 transition-all duration-300 font-semibold py-2.5 rounded-lg min-h-[44px]`}>
-                      <a href={`#${type.id}`} className="flex items-center justify-center gap-2">
-                        Learn More
-                        <ChevronRight className="w-4 h-4" />
-                      </a>
-                    </Button>
-                  </CardContent>
-                </Card>
+                      {/* Button */}
+                      <Button asChild className={`w-full bg-gradient-to-r ${type.bgColor} text-white hover:shadow-lg hover:scale-105 transition-all duration-300 font-semibold py-2.5 rounded-lg min-h-[44px]`}>
+                        <a href={`#${type.id}`} className="flex items-center justify-center gap-2">
+                          Learn More
+                          <ChevronRight className="w-4 h-4" />
+                        </a>
+                      </Button>
+                    </CardContent>
+                  </Card>
+                </ScrollAnimation>
               )
             })}
           </div>

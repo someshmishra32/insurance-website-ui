@@ -8,6 +8,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { WhatsAppButton } from "@/components/whatsapp-button"
 import { LeadCaptureForm } from "@/components/lead-capture-form"
 import { ScheduleCallButton } from "@/components/schedule-call-button"
+import { GlassmorphismButton } from "@/components/glassmorphism"
 import { ChevronRight, Shield, TrendingUp, Users, CheckCircle, Star, HelpCircle, IndianRupee, UserCheck, Building, FileCheck, HeartPulse, Landmark, HandHeart, UserRoundCog } from "lucide-react"
 import { ExpertAdviceButton } from "@/components/expert-advice-button"
 import { Footer } from "@/components/footer"
@@ -178,37 +179,37 @@ export default function HomePage() {
 
               {/* Bima Trinity Cards */}
               <div className="grid md:grid-cols-3 gap-6 mb-8">
-                <Card className="border-blue-200 bg-white">
+                <Card className="border-blue-200 bg-white dark:bg-slate-800 dark:border-slate-700">
                   <CardContent className="p-6">
-                    <div className="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center mb-4">
-                      <Shield className="w-6 h-6 text-blue-600" />
+                    <div className="w-12 h-12 rounded-lg bg-blue-100 dark:bg-blue-900 flex items-center justify-center mb-4">
+                      <Shield className="w-6 h-6 text-blue-600 dark:text-blue-400" />
                     </div>
-                    <h3 className="font-semibold text-lg mb-2">Bima Sugam</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
+                    <h3 className="font-semibold text-lg mb-2 text-foreground dark:text-white">Bima Sugam</h3>
+                    <p className="text-sm text-muted-foreground dark:text-slate-300 leading-relaxed">
                       One digital platform for buying, servicing, and filing claims across all insurers
                     </p>
                   </CardContent>
                 </Card>
 
-                <Card className="border-blue-200 bg-white">
+                <Card className="border-blue-200 bg-white dark:bg-slate-800 dark:border-slate-700">
                   <CardContent className="p-6">
-                    <div className="w-12 h-12 rounded-lg bg-green-100 flex items-center justify-center mb-4">
-                      <IndianRupee className="w-6 h-6 text-green-600" />
+                    <div className="w-12 h-12 rounded-lg bg-green-100 dark:bg-green-900 flex items-center justify-center mb-4">
+                      <IndianRupee className="w-6 h-6 text-green-600 dark:text-green-400" />
                     </div>
-                    <h3 className="font-semibold text-lg mb-2">Bima Vistar</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
+                    <h3 className="font-semibold text-lg mb-2 text-foreground dark:text-white">Bima Vistar</h3>
+                    <p className="text-sm text-muted-foreground dark:text-slate-300 leading-relaxed">
                       Low-cost bundled life, health, and property coverage designed for every Indian
                     </p>
                   </CardContent>
                 </Card>
 
-                <Card className="border-blue-200 bg-white">
+                <Card className="border-blue-200 bg-white dark:bg-slate-800 dark:border-slate-700">
                   <CardContent className="p-6">
-                    <div className="w-12 h-12 rounded-lg bg-purple-100 flex items-center justify-center mb-4">
-                      <HandHeart className="w-6 h-6 text-purple-600" />
+                    <div className="w-12 h-12 rounded-lg bg-purple-100 dark:bg-purple-900 flex items-center justify-center mb-4">
+                      <HandHeart className="w-6 h-6 text-purple-600 dark:text-purple-400" />
                     </div>
-                    <h3 className="font-semibold text-lg mb-2">Bima Vahaks</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
+                    <h3 className="font-semibold text-lg mb-2 text-foreground dark:text-white">Bima Vahaks</h3>
+                    <p className="text-sm text-muted-foreground dark:text-slate-300 leading-relaxed">
                       Women-led grassroots insurance facilitators bringing insurance to rural India
                     </p>
                   </CardContent>

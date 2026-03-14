@@ -37,26 +37,43 @@ function validatePhone(phone: string): string | null {
   return null
 }
 
+function validatePreferredDateTime(dateTimeString: string): string | null {
+  if (!dateTimeString || !dateTimeString.trim()) {
+    return "Preferred date and time is required"
+  }
+  const selectedDateTime = new Date(dateTimeString)
+  const now = new Date()
+  if (isNaN(selectedDateTime.getTime())) {
+    return "Invalid date and time format"
+  }
+  if (selectedDateTime <= now) {
+    return "Please select a future date and time"
+  }
+  return null
+}
+
 export async function POST(request: NextRequest) {
   try {
     const supabase = createAdminClient()
     const body = await request.json()
 
-    const { name, email, phone, insuranceType, currentCoverage, specificNeeds, sourcePage, utm } = body
+    const { name, email, phone, insuranceType, preferredDateTime, specificNeeds, sourcePage, utm } = body
 
     // Enhanced validation
     const nameError = validateName(name)
     const emailError = validateEmail(email)
     const phoneError = validatePhone(phone)
+    const dateTimeError = validatePreferredDateTime(preferredDateTime)
 
-    if (nameError || emailError || phoneError) {
+    if (nameError || emailError || phoneError || dateTimeError) {
       return NextResponse.json(
         {
           error: "Validation failed",
           fieldErrors: {
             name: nameError,
             email: emailError,
-            phone: phoneError
+            phone: phoneError,
+            preferredDateTime: dateTimeError
           }
         },
         { status: 400 }
@@ -78,7 +95,7 @@ export async function POST(request: NextRequest) {
         email: email.trim().toLowerCase(),
         phone: cleanPhone,
         insurance_type: insuranceType,
-        current_coverage: currentCoverage || null,
+        preferred_datetime: preferredDateTime || null,
         specific_needs: specificNeeds || null,
         source_page: sourcePage,
         utm_source: utm?.source || null,

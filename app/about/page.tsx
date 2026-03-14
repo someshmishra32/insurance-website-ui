@@ -9,7 +9,7 @@ export default function AboutPage() {
     <div className="min-h-screen">
 
       {/* Hero Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-b from-blue-50/50 to-background overflow-hidden">
+      <section className="py-16 md:py-24 bg-gradient-to-b from-blue-50/50 dark:from-slate-900/50 to-background overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-center">
             <div className="text-left animate-in fade-in slide-in-from-left duration-700">
@@ -25,7 +25,7 @@ export default function AboutPage() {
               </div>
             </div>
             <div className="relative animate-in fade-in slide-in-from-right duration-1000">
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl border-8 border-white bg-white transform lg:rotate-2 hover:rotate-0 transition-transform duration-500">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl border-8 border-background dark:border-slate-800 bg-background dark:bg-slate-800 transform lg:rotate-2 hover:rotate-0 transition-transform duration-500">
                 <img
                   src="/images/about_advisory_hero.png"
                   alt="Professional Insurance Advisory"
@@ -48,7 +48,7 @@ export default function AboutPage() {
               <CardContent className="p-8 md:p-12">
                 <div className="flex flex-col md:flex-row gap-8 items-start">
                   <div className="shrink-0">
-                    <div className="w-full md:w-64 lg:w-72 aspect-[4/5] relative overflow-hidden rounded-2xl shadow-xl border-4 border-white bg-slate-50">
+                    <div className="w-full md:w-64 lg:w-72 aspect-[4/5] relative overflow-hidden rounded-2xl shadow-xl border-4 border-background dark:border-slate-800 bg-slate-50 dark:bg-slate-800">
                       <img
                         src="/images/advisor_profile.png"
                         alt="Somesh Mishra - Independent Insurance Advisor"
@@ -90,6 +90,86 @@ export default function AboutPage() {
                 </div>
               </CardContent>
             </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Additional Advisors Section */}
+      <section className="py-12">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Advisory Team</h2>
+              <p className="text-muted-foreground leading-relaxed">
+                Expert insurance professionals dedicated to your financial security
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              {/* Aditya Singhal */}
+              <Card>
+                <CardContent className="p-6 md:p-8">
+                  <div className="flex flex-col gap-6">
+                    <div className="w-full aspect-[4/5] relative overflow-hidden rounded-xl shadow-lg border-4 border-background dark:border-slate-800 bg-slate-50 dark:bg-slate-800">
+                      <img
+                        src="/images/advisor_aditya.png"
+                        alt="Aditya Singhal - Insurance Advisor"
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold mb-1 text-primary">Aditya Singhal</h3>
+                      <p className="text-base font-semibold mb-3 text-muted-foreground">Insurance Advisor</p>
+                      <p className="text-muted-foreground mb-4 leading-relaxed">
+                        Specialized in health and life insurance solutions with a passion for helping families secure their financial future.
+                      </p>
+                      <div className="flex flex-wrap gap-3">
+                        <div className="flex items-center gap-2">
+                          <Award className="w-4 h-4 text-primary" />
+                          <span className="text-xs font-medium">IRDA Certified</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Users className="w-4 h-4 text-primary" />
+                          <span className="text-xs font-medium">200+ Clients Served</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Pramod Yadav */}
+              <Card>
+                <CardContent className="p-6 md:p-8">
+                  <div className="flex flex-col gap-6">
+                    <div className="w-full aspect-[4/5] relative overflow-hidden rounded-xl shadow-lg border-4 border-background dark:border-slate-800 bg-slate-50 dark:bg-slate-800">
+                      <img
+                        src="/images/advisor_pramod.png"
+                        alt="Pramod Yadav - Insurance Advisor"
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold mb-1 text-primary">Pramod Yadav</h3>
+                      <p className="text-base font-semibold mb-3 text-muted-foreground">Insurance Advisor</p>
+                      <p className="text-muted-foreground mb-4 leading-relaxed">
+                        Dedicated to providing comprehensive insurance solutions tailored to individual and family needs with transparency and integrity.
+                      </p>
+                      <div className="flex flex-wrap gap-3">
+                        <div className="flex items-center gap-2">
+                          <Award className="w-4 h-4 text-primary" />
+                          <span className="text-xs font-medium">IRDA Certified</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Users className="w-4 h-4 text-primary" />
+                          <span className="text-xs font-medium">250+ Clients Served</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       </section>
@@ -163,7 +243,7 @@ export default function AboutPage() {
                 <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
                   We are on a mission to bring transparency and trust back to the insurance industry. Our commitment is to ensure that every family in India has access to the right financial protection through unbiased advice and expert guidance.
                 </p>
-                <Card className="bg-gradient-to-br from-blue-50 to-green-50">
+                <Card className="bg-gradient-to-br from-blue-50 dark:from-slate-800 to-green-50 dark:to-slate-700">
                   <CardContent className="p-8">
                     <div className="grid md:grid-cols-2 gap-6">
                       {[
